@@ -1,0 +1,21 @@
+@use "global" as *;
+// パンくず
+.breadcrumb {
+}
+
+.breadcrumb__item {
+  font-size: 0.875rem;
+  font-weight: $normal;
+  font-family: $third-font-family;
+  color: $black;
+  line-height: 1.45;
+}
+
+.breadcrumb__inner {
+}
+
+.breadcrumb__box {
+}
+
+.breadcrumb__item {
+}

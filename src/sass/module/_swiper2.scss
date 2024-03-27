@@ -1,0 +1,37 @@
+@use "global" as *;
+.swiper2 {
+  margin-right: calc(77% - 53vw);
+  @include mq("md") {
+    margin-right: calc(50% - 50vw);
+  }
+}
+.swiper2:hover .campaign__card {
+  opacity: 0.3;
+}
+.swiper-wrapper2 {
+  transition-timing-function: linear;
+}
+/* 前への矢印カスタマイズ */
+.swiper-button-prev::after {
+  @include mq("md") {
+    background-image: url(../images/common/campaign-prev.svg);
+  }
+}
+/* 次への矢印カスタマイズ */
+.swiper-button-next::after {
+  @include mq("md") {
+    background-image: url(../images/common/campaign-next.svg);
+  }
+}
+/* 画像サイズ調整 */
+.swiper-slide2 img {
+  aspect-ratio: 280/188;
+  height: auto;
+  width: 100%;
+  @include mq("md") {
+    aspect-ratio: 333/223;
+  }
+}
+.swiper-button-lock {
+  display: inherit; /* 別の値に変更する場合は適切な値を指定 */
+}
