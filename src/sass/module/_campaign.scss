@@ -1,0 +1,61 @@
+@use "global" as *;
+
+.campaign {
+  position: relative;
+}
+.campaign__title-wrap {
+  text-align: center;
+}
+.campaign__cards-wrap {
+  margin-top: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  margin-right: calc(50% - 50vw);
+  @include mq("md") {
+    margin-right: calc(50% - 50vw);
+    margin-top: 1.78rem;
+    padding-bottom: 0.7rem;
+  }
+}
+
+.campaign__contact {
+  margin-top: 0.8rem;
+  text-align: center;
+  @include mq("md") {
+    margin-top: 4.3rem;
+  }
+}
+
+.campaign__title {
+  position: relative;
+}
+.campaign__wrap {
+  @include mq("md") {
+    position: absolute;
+    right: 12%;
+    top: 4%;
+    display: flex;
+    justify-content: space-between;
+    width: 16rem;
+  }
+}
+
+.campaign__next.swiper-button-next,
+.campaign__prev.swiper-button-prev {
+  @include mq("md") {
+    height: 5rem;
+    width: 5rem;
+  }
+}
+/* 前へ次への矢印カスタマイズ */
+.campaign__next.swiper-button-next::after,
+.campaign__prev.swiper-button-prev::after {
+  @include mq("md") {
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: "";
+    height: 5rem;
+    margin: auto;
+    width: 5rem;
+  }
+}
