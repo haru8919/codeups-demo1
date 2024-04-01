@@ -145,28 +145,36 @@
           <div class="mv__slider js-mv-swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <picture>
-                  <source srcset="./assets/images/common/mv-pc4.jpg" media="(min-width:765px)" />
-                  <img src="./assets/images/common/mv4.jpg" alt="海亀が泳いでいる様子" />
-                </picture>
+                <div class="swiper-slide__img">
+                  <picture>
+                    <source srcset="./assets/images/common/mv-pc4.jpg" media="(min-width:765px)" />
+                    <img src="./assets/images/common/mv4.jpg" alt="海亀が泳いでいる様子" />
+                  </picture>
+                </div>
               </div>
               <div class="swiper-slide">
-                <picture>
-                  <source srcset="./assets/images/common/mv-pc1.jpg" media="(min-width:765px)" />
-                  <img src="./assets/images/common/mv1.jpg" alt="海亀とダイバーが泳いでいる様子" />
-                </picture>
+                <div class="swiper-slide__img">
+                  <picture>
+                    <source srcset="./assets/images/common/mv-pc1.jpg" media="(min-width:765px)" />
+                    <img src="./assets/images/common/mv1.jpg" alt="海亀とダイバーが泳いでいる様子" />
+                  </picture>
+                </div>
               </div>
               <div class="swiper-slide">
-                <picture>
-                  <source srcset="./assets/images/common/mv-pc2.jpg" media="(min-width:765px)" />
-                  <img src="./assets/images/common/mv2.jpg" alt="海に一艘の船、山と空が美しい様子" />
-                </picture>
+                <div class="swiper-slide__img">
+                  <picture>
+                    <source srcset="./assets/images/common/mv-pc2.jpg" media="(min-width:765px)" />
+                    <img src="./assets/images/common/mv2.jpg" alt="海に一艘の船、山と空が美しい様子" />
+                  </picture>
+                </div>
               </div>
               <div class="swiper-slide">
-                <picture>
-                  <source srcset="./assets/images/common/mv-pc3.jpg" media="(min-width:765px)" />
-                  <img src="./assets/images/common/mv3.jpg" alt="透き通った海、綺麗な砂浜の様子" />
-                </picture>
+                <div class="swiper-slide__img">
+                  <picture>
+                    <source srcset="./assets/images/common/mv-pc3.jpg" media="(min-width:765px)" />
+                    <img src="./assets/images/common/mv3.jpg" alt="透き通った海、綺麗な砂浜の様子" />
+                  </picture>
+                </div>
               </div>
             </div>
             <div class="mv__title-wrap">
@@ -176,6 +184,63 @@
           </div>
         </div>
       </div>
+      <!-- <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="slide-img">
+              <img src="https://picsum.photos/id/1041/1200/640" alt="スライダー画像1" />
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="slide-img">
+              <img src="https://picsum.photos/id/1016/1200/640" alt="スライダー画像2" />
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="slide-img">
+              <img src="https://picsum.photos/id/1056/1200/640" alt="スライダー画像3" />
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="swiper">
+        Additional required wrapper -->
+      <!-- <div class="swiper-wrapper"> -->
+      <!-- Slides -->
+      <!-- <div class="swiper-slide">
+            <div class="slide-img">
+              <picture>
+                <source srcset="./assets/images/common/mv-pc4.jpg" media="(min-width:765px)" />
+                <img src="./assets/images/common/mv4.jpg" alt="海亀が泳いでいる様子" />
+              </picture>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="slide-img">
+              <picture>
+                <source srcset="./assets/images/common/mv-pc1.jpg" media="(min-width:765px)" />
+                <img src="./assets/images/common/mv1.jpg" alt="海亀とダイバーが泳いでいる様子" />
+              </picture>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="slide-img">
+              <picture>
+                <source srcset="./assets/images/common/mv-pc2.jpg" media="(min-width:765px)" />
+                <img src="./assets/images/common/mv2.jpg" alt="海に一艘の船、山と空が美しい様子" />
+              </picture>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="slide-img">
+              <picture>
+                <source srcset="./assets/images/common/mv-pc3.jpg" media="(min-width:765px)" />
+                <img src="./assets/images/common/mv3.jpg" alt="透き通った海、綺麗な砂浜の様子" />
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div> -->
       <!-- campaign -->
       <section id="campaign" class="campaign top-campaign">
         <div class="campaign__inner inner">
@@ -191,7 +256,7 @@
           </div>
           <div class="campaign__cards-wrap">
             <div class="campaign__cards js-campaign-swiper">
-              <div class="swiper-wrapper">
+              <div class="campaign__cards-wrapper swiper-wrapper">
                 <div class="campaign__card campaign-card swiper-slide">
                   <div class="campaign-card__imgs">
                     <img src="./assets/images/common/campaign-cd1.jpg" alt="色とりどりの魚の群れの様子" class="campaign-card__img" />
@@ -248,6 +313,26 @@
                       <div class="campaign-card__price-wrap">
                         <div class="campaign-card__price-out">¥10,000</div>
                         <div class="campaign-card__price-in">¥8,000</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="campaign__card campaign-card swiper-slide">
+                  <div class="campaign-card__imgs">
+                    <img src="./assets/images/common/campaign-cd4.jpg" alt="海面に顔お出すダイバーたちの様子" class="campaign-card__img" />
+                  </div>
+                  <div class="campaign-card__contents">
+                    <div class="campaign-card__box">
+                      <div class="campaign-card__tag">
+                        <p class="campaign-card__category">ファンダイビング</p>
+                      </div>
+                      <p class="campaign-card__description">貸切ファンダイビング</p>
+                    </div>
+                    <div class="campaign-card__container">
+                      <p class="campaign-card__text">全部コミコミ(お一人様)</p>
+                      <div class="campaign-card__price-wrap">
+                        <div class="campaign-card__price-out">¥20,000</div>
+                        <div class="campaign-card__price-in">¥16,000</div>
                       </div>
                     </div>
                   </div>

@@ -12,18 +12,22 @@ jQuery(function ($) {
   });
 });
 
-$(document).ready(function () {
-  // スライダー
+$(function () {
   const mvSwiper = new Swiper(".js-mv-swiper", {
     loop: true,
     effect: "fade",
-    speed: 3000,
+    speed: 10000,
     allowTouchMove: false,
     autoplay: {
-      delay: 3000,
+      delay: 0,
+    },
+    fadeEffect: {
+      crossFade: true,
     },
   });
+});
 
+$(function () {
   const campaignSwiper = new Swiper(".js-campaign-swiper", {
     loop: true,
     slidesPerView: "auto",

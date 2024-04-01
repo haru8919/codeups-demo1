@@ -1,9 +1,10 @@
 @use "global" as *;
 // imgアニメーション
-div.colorbox {
+.colorbox {
   position: relative;
+  height: fit-content;
 }
-div.colorbox div.color {
+.colorbox .color {
   position: absolute;
   top: 0;
   left: 0; /* Fix the position */
@@ -12,7 +13,7 @@ div.colorbox div.color {
   z-index: 2;
   background-color: $green; /* Use a specific color or define $green */
 }
-div.colorbox img {
+.colorbox img {
   display: block;
   width: 100%;
   opacity: 0; /* Initial opacity */
