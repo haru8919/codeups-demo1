@@ -5,7 +5,7 @@
     transform: scale(1);
   }
   100% {
-    transform: scale(1.15);
+    transform: scale(1.08);
   }
 }
 
@@ -15,9 +15,9 @@
   animation: zoomUp 10s linear 0s 1 normal both;
 }
 
-// // //imgタグだと下に隙間ができるのでblockに。
+// //imgタグだと下に隙間ができるのでblockに。
 .swiper-slide__img {
-  height: 100%;
-  width: inherit;
-  object-fit: cover; /* 画像を要素にぴったりとフィットさせる */
+  height: inherit;
+  width: 100%;
+  object-fit: cover;
 }
