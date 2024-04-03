@@ -1,0 +1,22 @@
+@use "global" as *;
+
+@keyframes zoomUp {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+.swiper-slide-active .swiper-slide__img,
+.swiper-slide-duplicate-active .swiper-slide__img,
+.swiper-slide-prev .swiper-slide__img {
+  animation: zoomUp 10s linear 0s 1 normal both;
+}
+
+.swiper-slide__img img {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
