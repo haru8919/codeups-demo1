@@ -12,6 +12,7 @@ jQuery(function ($) {
   });
 });
 
+<<<<<<< HEAD
 $(document).ready(function () {
   // スライダー
   const mvSwiper = new Swiper(".js-mv-swiper", {
@@ -24,6 +25,24 @@ $(document).ready(function () {
     },
   });
 
+=======
+$(function () {
+  const mvSwiper = new Swiper(".js-mv-swiper", {
+    loop: true,
+    effect: "fade",
+    speed: 10000,
+    allowTouchMove: false,
+    autoplay: {
+      delay: 0,
+    },
+    fadeEffect: {
+      crossFade: true,
+    },
+  });
+});
+
+$(function () {
+>>>>>>> 4bd209b9a4a37408c09e53f1180f689afb6d570b
   const campaignSwiper = new Swiper(".js-campaign-swiper", {
     loop: true,
     slidesPerView: "auto",

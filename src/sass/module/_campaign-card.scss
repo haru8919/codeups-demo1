@@ -3,15 +3,22 @@
   display: flex;
   flex-direction: column;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+<<<<<<< HEAD
   transition: opacity 0.6s ease, transform 0.6s ease; // 透明度の変化にアニメーションを適用
+=======
+>>>>>>> 4bd209b9a4a37408c09e53f1180f689afb6d570b
   @include mq("md") {
     max-width: 20.8rem;
   }
 }
+<<<<<<< HEAD
 .campaign-card:hover {
   opacity: 1;
   transform: scale(1.05);
 }
+=======
+
+>>>>>>> 4bd209b9a4a37408c09e53f1180f689afb6d570b
 .campaign-card__contents {
   padding-bottom: 1rem;
   padding-left: 1rem;

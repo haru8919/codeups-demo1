@@ -45,3 +45,14 @@
 - `baseフォルダ内`は変更を加えないこと
 - 納品時（提出時）は`_gulpフォルダ`内の`node_modules`を削除すること
 - 提出時は`gulp build`コマンドを入力し、フォルダ内の整理を行うこと
+<<<<<<< HEAD
+=======
+# codeups-demo1
+# codeups-demo1
+# codeups-demo1
+# codeups-demo1
+# codeups-demo1
+# codeups-demo1
+# codeups-demo1
+# codeups-demo1
+>>>>>>> 4bd209b9a4a37408c09e53f1180f689afb6d570b
