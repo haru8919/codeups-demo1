@@ -23,7 +23,7 @@
 }
 
 .campaign-card__box {
-  border-bottom: 1px solid $green;
+  border-bottom: 2px solid $green;
   flex-grow: 1;
 }
 
@@ -48,7 +48,7 @@
   font-weight: 400;
   line-height: 1.5;
   padding-top: 0.5rem;
-  padding-bottom: 0.4rem;
+  padding-bottom: 0.3rem;
   @include mq("md") {
     padding-top: 0.5rem;
   }

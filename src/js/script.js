@@ -116,3 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+$(function () {
+  $(".category__item").click(function () {
+    $(this).toggleClass("click");
+  });
+});

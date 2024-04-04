@@ -9,13 +9,17 @@
   font-family: $third-font-family;
   color: $black;
   line-height: 1.45;
+  display: inline-block;
 }
-
-.breadcrumb__inner {
+.breadcrumb__item:not(:last-child)::after {
+  display: inline-block;
+  margin: 0 0.25rem;
+  content: ">";
+  color: $black;
+}
+.breadcrumb__link {
+  color: $black;
 }
 
 .breadcrumb__box {
-}
-
-.breadcrumb__item {
 }

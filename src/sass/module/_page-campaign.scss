@@ -13,16 +13,17 @@
 .page-campaign__img-wrap {
   position: absolute;
   content: "";
-  top: 4.2%;
+  top: 4%;
   left: calc(50% - min(48%, 29.1rem));
   text-align: left;
   transform: translateY(-50%);
+  z-index: -1;
+
   @include mq("md") {
   }
 }
 .page-campaign__img {
   width: 44%;
-  z-index: -1;
   @include mq("md") {
     width: 100%;
   }

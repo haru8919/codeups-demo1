@@ -28,7 +28,10 @@
   min-width: 10.125rem;
   transition: opacity 0.3s, background-color 0.3s, color 0.3s;
 }
-
+.category__item.click {
+  background-color: $green;
+  color: $white;
+}
 .category__link {
   align-items: center;
   display: flex;
