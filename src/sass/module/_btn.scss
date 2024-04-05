@@ -26,15 +26,24 @@
   transition: 0.2s;
   z-index: -2;
 }
-.btn-icon {
+.btn span::before {
+  mask-image: url(../images/common/btn-arow.svg);
+  mask-repeat: no-repeat;
+  background-color: $white;
   position: absolute;
-  right: 17%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 2.7rem;
+  content: "";
+  top: 27%;
+  right: -75%;
+  width: 60%;
+  height: 1rem;
+  z-index: 3;
+  display: inline-block;
+}
+.btn:hover span::before {
+  background-color: $green; // ボタンのホバー時にmask-imageの背景色を変更
 }
 
-.btn:hover .btn-icon path {
+.btn:hover {
   stroke: $green;
   z-index: 4;
 }

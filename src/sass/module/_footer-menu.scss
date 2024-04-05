@@ -1,0 +1,75 @@
+@use "global" as *;
+
+.footer-menu__wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  @include mq("md") {
+    justify-content: flex-start;
+    margin-top: 0;
+  }
+}
+
+.footer-menu__body {
+  flex: 1;
+  margin-left: 1.7rem;
+  @include mq("md") {
+    display: flex;
+  }
+}
+
+.footer-menu__body:not(:first-child) {
+  @include mq("md") {
+    margin-left: 3.6rem;
+  }
+}
+.footer-menu__box-pc {
+  @include mq("md") {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.footer-menu__box-pc:not(:first-child) {
+  @include mq("md") {
+    margin-left: 8.875rem;
+  }
+}
+.footer-menu__items {
+  display: flex;
+  flex-direction: column;
+  @include mq("md") {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.footer-menu__link {
+  font-size: 1rem;
+  font-weight: $regular;
+  color: $white;
+  display: inline-block;
+  text-align: left;
+  margin-top: 1.16rem;
+  transition: 0.6s;
+}
+.footer-menu__link:hover {
+  opacity: 0.7;
+  transition: 0.6s;
+}
+.footer-menu__link-top {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: $bold;
+  font-family: $base-font-family;
+  position: relative;
+  text-align: left;
+  margin-top: 1.7rem;
+  color: $white;
+}
+.footer-menu__link-top::before {
+  content: url("../images/common/drawer-icon.svg");
+  margin-right: 0.3rem;
+  vertical-align: middle;
+  position: absolute;
+  top: 0;
+  left: -1.4rem;
+}
