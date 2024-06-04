@@ -1,0 +1,18 @@
+@use "global" as *;
+.sidebar-title {
+  display: flex;
+  align-items: center;
+  border-left: 8px solid $green;
+}
+.sidebar-title__icon {
+  max-width: 3.125rem;
+  width: 100%;
+  margin-left: 1rem;
+}
+.sidebar-title__main {
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+}

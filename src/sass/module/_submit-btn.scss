@@ -1,0 +1,20 @@
+@use "global" as *;
+/* 送信ボタン */
+.submit-btn {
+  /* buttonタグのリセットCSS */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+
+  color: #fff;
+  padding: 8px 24px;
+  background-color: #3abec1;
+  cursor: pointer; /* ポインターカーソルを表示 */
+}
+
+.submit-btn[disabled] {
+  background-color: $green;
+  cursor: not-allowed; /* クリック不可のカーソルを表示 */
+}

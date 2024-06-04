@@ -1,0 +1,129 @@
+@use "global" as *;
+.blog-single {
+  position: relative;
+}
+.blog-single__outer {
+  @include mq("md") {
+    display: flex;
+    margin-top: 4.2rem;
+  }
+}
+.blog-single__visual-wrap {
+  position: absolute;
+  content: "";
+  top: 2%;
+  left: calc(50% - min(47%, 29.1rem));
+  text-align: left;
+  transform: translateY(-50%);
+
+  @include mq("md") {
+    top: 7%;
+    left: calc(50% - min(48%, 39.1rem));
+  }
+}
+
+.blog-single__wrap {
+  margin-top: 2.8rem;
+  @include mq("md") {
+    width: 70%;
+    margin-top: 4.8rem;
+  }
+}
+
+.blog-single__date {
+  font-size: 0.875rem;
+  font-weight: $regular;
+  font-family: $four-font-family;
+  color: $black;
+  line-height: 1.28;
+}
+
+.blog-single__title {
+  margin-top: 0.6rem;
+  font-size: 1.5rem;
+  font-weight: $bold;
+  font-family: $base-font-family;
+  color: $black;
+  @include mq("md") {
+    margin-top: 0;
+    font-size: 2rem;
+    font-weight: 500;
+    font-family: $third-font-family;
+  }
+}
+
+.blog-single__imgs {
+  border-top: 2px solid $green;
+  margin-top: 1.5rem;
+  @include mq("md") {
+    margin-top: 2.5rem;
+  }
+}
+
+.blog-single__content {
+  margin-top: 1.5rem;
+  @include mq("md") {
+    margin-top: 2.6rem;
+  }
+}
+
+.blog-single__img-wrap {
+  margin-top: 1.5rem;
+  @include mq("md") {
+    margin-top: 2.5rem;
+  }
+}
+
+.blog-single__container {
+  margin-top: 1.6rem;
+  @include mq("md") {
+    margin-top: 2.5rem;
+  }
+}
+
+.blog-single__block {
+  margin-left: 1.5rem;
+}
+
+.blog-single__list {
+  @include mq("md") {
+    margin-left: 0.5rem;
+  }
+}
+.blog-single__link {
+  position: relative;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: $normal;
+  font-family: $third-font-family;
+  color: $black;
+  line-height: 1;
+}
+.blog-single__list:not(:first-child) {
+  margin-top: 0.2rem;
+}
+.blog-single__link::before {
+  content: url("../images/common/blog-single_icon.svg");
+  vertical-align: middle;
+  position: absolute;
+  top: 0;
+  left: -1.4rem;
+}
+
+.blog-single__nav {
+  margin-top: 2.3rem;
+  @include mq("md") {
+    margin-top: 4.6rem;
+  }
+}
+
+.blog-single__nav--single.page-nav__item-next {
+  margin-left: 5.3rem;
+}
+.blog-single__sidebar {
+  margin-top: 4.9rem;
+  @include mq("md") {
+    width: 30%;
+    margin-left: 4.9rem;
+  }
+}

@@ -1,0 +1,59 @@
+@use "global" as *;
+.page-thanks {
+  position: relative;
+}
+.page-thanks__inner.inner {
+  @include mq("md") {
+    max-width: 42.5rem;
+  }
+}
+.page-thanks__visual-wrap {
+  position: absolute;
+  content: "";
+  top: 28.5%;
+  left: calc(50% - min(47%, 27.1rem));
+  text-align: left;
+  transform: translateY(-50%);
+  z-index: -1;
+  @include mq("md") {
+    left: calc(50% - min(50%, 39.1rem));
+    top: 57.4%;
+  }
+}
+.page-thanks__visual {
+  width: 42%;
+  @include mq("md") {
+    width: 100%;
+  }
+}
+.page-thanks__outer {
+  margin-top: 3rem;
+  @include mq("md") {
+    margin-top: 9rem;
+  }
+}
+
+.page-thanks__title-box {
+  display: flex;
+  justify-content: center;
+}
+
+.page-thanks__title {
+  font-size: 1rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+  line-height: 1.125;
+}
+
+.page-thanks__text-box {
+  margin-top: 2.3rem;
+  text-align: center;
+}
+
+.page-thanks__text {
+  font-size: 1rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+}

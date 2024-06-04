@@ -1,0 +1,25 @@
+@use "global" as *;
+.review-area {
+  margin-top: 1.4rem;
+}
+.review-area__box {
+  margin-top: 1rem;
+}
+.review-area__age {
+  font-size: 0.75rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+  line-height: 1.5;
+}
+.review-area__title {
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: $normal;
+  font-family: $third-font-family;
+  color: $black;
+}
+.review-area__contact {
+  text-align: center;
+  margin-top: 2.5rem;
+}

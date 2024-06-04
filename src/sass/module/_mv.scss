@@ -1,8 +1,11 @@
 @use "global" as *;
+
 // mv
 .mv {
   width: 100%;
   height: 100vh;
+  background-color: white;
+  position: relative;
 }
 
 .mv__inner {
@@ -14,6 +17,7 @@
 .mv__slider {
   height: inherit;
   overflow: hidden;
+  position: relative;
 }
 
 .mv__title-wrap {
@@ -23,7 +27,10 @@
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 10;
+  color: $green; /* 初期状態の色 */
+  transition: all 3s;
 }
+
 .mv__title {
   font-size: 2.5rem;
   text-indent: 0.54em;
@@ -31,17 +38,57 @@
   font-family: $four-font-family;
   font-style: normal;
   letter-spacing: 0.54em;
-  color: $white;
+  transition: font-size 3s;
   @include mq("md") {
     font-size: 5rem;
     text-indent: 0.54em;
     line-height: normal;
   }
 }
+
 .mv__title-sub {
   font-size: 1.25rem;
-  font-family: $base-font-family;
-  color: $white;
-  @include mq("md") {
+  font-family: $four-font-family;
+}
+.img-part {
+  width: 25%;
+  height: 100%;
+  background-image: url("/assets/images/common/mv4.jpg"); /* 画像を適用 */
+  background-size: 400% 100%; /* 画像の分割に合わせる */
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: -100%;
+  transition: bottom 1s ease-in-out;
+  opacity: 0;
+}
+
+.img-part-1 {
+  left: 0;
+  background-position: 0 0;
+}
+
+.img-part-2 {
+  left: 25%;
+  background-position: 25% 0;
+}
+
+.img-part-3 {
+  left: 50%;
+  background-position: 50% 0;
+}
+
+.img-part-4 {
+  left: 75%;
+  background-position: 75% 0;
+}
+
+@keyframes stripeFadeIn {
+  0% {
+    bottom: -100%;
+    opacity: 0;
+  }
+  100% {
+    bottom: 0;
+    opacity: 1;
   }
 }

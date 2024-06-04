@@ -15,6 +15,11 @@
   margin-bottom: 0.3rem;
   z-index: 10;
 }
+.btn.btn--white {
+  background-color: $white;
+  color: $green;
+  border: 1px solid $white;
+}
 .btn::after {
   content: "";
   position: absolute;
@@ -26,6 +31,9 @@
   transition: 0.2s;
   z-index: -2;
 }
+.btn.btn--white::after {
+  border: 1px solid $white;
+}
 .btn span::before {
   mask-image: url(../images/common/btn-arow.svg);
   mask-repeat: no-repeat;
@@ -33,19 +41,28 @@
   position: absolute;
   content: "";
   top: 27%;
-  right: -75%;
-  width: 60%;
+  right: -115%;
+  width: 100%;
   height: 1rem;
   z-index: 3;
   display: inline-block;
 }
+.btn.btn--white span::before {
+  background-color: $green;
+}
 .btn:hover span::before {
   background-color: $green; // ボタンのホバー時にmask-imageの背景色を変更
+}
+.btn.btn--white:hover span::before {
+  background-color: $white; // ボタンのホバー時にmask-imageの背景色を変更
 }
 
 .btn:hover {
   stroke: $green;
   z-index: 4;
+}
+.btn.btn--white:hover {
+  stroke: $white;
 }
 /* ボタン内spanの形状 */
 .btn span {
@@ -56,8 +73,14 @@
   line-height: 1.57;
   color: $white;
 }
+.btn.btn--white span {
+  color: $green;
+}
 .btn:hover span {
   color: $green;
+}
+.btn.btn--white:hover span {
+  color: $white;
 }
 /*== 背景が流れる（左から右） */
 .btn:before {
@@ -75,7 +98,19 @@
   transform: scale(0, 1);
   transform-origin: right top;
 }
+.btn.btn--white::before {
+  background-color: $green;
+}
 .btn:hover:before {
   transform-origin: left top;
   transform: scale(1, 1);
+}
+.btn--send {
+  padding: 0.9375rem 3.2rem; // 修正したいpadding
+}
+
+.btn--send span::before {
+  top: 30%; // 修正したいtop
+  width: 120%; // 修正したいwidth
+  right: -168%; // 修正したいright
 }

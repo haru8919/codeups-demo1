@@ -1,0 +1,156 @@
+@use "global" as *;
+.privacy {
+  position: relative;
+}
+
+.privacy__visual-wrap {
+  position: absolute;
+  content: "";
+  top: 3.9%;
+  left: calc(50% - min(47%, 27.1rem));
+  text-align: left;
+  transform: translateY(-50%);
+  z-index: -1;
+  @include mq("md") {
+    left: calc(50% - min(50%, 39.1rem));
+    top: 13.4%;
+  }
+}
+.privacy__visual {
+  width: 42%;
+  @include mq("md") {
+    width: 100%;
+  }
+}
+.privacy__inner {
+  @include mq("md") {
+    max-width: 53.125rem;
+    width: 100%;
+  }
+}
+
+.privacy__title {
+  font-size: 1.5rem;
+  font-weight: $bold;
+  font-family: $third-font-family;
+  color: $black;
+  @include mq("md") {
+    font-size: 2rem;
+  }
+}
+
+.privacy__outer {
+  margin-top: 3rem;
+  @include mq("md") {
+    margin-top: 9rem;
+  }
+}
+.privacy__primary-wrap {
+  margin-top: 2.49rem;
+}
+.privacy__primary-text {
+  font-size: 1rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+  line-height: 2;
+}
+
+.privacy__primary-detail {
+  margin-top: 2rem;
+}
+.privacy__primary-box {
+  margin-left: 1.4rem;
+}
+.privacy__primary-list {
+  font-size: 1rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+  line-height: 2;
+  list-style: decimal;
+}
+
+.privacy__secondary-wrap {
+  margin-top: 2em;
+}
+
+.privacy__secondary-text {
+  font-size: 1rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+  line-height: 2;
+}
+.privacy__secondary-box {
+  margin-left: 1.4rem;
+}
+
+.privacy__secondary-list {
+  font-size: 1rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+  line-height: 2;
+  list-style: decimal;
+}
+.privacy__tertiary-wrap {
+  margin-top: 1.9rem;
+}
+
+.privacy__tertiary-text {
+  font-size: 1rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+  line-height: 2;
+}
+
+.privacy__tertiary-content {
+  margin-left: 1.4rem;
+}
+
+.privacy__tertiary-list {
+  font-size: 1rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+  line-height: 2;
+  list-style: decimal;
+}
+.privacy__quaternary-wrap {
+  margin-top: 2.1rem;
+}
+
+.privacy__quaternary-text {
+  font-size: 1rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+  line-height: 2;
+}
+
+.privacy__quaternary-content {
+  margin-left: 1.4rem;
+}
+
+.privacy__quaternary-list {
+  font-size: 1rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+  line-height: 2;
+  list-style: decimal;
+}
+
+.privacy__under-wrap {
+  margin-top: 2rem;
+}
+
+.privacy__under-text {
+  font-size: 1rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+  line-height: 2;
+}

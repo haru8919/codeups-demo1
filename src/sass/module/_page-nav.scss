@@ -1,0 +1,90 @@
+@use "global" as *;
+
+.page-nav {
+  display: flex;
+  justify-content: space-around;
+}
+.page-nav__items {
+  display: flex;
+}
+
+.page-nav__item {
+  border: 1px solid $green;
+  padding: 0.38rem 0.8rem;
+  color: $green;
+  @include mq("md") {
+    padding: 0.5rem 0.9rem;
+  }
+}
+.page-nav__item:nth-of-type(2) {
+  margin-left: 2.5rem;
+}
+.page-nav__item:not(:nth-of-type(2)) {
+  margin-left: 0.75rem;
+  @include mq("md") {
+    margin-left: 0.9rem;
+  }
+}
+.page-nav__item.click {
+  background-color: $green;
+  color: $white;
+}
+.page-nav__item-prev {
+  border: 1px solid $green;
+  padding: 1.2rem 1.2rem;
+  color: $green;
+  position: relative;
+}
+.page-nav__item-prev.click {
+  background-color: $green;
+}
+.page-nav__item-next {
+  border: 1px solid $green;
+  padding: 1.2rem 1.2rem;
+  color: $green;
+  margin-left: 2rem;
+  position: relative;
+}
+
+.page-nav__item-next.click {
+  background-color: $green;
+}
+.page-nav__link {
+  font-size: 1rem;
+  font-weight: $bold;
+  font-family: $four-font-family;
+}
+.page-nav__next::after {
+  border-right: 1px solid $green;
+  border-top: 1px solid $green;
+  content: "";
+  height: 0.6875rem;
+  position: absolute;
+  right: 55%;
+  top: 50%;
+  transform: rotate(45deg) translateY(-56%);
+  transition: border-color 0.3s ease;
+  width: 0.6875rem;
+}
+.page-nav__next-clicked::after {
+  border-right: 1px solid $white;
+  border-top: 1px solid $white;
+}
+
+.page-nav__prev::after {
+  border-right: 1px solid $green;
+  border-top: 1px solid $green;
+  content: "";
+  height: 0.6875rem;
+  position: absolute;
+  right: 46%;
+  top: 50%;
+  transform: rotate(-136deg) translateY(60%);
+  transition: border-color 0.3s ease;
+  width: 0.6875rem;
+}
+
+.page-nav__prev-clicked::after {
+  border-right: 1px solid $white;
+  border-top: 1px solid $white;
+}

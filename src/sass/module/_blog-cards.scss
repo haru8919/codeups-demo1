@@ -1,7 +1,5 @@
 @use "global" as *;
 .blog-cards {
-  padding-left: 0.3125rem;
-  padding-right: 0.3125rem;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 2.5rem;

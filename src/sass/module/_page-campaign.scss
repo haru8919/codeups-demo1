@@ -8,8 +8,6 @@
   }
 }
 
-.page-campaign__inner {
-}
 .page-campaign__img-wrap {
   position: absolute;
   content: "";
@@ -20,18 +18,25 @@
   z-index: -1;
 
   @include mq("md") {
+    top: 7.6%;
+    left: calc(50% - min(48%, 39.1rem));
   }
 }
 .page-campaign__img {
-  width: 44%;
+  max-width: 18.75rem;
+  width: 100%;
   @include mq("md") {
     width: 100%;
   }
 }
 .page-campaign__category-wrap {
-  margin-top: 2.8rem;
+  @include mq("md") {
+    margin-top: 9.1rem;
+  }
 }
-
+.page-campaign__wrapper {
+  margin-top: 2.9rem;
+}
 .page-campaign__wrap {
   margin-top: 2.4rem;
 }
@@ -41,10 +46,53 @@
   padding-right: 2rem;
   gap: 2.3rem;
   @include mq("md") {
+    gap: 5rem 2.3rem;
     justify-items: center;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
+.page-campaign__cards__item.campaign-card {
+  max-width: 32.5rem;
+}
+.page-campaign__nav {
+  margin-top: 4.6rem;
+}
+.page-campaign__pc-wrap {
+  margin-top: 1.5rem;
+}
 
-.page-campaign__nav-wrap {
-  margin-top: 5rem;
+.page-campaign__pc-text {
+  font-size: 1rem;
+  font-weight: $normal;
+  font-family: $third-font-family;
+  color: $black;
+}
+
+.page-campaign__pc-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.page-campaign__pc-date {
+  font-size: 0.6875rem;
+  font-weight: $normal;
+  font-family: $four-font-family;
+  color: $green;
+  line-height: 1.125rem;
+}
+
+.page-campaign__pc-contact {
+  font-size: 0.6875rem;
+  font-weight: $normal;
+  font-family: $four-font-family;
+  color: $green;
+  line-height: 1.125rem;
+}
+
+.page-campaign__btn-wrap {
+  text-align: center;
+  margin-top: 1rem;
 }

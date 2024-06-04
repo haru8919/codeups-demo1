@@ -29,12 +29,13 @@
   }
 }
 .contact__under {
-  margin-top: 1rem;
+  margin-top: 3rem;
   @include mq("md") {
     border-left: 1px solid $green;
     margin-left: 5rem;
     padding-left: 1rem;
     max-width: 31.65rem;
+    margin-top: 2rem;
     width: 46%;
   }
 }
@@ -140,6 +141,9 @@
 .contact__title-wrap {
   width: 100%;
   text-align: center;
+  @include mq("md") {
+    // margin-top: 2rem;
+  }
 }
 
 .contact__title-sub.section-title__sub {
@@ -149,17 +153,25 @@
     margin-top: 0.2rem;
   }
 }
-.contact__sub {
+.contact__title-sub {
   color: $green;
   font-family: $third-font-family;
   font-size: 0.75rem;
   font-weight: $regular;
   line-height: 2.2;
+  margin-top: 0.5rem;
 }
 .custom-text.contact__title-sub.section-title__sub {
   font-size: 0.875rem;
 }
-.contact__visual-pc {
+.contact__visual {
+  position: absolute;
+  content: "";
+  right: calc(50% - min(60%, 17.2rem));
+  top: -4%;
+  display: block;
+  text-align: right;
+  transform: translate(-50%);
   @include mq("md") {
     position: absolute;
     content: "";
@@ -171,26 +183,16 @@
   }
 }
 .contact__visual-item {
+  display: inline-block;
+  max-width: 6.8125rem;
+  z-index: 1;
   @include mq("md") {
     display: inline-block;
     max-width: 18.8125rem;
     z-index: 1;
   }
 }
-.contact__visual-sp {
-  position: absolute;
-  content: "";
-  right: calc(50% - min(60%, 17.2rem));
-  top: -4%;
-  display: block;
-  text-align: right;
-  transform: translate(-50%);
-}
-.contact__visual-item-sp {
-  display: inline-block;
-  max-width: 6.8125rem;
-  z-index: 1;
-}
+
 .contact__logo-imgs {
   margin-top: 1.3rem;
   margin: 0 auto;

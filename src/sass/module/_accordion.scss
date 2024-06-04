@@ -1,0 +1,51 @@
+@use "global" as *;
+
+.accordion__item {
+  margin-top: 0.5rem;
+}
+.accordion__title-text {
+  font-size: 1.5rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $green;
+}
+.accordion__title-text::before,
+.accordion__text::before {
+  content: "";
+  display: inline-block;
+  width: 1.3rem; /* 三角形の幅 */
+  height: 1.3rem; /* 三角形の高さ */
+  background-color: $green; /* 三角形の色 */
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 50% 100%); /* ブラウザーの互換性のためのプレフィックス */
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  vertical-align: middle;
+  transition: transform 0.3s ease; /* アニメーションを追加 */
+  margin-right: 0.9rem;
+}
+.accordion__title-text.is-open::before {
+  transform: rotate(-91deg);
+}
+.accordion__text::before {
+  content: "";
+  display: inline-block;
+  width: 1.3rem; /* 三角形の幅 */
+  height: 1.3rem; /* 三角形の高さ */
+  margin-right: 8px; /* 三角形とテキストの間のスペース */
+  background-color: $green; /* 三角形の色 */
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 50% 100%); /* ブラウザーの互換性のためのプレフィックス */
+  clip-path: polygon(0 0, 0 100%, 100% 50%);
+  margin-right: 0.2rem;
+}
+.accordion__content {
+  margin-left: 2rem;
+  @include mq("md") {
+    margin-top: 0.4rem;
+  }
+}
+
+.accordion__text {
+  font-size: 1.5rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $green;
+}

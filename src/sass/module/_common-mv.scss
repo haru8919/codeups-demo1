@@ -11,11 +11,18 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  @include mq("md") {
+    top: 59%;
+  }
 }
 .common-mv__title {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: $normal;
   font-family: $four-font-family;
   color: $white;
   line-height: 1.2;
+  white-space: nowrap;
+  @include mq("md") {
+    font-size: 5rem;
+  }
 }
