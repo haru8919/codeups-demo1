@@ -1,0 +1,31 @@
+@use "global" as *;
+.img-part-1 {
+  left: 0;
+  background-position: 0 0;
+}
+
+.img-part-2 {
+  left: 25%;
+  background-position: 25% 0;
+}
+
+.img-part-3 {
+  left: 50%;
+  background-position: 50% 0;
+}
+
+.img-part-4 {
+  left: 75%;
+  background-position: 75% 0;
+}
+
+@keyframes stripeFadeIn {
+  0% {
+    bottom: -100%;
+    opacity: 0;
+  }
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
