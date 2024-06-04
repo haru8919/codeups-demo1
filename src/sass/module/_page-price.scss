@@ -2,13 +2,6 @@
 .page-price {
   position: relative;
 }
-.page-price__breadcrumb {
-  padding-left: 1rem;
-  margin-left: auto;
-  @include mq("md") {
-    padding-left: 11rem;
-  }
-}
 
 .page-price__visual-wrap {
   position: absolute;
