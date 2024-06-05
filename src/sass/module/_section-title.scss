@@ -37,9 +37,7 @@
   font-weight: $regular;
   line-height: 2.2;
 }
-// .section-title__sub.section-title__sub--contact {
-//   line-height: 1;
-// }
+
 .section-title__sub--white {
   @include mq("md") {
     color: $white;
