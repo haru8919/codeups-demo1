@@ -14,7 +14,7 @@
 .sidebar__review {
   margin-top: 5rem;
   @include mq("md") {
-    margin-top: 5.5rem;
+    margin-top: 5rem;
   }
 }
 .sidebar__campaign-cards {
@@ -26,10 +26,11 @@
   @include mq("md") {
     display: flex;
     flex-direction: column;
+    gap: 2rem;
   }
 }
 .sidebar__campaign-contact {
-  margin-top: 3rem;
+  margin-top: 2.9rem;
   text-align: center;
 }
 .sidebar__arcive-accordion {

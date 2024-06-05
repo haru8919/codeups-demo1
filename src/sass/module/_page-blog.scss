@@ -16,13 +16,13 @@
 .page-blog__cards.blog-cards {
   @include mq("md") {
     grid-template-columns: repeat(2, 1fr);
-    gap: 6rem 2.5rem;
+    gap: 4.9rem 2rem;
   }
 }
 .page-blog__visual-wrap {
   position: absolute;
   content: "";
-  top: 1.29%;
+  top: 1%;
   left: calc(50% - min(46%, 29.1rem));
   text-align: left;
   transform: translateY(-50%);

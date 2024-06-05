@@ -21,13 +21,15 @@
 }
 .form__box:nth-child(4) {
   @include mq("md") {
-    padding-bottom: 1.9rem;
+    padding-bottom: 2.1rem;
   }
 }
 .form__box:nth-child(5) {
-  padding-bottom: 1.3rem;
+  margin-top: 1.2rem;
+  padding-bottom: 1.2rem;
   @include mq("md") {
-    margin-top: 2rem;
+    margin-top: 2.2rem;
+    padding-bottom: 2.5rem;
   }
 }
 .form__item {
@@ -131,11 +133,12 @@ input[type="checkbox"]:checked + .form__skill::after {
   line-height: 1;
 }
 .form__checkbox-wrap {
-  margin-top: 0.6rem;
+  margin-top: 0.9rem;
   @include mq("md") {
     display: flex;
     flex-direction: column;
     margin-left: 3.7rem;
+    margin-top: 0.3rem;
   }
 }
 .form__textarea {
@@ -171,7 +174,7 @@ input[type="checkbox"]:checked + .form__skill::after {
 }
 .form__textarea-box {
   border-bottom: 1px dashed $green;
-  margin-top: 1.3rem;
+  margin-top: 1.5rem;
   padding-bottom: 1.1rem;
   @include mq("md") {
     margin-top: 2.4rem;

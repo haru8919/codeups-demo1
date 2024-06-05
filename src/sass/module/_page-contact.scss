@@ -3,11 +3,12 @@
   margin-top: 2.9rem;
   @include mq("md") {
     margin-top: 8.3rem;
+    margin-left: 3rem;
   }
 }
 
 .page-contact__inner.inner {
-  max-width: 46.875rem;
+  max-width: 49.875rem;
 }
 
 .page-contact__visual-wrap {

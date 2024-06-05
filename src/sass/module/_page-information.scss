@@ -32,9 +32,6 @@
   }
 }
 
-.page-information__category {
-}
-
 .page-information__category-items {
   display: flex;
   justify-content: space-between;
@@ -45,6 +42,7 @@
   text-align: center;
   background-color: $green2;
   box-shadow: 0 0.18rem 0.18rem 0 rgba(0, 0, 0, 0.25);
+  position: relative;
   @include mq("md") {
     max-width: 300px;
     width: 100%;
@@ -93,21 +91,21 @@
 
 .page-information__category-link[data-target="license"]::before {
   @include mq("md") {
-    mask-image: url(../images/common/kujira_icon1.svg); // ライセンス講習の画像
+    mask-image: url(../images/common/kujira_icon1.svg); // ライセンス講習のアイコン
     mask-repeat: no-repeat;
   }
 }
 
 .page-information__category-link[data-target="fun-diving"]::before {
   @include mq("md") {
-    mask-image: url(../images/common/shark_icon1.svg); // ファンダイビングの画像
+    mask-image: url(../images/common/shark_icon1.svg); // ファンダイビングのアイコン
     mask-repeat: no-repeat;
   }
 }
 
 .page-information__category-link[data-target="experience-diving"]::before {
   @include mq("md") {
-    mask-image: url(../images/common/fish_icon1.svg); // 体験ダイビングの画像
+    mask-image: url(../images/common/fish_icon1.svg); // 体験ダイビングのアイコン
     mask-repeat: no-repeat;
   }
 }
