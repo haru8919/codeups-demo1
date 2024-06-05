@@ -29,3 +29,14 @@
     opacity: 1;
   }
 }
+.img-part {
+  width: 25%;
+  height: 100%;
+  background-image: url("../images/common/mv4.jpg"); /* 画像を適用 */
+  background-size: 400% 100%; /* 画像の分割に合わせる */
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: -100%;
+  transition: bottom 1s ease-in-out;
+  opacity: 0;
+}
