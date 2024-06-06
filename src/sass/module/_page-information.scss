@@ -50,7 +50,9 @@
     position: relative;
   }
 }
-
+.page-information__category-item:not(:first-child) {
+  margin-left: 0.5rem;
+}
 .page-information__category-item:hover {
   background-color: lighten($green, 10%); // クリック時に少し明るくする
 }
@@ -140,6 +142,7 @@
 
 .page-information__title {
   border-bottom: 2px solid $green;
+  padding-bottom: 0.3rem;
   @include mq("md") {
     font-size: 1.5rem;
     font-weight: $normal;

@@ -7,8 +7,6 @@
   margin-right: auto;
   margin-left: auto;
   @include mq("md") {
-    padding-right: 0;
-    padding-left: 0.9rem;
   }
 }
 .sidebar__review {
