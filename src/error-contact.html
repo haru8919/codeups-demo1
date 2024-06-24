@@ -160,22 +160,26 @@
               <ul class="breadcrumb__items">
                 <li class="breadcrumb__item"><a id="#" class="breadcrumb__link">TOP</a></li>
                 <li class="breadcrumb__item"><a id="#" class="breadcrumb__link">お問い合わせ</a></li>
+                <li class="breadcrumb__item"><a id="#" class="breadcrumb__link">お問い合わせエラー</a></li>
               </ul>
             </div>
           </div>
         </div>
-          <div class="page-contact__inner inner">
-            <div class="page-contact__outer">
-              <div class="page-contact__visual-wrap">
+          <div class="error-contact__inner inner">
+            <div class="error-contact__outer">
+              <div class="error-contact__visual-wrap">
                 <picture>
-                  <img class="page-contact__visual" src="./assets/images/common/page-campaign.pc.svg" alt="魚の群れが泳ぐ様子" />
+                  <img class="error-contact__visual" src="./assets/images/common/page-campaign.pc.svg" alt="魚の群れが泳ぐ様子" />
                 </picture>
               </div>
-              <div class="page-contact__form form">
+                <div class="error-contact__box">
+                    <p class="error-contact__text">※必須項目が入力されていません。入力してください。</p>
+                </div>
+              <div class="error-contact__form form">
                 <div class="form__box">
                   <p class="form__item">お名前<span class="form__item-label">必須</span></p>
                   <div class="form__body">
-                    <input type="text" name="名前" class="form__text" placeholder="沖縄　太郎" />
+                    <input type="text" name="名前" class="form__text form__text--red" placeholder="沖縄　太郎" />
                   </div>
                 </div>
                 <div class="form__box">
@@ -193,18 +197,24 @@
                 <div class="form__box">
                   <p class="form__item">お問合せ項目<span class="form__item-label">必須</span></p>
                   <div class="form__checkbox-wrap">
-                    <input type="checkbox" id="checkbox1" name="スキル" checked="checked"/>
-                    <label for="checkbox1" class="form__skill">
+                    <input type="checkbox" id="checkbox1" name="スキル" checked="checked" />
+                    <label for="checkbox1" class="form__skill form__skill--circle">
                       <span class="form__skill-txt">ダイビング講習について</span>
                     </label>
                     <input type="checkbox" id="checkbox2" name="スキル" />
-                    <label for="checkbox2" class="form__skill">
+                    <label for="checkbox2" class="form__skill form__skill--circle">
                       <span class="form__skill-txt">ファンデイビングについて</span>
                     </label>
                     <input type="checkbox" id="checkbox3" name="スキル" />
-                    <label for="checkbox3" class="form__skill">
+                    <label for="checkbox3" class="form__skill form__skill--circle">
                       <span class="form__skill-txt">体験ダイビングについて</span>
                     </label>
+                    <div class="u-desktop">
+                      <input type="checkbox" id="checkbox4" name="スキル" />
+                      <label for="checkbox4" class="form__skill form__skill--circle">
+                        <span class="form__skill-txt">スペシャルダイビングについて</span>
+                      </label>
+                    </div>
                   </div>
                 </div>
                 <div class="form__box">
@@ -248,7 +258,7 @@
       <img src="./assets/images/common/top-back.svg" alt="Page Top" class="top-button__icon" />
     </button>
 <!-- <footer> -->
-  <footer class="footer top-contact-footer">
+  <footer class="footer top-error-contact-footer">
     <div class="footer__inner inner">
       <div class="footer__top">
         <div class="footer__top-wrap">
@@ -265,7 +275,7 @@
             <div class="footer-menu__box-pc">
               <ul class="footer-menu__items">
                 <li class="footer-menu__item"><a href="page-campaign.html" class="footer-menu__link-top">キャンペーン</a></li>
-                <li class="footer-menu__item"><a href="error-contact.html" class="footer-menu__link">ライセンス取得</a></li>
+                <li class="footer-menu__item"><a href="#" class="footer-menu__link">ライセンス取得</a></li>
                 <li class="footer-menu__item"><a href="#" class="footer-menu__link">貸切体験ダイビング</a></li>
                 <li class="footer-menu__item"><a href="#" class="footer-menu__link">ナイトダイビング</a></li>
               </ul>

@@ -7,6 +7,8 @@
   margin-right: auto;
   margin-left: auto;
   @include mq("md") {
+    padding-right: 0.3rem;
+    padding-left: 0.3rem;
   }
 }
 .sidebar__review {
@@ -22,15 +24,18 @@
   justify-items: center;
 
   @include mq("md") {
+    margin-top: 1.2rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
   }
 }
 .sidebar__campaign-contact {
-  margin-top: 2.9rem;
+  margin-top: 2.6rem;
   text-align: center;
+  @include mq("md") {
+    margin-top: 2.5rem;
+  }
 }
-.sidebar__arcive-accordion {
-  margin-top: 1.2rem;
+.sidebar__archive-accordion {
+  margin-top: 1.5rem;
 }

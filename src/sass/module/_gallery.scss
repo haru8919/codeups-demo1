@@ -10,7 +10,7 @@
     position: absolute;
     content: "";
     right: calc(50% - min(55%, 53.2rem));
-    top: -4%;
+    top: -5%;
     display: block;
     text-align: right;
     transform: translate(-50%);
@@ -30,10 +30,10 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   @include mq("md") {
-    margin-top: 4.9rem;
+    margin-top: 5.1rem;
     gap: 0.5rem;
-    grid-template-rows: repeat(4, 24.7319%) auto;
-    grid-template-columns: repeat(2, 22.5%) repeat(7, 1fr); //37.10の２分割残りを均等に
+    grid-template-rows: repeat(4, 24.4%);
+    grid-template-columns: repeat(2, 22.3%) repeat(7, 7.06%); //37.10の２分割残りを均等に
   }
 }
 
@@ -42,7 +42,7 @@
   grid-row: auto;
   @include mq("md") {
     grid-column: 1 / 3;
-    grid-row: 1 / span 3;
+    grid-row: 1 / 3;
   }
 }
 .gallery__img.big-img2 {
@@ -87,7 +87,7 @@
 }
 .gallery__img {
   width: 100%;
-  height: auto;
+  height: 100%;
   cursor: pointer;
 }
 .gallery__modal {
@@ -99,10 +99,18 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  overflow: auto;
+  overflow: hidden;
 }
 .gallery__modal-content {
-  margin: 50% auto;
-  width: 60%;
-  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  position: absolute;
+  width: 70%;
+}
+.gallery__img-link {
+  display: inline-block;
+  width: 100%;
+  height: inherit;
+  vertical-align: top;
 }

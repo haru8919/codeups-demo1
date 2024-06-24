@@ -3,7 +3,7 @@
 .footer {
   background-color: $green;
   padding-bottom: 3.5rem;
-  padding-top: 2.9rem;
+  padding-top: 3rem;
   @include mq("md") {
     padding: 5rem 0;
   }
@@ -53,7 +53,7 @@
 }
 
 .footer__under-box {
-  margin-top: 3.29rem;
+  margin-top: 1.8rem;
   text-align: center;
   @include mq("md") {
     display: flex;

@@ -13,50 +13,32 @@ jQuery(function ($) {
 });
 
 $(function () {
-  console.log("ページが読み込まれました");
-
-  // ページ読み込み時にタイトルを表示
-  $(".mv__title-wrap").css("color", "$green");
-  // 2秒後に1枚目の画像をフェードイン
-  setTimeout(() => {
-    const firstImageSections = document.querySelectorAll(".img-part");
-    firstImageSections.forEach((section, index) => {
-      setTimeout(() => {
-        section.style.bottom = "0";
-        section.style.opacity = "1";
-      }, index * 300); // 0.3秒の遅延を設定
-    });
-    console.log("1枚目の画像をフェードイン");
-
-    // フェードインが完了する3秒後にタイトルの色を変更し、Swiperを初期化
-    setTimeout(() => {
-      const mvTitleWrap = document.querySelector(".mv__title-wrap");
-      mvTitleWrap.style.color = "white";
-      console.log("タイトルの色を白に変更");
-
-      // Swiperの初期化
-      const mvSwiper = new Swiper(".js-mv-swiper", {
-        loop: true,
-        effect: "fade",
-        speed: 10000,
-        allowTouchMove: false,
-        autoplay: {
-          delay: 0,
-        },
-        fadeEffect: {
-          crossFade: true,
-        },
-        on: {
-          init: function () {
-            // MV部分を非表示にする
-            document.querySelector(".mv").style.zIndex = "-1"; // MV部分を背面に移動
-            console.log("MV部分を非表示にしました");
-          },
-        },
-      });
-      console.log("Swiperが初期化されました");
-    }, 2000); // フェードインアニメーションが終わった後にSwiperを初期化
-  }, 2000); // ページ読み込み後2秒でフェードイン開始
+  // ページ読み込み時のアニメーション
+  setTimeout(function () {
+    $(".mv__white-background").addClass("visible");
+    setTimeout(function () {
+      $(".slide-in").addClass("active"); // 画像を表示する
+      setTimeout(function () {
+        $(".slide-in").addClass("fade-out"); // スライドインをフェードアウトする
+        $(".mv__white-background").addClass("fade-out"); // 白い背景もフェードアウトする
+        setTimeout(function () {
+          $(".mv__slider").addClass("visible"); // スライダーをフェードインする
+          const mvSwiper = new Swiper(".js-mv-swiper", {
+            loop: true,
+            effect: "fade",
+            speed: 10000,
+            allowTouchMove: false,
+            autoplay: {
+              delay: 0,
+            },
+            fadeEffect: {
+              crossFade: true,
+            },
+          });
+        }, 800); // スライダー表示の遅延
+      }, 3000); // スライドインの遅延
+    }, 3000); // 初期の遅延
+  });
 });
 
 $(function () {
@@ -65,14 +47,16 @@ $(function () {
     slidesPerView: "auto",
     spaceBetween: 18,
     centeredSlides: false,
-    speed: 8000,
+    speed: 5000,
 
     navigation: {
       nextEl: ".campaign__next",
       prevEl: ".campaign__prev",
     },
     autoplay: {
-      delay: 0,
+      // 自動再生
+      delay: 600, // 1秒後に次のスライド
+      disableOnInteraction: false,
     },
     breakpoints: {
       765: {
@@ -148,38 +132,54 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
 // categoryクリック
+// ページ読み込み時の初期設定
+$(function () {
+  // 一つ目のcategory__itemにclickクラスを追加
+  $(".category__item:first-child").addClass("click");
+});
 $(function () {
   $(".category__item").click(function () {
     $(".category__item.click").removeClass("click"); // すでにクリックされた要素のclickクラスを削除
     $(this).toggleClass("click"); // クリックされた要素にclickクラスを追加または削除
   });
 });
+
 // page-navigation__itemクリック
 $(function () {
-  $(".page-nav__item, .page-nav__item-prev, .page-nav__item-next").click(function () {
-    $(".page-nav__item.click, .page-nav__item-prev.click, .page-nav__item-next.click").removeClass("click");
-    $(this).toggleClass("click");
+  // ページ読み込み時の初期設定
+  $(".page-nav__item:nth-of-type(2)").addClass("click");
 
-    if ($(this).hasClass("page-nav__prev-clicked")) {
+  // クリックイベント
+  $(".page-nav__item, .page-nav__item-prev, .page-nav__item-next").click(function () {
+    $(".page-nav__item.click, .page-nav__item-prev.click, .page-nav__item-next.click").removeClass("click"); // すでにクリックされた要素のclickクラスを削除
+    $(this).toggleClass("click"); // クリックされた要素にclickクラスを追加または削除
+
+    // クリックされた要素が「前へ」の場合
+    if ($(this).hasClass("page-nav__prev")) {
       $(".page-nav__next-clicked").removeClass("page-nav__next-clicked");
     }
 
-    if ($(this).hasClass("page-nav__next-clicked")) {
+    // クリックされた要素が「次へ」の場合
+    if ($(this).hasClass("page-nav__next")) {
       $(".page-nav__prev-clicked").removeClass("page-nav__prev-clicked");
     }
   });
 
+  // 「前へ」クリック時の処理
   $(".page-nav__prev").click(function () {
     $(".page-nav__next-clicked").removeClass("page-nav__next-clicked");
     $(this).toggleClass("page-nav__prev-clicked");
   });
 
+  // 「次へ」クリック時の処理
   $(".page-nav__next").click(function () {
     $(".page-nav__prev-clicked").removeClass("page-nav__prev-clicked");
     $(this).toggleClass("page-nav__next-clicked");
   });
 });
+
 //画像のモーダル
 $(document).ready(function () {
   $(".gallery__img").click(function () {
@@ -196,8 +196,10 @@ $(document).ready(function () {
     }
   });
 });
+
 // informationクリック記事呼び出し
 $(document).ready(function () {
+  const $items = $(".page-information__category-item");
   const $links = $(".page-information__category-link");
   const $wrappers = $(".page-information__wrpper");
 
@@ -205,42 +207,60 @@ $(document).ready(function () {
   const lastActiveId = localStorage.getItem("activePage");
   if (lastActiveId) {
     $("#" + lastActiveId).addClass("active");
+    $("#" + lastActiveId)
+      .parent()
+      .addClass("clicked"); // クリックされたカテゴリー項目に.clickedクラスを追加
+    $("#" + lastActiveId)
+      .children(".page-information__category-link")
+      .addClass("clicked"); // クリックされたリンクに.clickedクラスを追加
   } else {
     // デフォルトで表示する記事がある場合はここで設定
     $wrappers.first().addClass("active"); // 例えば最初の記事を表示
+    $items.first().addClass("clicked"); // 最初のカテゴリー項目に.clickedクラスを追加
+    $links.first().addClass("clicked"); // 最初のリンクに.clickedクラスを追加
   }
+
+  $items.on("click", function (event) {
+    event.preventDefault(); // デフォルトのクリック動作をキャンセル
+
+    const targetId = $(this).children(".page-information__category-link").data("target"); // クリックされたリンクの data-target 属性値を取得
+
+    $wrappers.removeClass("active"); // すべての wrapper 要素から active クラスを削除
+    $("#" + targetId).addClass("active"); // 対応する wrapper 要素に active クラスを追加
+
+    // すべてのカテゴリー項目から.clickedクラスを削除
+    $items.removeClass("clicked");
+    // クリックされたカテゴリー項目に.clickedクラスを追加
+    $(this).addClass("clicked");
+    // それに対応するリンクにも.clickedクラスを追加
+    $(this).children(".page-information__category-link").addClass("clicked");
+
+    // 選択された記事のIDを localStorage に保存する
+    localStorage.setItem("activePage", targetId);
+  });
 
   $links.on("click", function (event) {
     event.preventDefault(); // デフォルトのリンク動作をキャンセル
+
     const targetId = $(this).data("target"); // クリックされたリンクの data-target 属性値を取得
 
     $wrappers.removeClass("active"); // すべての wrapper 要素から active クラスを削除
     $("#" + targetId).addClass("active"); // 対応する wrapper 要素に active クラスを追加
 
+    // すべてのリンクから.clickedクラスを削除
+    $links.removeClass("clicked");
+    // クリックされたリンクに.clickedクラスを追加
+    $(this).addClass("clicked");
+
     // 選択された記事のIDを localStorage に保存する
     localStorage.setItem("activePage", targetId);
   });
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-  const links = document.querySelectorAll(".page-information__category-link");
-
-  links.forEach((link) => {
-    link.addEventListener("click", function (event) {
-      event.preventDefault(); // デフォルトのクリック動作をキャンセル
-
-      // すべてのリンクからクリックされたリンク以外のクラスを削除
-      links.forEach((otherLink) => {
-        if (otherLink !== link) {
-          otherLink.classList.remove("clicked");
-        }
-      });
-
-      // クリックされたリンクにクラスを追加
-      link.classList.add("clicked");
-    });
-  });
+$(document).ready(function () {
+  // 最初の.page-information__category-item要素をクリックする
+  $(".page-information__category-item:first-child .page-information__category-link").click();
 });
+
 // sidebarアコーディオン
 $(function () {
   // 初期状態で全てのコンテンツを非表示にする
@@ -265,6 +285,11 @@ $(function () {
     $(this).toggleClass("is-open");
   });
 });
+$(document).ready(function () {
+  // 最初の .accordion__title-text 要素をクリックする
+  $(".accordion__title-text").first().click();
+});
+
 // faqアコーディオン
 $(function () {
   // $(".js-faq-accordion__item:first-child .js-faq-accordion__content").css("display", "block");

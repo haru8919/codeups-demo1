@@ -1,0 +1,70 @@
+@use "global" as *;
+.error-contact__inner.inner {
+  max-width: 46.75rem;
+}
+.error-contact__outer {
+  margin-left: 0;
+  margin-top: 3rem;
+  position: relative;
+  @include mq("md") {
+    margin-top: 9rem;
+  }
+}
+.error-contact__box {
+  display: flex;
+  justify-content: center;
+  @include mq("md") {
+  }
+}
+.error-contact__text {
+  font-size: 0.875rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $red;
+  max-width: 14rem;
+  width: 100%;
+  padding-left: 1em;
+  text-indent: -1em;
+  @include mq("md") {
+    max-width: 21.8125rem;
+    width: 100%;
+  }
+}
+.error-contact__form {
+  margin-top: 2.4rem;
+}
+.error-contact__visual-wrap {
+  position: absolute;
+  content: "";
+  top: 0%;
+  left: calc(50% - min(53%, 27.1rem));
+  text-align: left;
+  transform: translateY(-50%);
+  z-index: -1;
+  @include mq("md") {
+    left: calc(50% - min(76%, 35.1rem));
+    top: 0%;
+  }
+}
+.error-contact__visual {
+  width: 42%;
+  @include mq("md") {
+    width: 100%;
+  }
+}
+.form__text.form__text--red {
+  width: 100%;
+  padding: 0.4rem 1rem 0.4rem;
+  border: 1px solid $red;
+  background-color: $pink;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  @include mq("md") {
+    margin-top: 0;
+  }
+}
+.form__text.form__text--red::placeholder {
+  color: $white;
+  opacity: 0.6;
+}

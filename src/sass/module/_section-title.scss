@@ -35,9 +35,12 @@
   font-family: $third-font-family;
   font-size: 0.75rem;
   font-weight: $regular;
-  line-height: 2.2;
+  line-height: 1;
+  margin-top: 0.6rem;
 }
-
+.section-title__sub.section-title__sub--contact {
+  margin-top: 0.5rem;
+}
 .section-title__sub--white {
   @include mq("md") {
     color: $white;

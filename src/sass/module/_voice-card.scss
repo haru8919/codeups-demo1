@@ -41,7 +41,7 @@
 }
 
 .voice-card__content {
-  border-bottom: 2px solid $green;
+  border-bottom: 1px solid $green;
   flex: 1;
   @include mq("md") {
     flex: 1.5;

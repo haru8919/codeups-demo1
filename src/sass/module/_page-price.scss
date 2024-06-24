@@ -16,7 +16,7 @@
   z-index: -1;
   @include mq("md") {
     top: 14%;
-    left: calc(50% - min(50%, 39.1rem));
+    left: calc(50% - min(47%, 39.1rem));
   }
 }
 .page-faq__visual {

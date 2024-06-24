@@ -9,6 +9,9 @@
 }
 .voice__cards {
   margin-top: 2.2rem;
+  @include mq("md") {
+    margin-top: 1.19rem;
+  }
 }
 
 .voice__visual-left {
@@ -17,7 +20,7 @@
     display: block;
     left: calc(50% - min(33%, 29.1rem));
     position: absolute;
-    top: -17%;
+    top: -19%;
     text-align: left;
     transform: translate(-50%);
   }

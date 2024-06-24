@@ -16,19 +16,17 @@
   animation: zoomUp 10s linear 0s 1 normal both;
 }
 
-.swiper-slide__img {
-  position: relative;
+.swiper-slide__img picture {
+  // position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  display: flex;
-}
-.swiper-slide__img img {
-  height: 100vh;
-  width: 100vw;
   object-fit: cover;
 }
-.swiper-slide__img:nth-child(n + 2) {
-  position: relative; /* 1枚目以外の画像にはposition: relative;を追加 */
-  z-index: -1; /* 1枚目以外の画像は背面に配置 */
+.swiper-slide__img img {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
 }

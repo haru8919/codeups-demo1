@@ -1,7 +1,5 @@
 @use "global" as *;
-
-.top-contact {
-  margin-top: 4.7rem;
+.top-page-sitemap-contact {
   @include mq("md") {
     margin-top: 9rem;
   }

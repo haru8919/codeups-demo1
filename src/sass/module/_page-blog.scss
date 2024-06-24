@@ -29,6 +29,7 @@
   z-index: 1;
 
   @include mq("md") {
+    z-index: -1;
     top: 6%;
     left: calc(50% - min(48%, 39.1rem));
   }

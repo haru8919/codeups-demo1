@@ -6,7 +6,7 @@
 .page-about__img-wrap {
   position: absolute;
   content: "";
-  top: 12%;
+  top: 15%;
   left: calc(50% - min(46%, 29.1rem));
   text-align: left;
   transform: translateY(-50%);
@@ -29,7 +29,7 @@
 }
 
 .page-about__visual-wrap {
-  aspect-ratio: 345/228;
+  aspect-ratio: 1080/661;
   display: grid;
   grid-template-columns: repeat(2, 18.5%) repeat(3, 1fr); //37.10の２分割残りを均等に
   grid-template-rows: 12% repeat(3, 1fr) 8.49%; //26px%212   18px%212
@@ -37,7 +37,7 @@
   width: auto;
   @include mq("md") {
     grid-template-columns: repeat(2, 18.6%) repeat(3, 1fr);
-    grid-template-rows: 12% repeat(3, 1fr) 7.13% 8.13%;
+    grid-template-rows: 12% repeat(3, 1fr) 8.13%;
   }
 }
 
@@ -58,7 +58,7 @@
   left: 36%;
   transform: translate(-50%, -50%);
   @include mq("md") {
-    top: 42%;
+    top: 46%;
     left: 37%;
     z-index: 3;
   }
@@ -80,7 +80,7 @@
   margin-top: 2.5rem;
   @include mq("md") {
     position: absolute;
-    top: 42.5%;
+    top: 45.5%;
     left: 78.5%;
     transform: translate(-50%, -50%);
     width: 38%;
