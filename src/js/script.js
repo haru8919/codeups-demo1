@@ -11,7 +11,7 @@ jQuery(function ($) {
     }
   });
 });
-
+// mvSwiper
 $(function () {
   // ページ読み込み時のアニメーション
   setTimeout(function () {
@@ -35,9 +35,9 @@ $(function () {
               crossFade: true,
             },
           });
-        }, 800); // スライダー表示の遅延
-      }, 3000); // スライドインの遅延
-    }, 3000); // 初期の遅延
+        }, 300); // スライダー表示の遅延
+      }, 2500); // スライドインの遅延
+    }, 2500); // 初期の遅延
   });
 });
 
@@ -47,17 +47,17 @@ $(function () {
     slidesPerView: "auto",
     spaceBetween: 18,
     centeredSlides: false,
-    speed: 5000,
+    speed: 1000,
 
     navigation: {
       nextEl: ".campaign__next",
       prevEl: ".campaign__prev",
     },
-    autoplay: {
-      // 自動再生
-      delay: 600, // 1秒後に次のスライド
-      disableOnInteraction: false,
-    },
+    // autoplay: {
+    //   // 自動再生
+    //   delay: 1500,
+    //   disableOnInteraction: false,
+    // },
     breakpoints: {
       765: {
         spaceBetween: 40,
@@ -134,66 +134,87 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // categoryクリック
-// ページ読み込み時の初期設定
-$(function () {
-  // 一つ目のcategory__itemにclickクラスを追加
-  $(".category__item:first-child").addClass("click");
-});
-$(function () {
-  $(".category__item").click(function () {
-    $(".category__item.click").removeClass("click"); // すでにクリックされた要素のclickクラスを削除
-    $(this).toggleClass("click"); // クリックされた要素にclickクラスを追加または削除
-  });
-});
+// $(document).ready(function () {
+//   $(".category__item").on("click", function () {
+//     // すべてのアイテムからactiveクラスを削除
+//     $(".category__item").removeClass("active");
+//     // クリックされたアイテムにactiveクラスを追加
+//     $(this).addClass("active");
+//   });
+// });
 
 // page-navigation__itemクリック
-$(function () {
-  // ページ読み込み時の初期設定
-  $(".page-nav__item:nth-of-type(2)").addClass("click");
+// $(function () {
+//   // ページ読み込み時の初期設定
+//   $(".page-nav__item:nth-of-type(2)").addClass("click");
 
-  // クリックイベント
-  $(".page-nav__item, .page-nav__item-prev, .page-nav__item-next").click(function () {
-    $(".page-nav__item.click, .page-nav__item-prev.click, .page-nav__item-next.click").removeClass("click"); // すでにクリックされた要素のclickクラスを削除
-    $(this).toggleClass("click"); // クリックされた要素にclickクラスを追加または削除
+//   // クリックイベント
+//   $(".page-nav__item, .page-nav__item-prev, .page-nav__item-next").click(function () {
+//     $(".page-nav__item.click, .page-nav__item-prev.click, .page-nav__item-next.click").removeClass("click"); // すでにクリックされた要素のclickクラスを削除
+//     $(this).toggleClass("click"); // クリックされた要素にclickクラスを追加または削除
 
-    // クリックされた要素が「前へ」の場合
-    if ($(this).hasClass("page-nav__prev")) {
-      $(".page-nav__next-clicked").removeClass("page-nav__next-clicked");
-    }
+//     // クリックされた要素が「前へ」の場合
+//     if ($(this).hasClass("page-nav__prev")) {
+//       $(".page-nav__next-clicked").removeClass("page-nav__next-clicked");
+//     }
 
-    // クリックされた要素が「次へ」の場合
-    if ($(this).hasClass("page-nav__next")) {
-      $(".page-nav__prev-clicked").removeClass("page-nav__prev-clicked");
-    }
-  });
+//     // クリックされた要素が「次へ」の場合
+//     if ($(this).hasClass("page-nav__next")) {
+//       $(".page-nav__prev-clicked").removeClass("page-nav__prev-clicked");
+//     }
+//   });
 
-  // 「前へ」クリック時の処理
-  $(".page-nav__prev").click(function () {
-    $(".page-nav__next-clicked").removeClass("page-nav__next-clicked");
-    $(this).toggleClass("page-nav__prev-clicked");
-  });
+//   // 「前へ」クリック時の処理
+//   $(".page-nav__prev").click(function () {
+//     $(".page-nav__next-clicked").removeClass("page-nav__next-clicked");
+//     $(this).toggleClass("page-nav__prev-clicked");
+//   });
 
-  // 「次へ」クリック時の処理
-  $(".page-nav__next").click(function () {
-    $(".page-nav__prev-clicked").removeClass("page-nav__prev-clicked");
-    $(this).toggleClass("page-nav__next-clicked");
-  });
-});
+//   // 「次へ」クリック時の処理
+//   $(".page-nav__next").click(function () {
+//     $(".page-nav__prev-clicked").removeClass("page-nav__prev-clicked");
+//     $(this).toggleClass("page-nav__next-clicked");
+//   });
+// });
 
 //画像のモーダル
-$(document).ready(function () {
-  $(".gallery__img").click(function () {
-    var imgSrc = $(this).find("img").attr("src");
-    $(".gallery__modal-content").html('<img src="' + imgSrc + '" alt="Modal Image">');
-    $(".gallery__modal").fadeIn();
-    $("body").css("overflow", "hidden"); // モーダルが表示されたときにスクロールを無効化
+document.addEventListener("DOMContentLoaded", function () {
+  // すべてのギャラリー画像を取得
+  const galleryImages = document.querySelectorAll(".gallery__img-link");
+  // モーダル要素を取得
+  const modal = document.querySelector(".gallery__modal");
+  const modalImage = document.querySelector(".gallery__modal-img");
+
+  // 画像をクリックしたときのイベントリスナーを追加
+  galleryImages.forEach((image) => {
+    image.addEventListener("click", function () {
+      // クリックされた画像のソースを取得
+      const src = this.src;
+      // モーダル画像のソースを設定
+      modalImage.src = src;
+      // モーダルを表示
+      modal.style.display = "block";
+      // 0.1秒後にフェードイン効果を適用するクラスを追加
+      setTimeout(() => {
+        modal.classList.add("show");
+      }, 10);
+      // bodyにクラスを追加してスクロールを無効にする
+      document.body.classList.add("modal-open");
+    });
   });
 
-  $(".gallery__modal").click(function (event) {
-    if (!$(event.target).closest(".gallery__modal-content").length) {
-      $(".gallery__modal").fadeOut();
-      $("body").css("overflow", ""); // モーダルが閉じられたときにスクロールを有効化
-    }
+  // モーダルを閉じるためのイベントリスナーを追加
+  modal.addEventListener("click", function () {
+    // フェードアウト効果を適用するためにクラスを削除
+    modal.classList.remove("show");
+    // トランジション終了後にモーダルを非表示にする
+    modal.addEventListener("transitionend", function handleTransitionEnd() {
+      modal.style.display = "none";
+      // イベントリスナーの削除
+      modal.removeEventListener("transitionend", handleTransitionEnd);
+    });
+    // bodyからクラスを削除してスクロールを有効にする
+    document.body.classList.remove("modal-open");
   });
 });
 

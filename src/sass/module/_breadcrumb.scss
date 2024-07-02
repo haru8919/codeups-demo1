@@ -7,6 +7,7 @@
   font-family: $third-font-family;
   line-height: 1.45;
   display: inline-block;
+  transition: transform 0.3s ease;
 }
 .breadcrumb__item:not(:last-child)::after {
   display: inline-block;
@@ -19,6 +20,10 @@
 }
 .breadcrumb__link {
   color: $black;
+  cursor: pointer;
+}
+.breadcrumb__item:hover {
+  transform: translateY(0.25rem);
 }
 .breadcrumb__link.breadcrumb__link--white {
   color: $white;

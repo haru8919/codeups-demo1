@@ -68,7 +68,7 @@
   display: inline-block;
   text-align: left;
   margin-top: 1.1rem;
-  transition: 0.6s;
+  transition: 0.3s;
   white-space: nowrap;
 }
 .footer-menu__link--black {
@@ -78,7 +78,7 @@
 }
 .footer-menu__link:hover {
   opacity: 0.7;
-  transition: 0.6s;
+  transition: 0.3s;
 }
 .footer-menu__link-top {
   display: inline-block;
@@ -92,6 +92,10 @@
   @include mq("md") {
     margin-top: 1.59rem;
   }
+}
+.footer-menu__link-top:hover {
+  opacity: 0.7;
+  transition: 0.3s;
 }
 .footer-menu__link-top--black {
   color: $black;

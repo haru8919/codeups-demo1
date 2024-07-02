@@ -8,6 +8,7 @@
   font-weight: $regular;
   font-family: $third-font-family;
   color: $green;
+  cursor: pointer;
 }
 .accordion__title-text::before,
 .accordion__text::before {
@@ -42,4 +43,11 @@
   font-weight: $regular;
   font-family: $third-font-family;
   color: $green;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.accordion__text:hover {
+  /* hover時に右に動くトランジション */
+  transform: translateX(0.5rem);
 }
