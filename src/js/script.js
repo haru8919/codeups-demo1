@@ -47,7 +47,7 @@ $(function () {
     slidesPerView: "auto",
     spaceBetween: 18,
     centeredSlides: false,
-    speed: 1000,
+    speed: 300,
 
     navigation: {
       nextEl: ".campaign__next",
@@ -220,66 +220,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // informationクリック記事呼び出し
 $(document).ready(function () {
-  const $items = $(".page-information__category-item");
-  const $links = $(".page-information__category-link");
-  const $wrappers = $(".page-information__wrpper");
+  const $footerLinks = $(".footer-menu__link");
 
-  // 最後に表示された記事を localStorage から取得して表示する
-  const lastActiveId = localStorage.getItem("activePage");
-  if (lastActiveId) {
-    $("#" + lastActiveId).addClass("active");
-    $("#" + lastActiveId)
-      .parent()
-      .addClass("clicked"); // クリックされたカテゴリー項目に.clickedクラスを追加
-    $("#" + lastActiveId)
-      .children(".page-information__category-link")
-      .addClass("clicked"); // クリックされたリンクに.clickedクラスを追加
-  } else {
-    // デフォルトで表示する記事がある場合はここで設定
-    $wrappers.first().addClass("active"); // 例えば最初の記事を表示
-    $items.first().addClass("clicked"); // 最初のカテゴリー項目に.clickedクラスを追加
-    $links.first().addClass("clicked"); // 最初のリンクに.clickedクラスを追加
+  // クリックイベントを処理する関数
+  function handleClick(event, targetId) {
+    event.preventDefault();
+
+    // URLにクエリパラメータを追加してpage-information.htmlに遷移
+    window.location.href = `page-information.html?tab=${targetId}`;
   }
 
-  $items.on("click", function (event) {
-    event.preventDefault(); // デフォルトのクリック動作をキャンセル
-
-    const targetId = $(this).children(".page-information__category-link").data("target"); // クリックされたリンクの data-target 属性値を取得
-
-    $wrappers.removeClass("active"); // すべての wrapper 要素から active クラスを削除
-    $("#" + targetId).addClass("active"); // 対応する wrapper 要素に active クラスを追加
-
-    // すべてのカテゴリー項目から.clickedクラスを削除
-    $items.removeClass("clicked");
-    // クリックされたカテゴリー項目に.clickedクラスを追加
-    $(this).addClass("clicked");
-    // それに対応するリンクにも.clickedクラスを追加
-    $(this).children(".page-information__category-link").addClass("clicked");
-
-    // 選択された記事のIDを localStorage に保存する
-    localStorage.setItem("activePage", targetId);
+  // Footerメニューリンクのクリックイベントを設定
+  $footerLinks.each(function () {
+    const targetId = $(this).data("target");
+    if (targetId) {
+      $(this).on("click", function (event) {
+        handleClick(event, targetId);
+      });
+    }
   });
 
-  $links.on("click", function (event) {
-    event.preventDefault(); // デフォルトのリンク動作をキャンセル
+  // 最後に表示された記事をURLのクエリパラメータから取得して表示する
+  const urlParams = new URLSearchParams(window.location.search);
+  const lastActiveId = urlParams.get("tab");
 
-    const targetId = $(this).data("target"); // クリックされたリンクの data-target 属性値を取得
-
-    $wrappers.removeClass("active"); // すべての wrapper 要素から active クラスを削除
-    $("#" + targetId).addClass("active"); // 対応する wrapper 要素に active クラスを追加
-
-    // すべてのリンクから.clickedクラスを削除
-    $links.removeClass("clicked");
-    // クリックされたリンクに.clickedクラスを追加
-    $(this).addClass("clicked");
-
-    // 選択された記事のIDを localStorage に保存する
-    localStorage.setItem("activePage", targetId);
-  });
-});
-$(document).ready(function () {
-  // 最初の.page-information__category-item要素をクリックする
-  $(".page-information__category-item:first-child .page-information__category-link").click();
+  if (lastActiveId) {
+    $(`#${lastActiveId}`).addClass("active");
+    $(`.footer-menu__link[data-target='${lastActiveId}']`).addClass("clicked");
+    $(`.page-information__category-link[data-target='${lastActiveId}']`).addClass("clicked");
+  } else {
+    // デフォルトで表示する記事がある場合はここで設定
+    $(".page-information__wrpper").first().addClass("active"); // 例えば最初の記事を表示
+    $(".footer-menu__link").first().addClass("clicked"); // 最初のフッターリンクに.clickedクラスを追加
+    $(".page-information__category-link").first().addClass("clicked"); // 最初のカテゴリーリンクに.clickedクラスを追加
+  }
 });
 
 // sidebarアコーディオン
@@ -322,19 +296,19 @@ $(function () {
 });
 
 // // contactのSend
-// // 「同意する」のチェックボックスを取得
-// const agreeCheckbox = document.getElementById("agree");
-// // 送信ボタンを取得
-// const submitBtn = document.getElementById("submit-btn");
+// 「同意する」のチェックボックスを取得
+const agreeCheckbox = document.getElementById("agree");
+// 送信ボタンを取得
+const submitBtn = document.getElementById("submit-btn");
 
-// // チェックボックスをクリックした時
-// agreeCheckbox.addEventListener("click", () => {
-//   // チェックされている場合
-//   if (agreeCheckbox.checked === true) {
-//     submitBtn.disabled = false; // disabledを外す
-//   }
-//   // チェックされていない場合
-//   else {
-//     submitBtn.disabled = true; // disabledを付与
-//   }
-// });
+// チェックボックスをクリックした時
+agreeCheckbox.addEventListener("click", () => {
+  // チェックされている場合
+  if (agreeCheckbox.checked === true) {
+    submitBtn.disabled = false; // disabledを外す
+  }
+  // チェックされていない場合
+  else {
+    submitBtn.disabled = true; // disabledを付与
+  }
+});

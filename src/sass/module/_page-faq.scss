@@ -1,18 +1,18 @@
 @use "global" as *;
 .page-faq {
-  position: relative;
+  // position: relative;
 }
 .page-faq__visual-wrap {
   position: absolute;
   content: "";
-  top: 3.5%;
-  left: calc(50% - min(47%, 27.1rem));
+  top: 0;
+  left: calc(50% - min(50vw, 27.1rem));
   text-align: left;
   transform: translateY(-50%);
   z-index: -1;
   @include mq("md") {
-    top: 5.5%;
-    left: calc(50% - min(48%, 39.1rem));
+    top: 0;
+    left: calc(50% - min(45vw, 40.1rem));
   }
 }
 
@@ -25,6 +25,7 @@
 }
 
 .faq-accordion {
+  position: relative;
   width: 100%;
 }
 .faq-accordion__container {

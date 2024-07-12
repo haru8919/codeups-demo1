@@ -22,11 +22,11 @@
 .blog-card__img {
   aspect-ratio: 301/201;
   object-fit: cover;
+  transition: 0.3s all;
 }
 
 .blog-card:hover .blog-card__img {
   transform: scale(1.2);
-  transition: 0.3s all;
 }
 .blog-card__body {
   margin-top: 0.8rem;
