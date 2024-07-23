@@ -1,27 +1,27 @@
 @use "global" as *;
-.privacy {
+
+.privacy__inner {
   position: relative;
 }
-
-.privacy__visual-wrap {
+.privacy__inner::before {
+  background: url(../images/common/page-campaign.pc.svg) no-repeat center / contain;
   position: absolute;
   content: "";
-  top: 3.9%;
-  left: calc(50% - min(47%, 27.1rem));
+  top: 0.3%;
+  left: calc(50% - min(47vw, 27.1rem));
   text-align: left;
   transform: translateY(-50%);
   z-index: -1;
+  height: 3.4375rem;
+  width: 7.5rem;
   @include mq("md") {
-    left: calc(50% - min(50%, 39.1rem));
+    left: calc(50% - min(46vw, 38.1rem));
     top: 13.4%;
+    height: 8.625rem;
+    width: 18.125rem;
   }
 }
-.privacy__visual {
-  width: 42%;
-  @include mq("md") {
-    width: 100%;
-  }
-}
+
 .privacy__inner {
   @include mq("md") {
     max-width: 53.125rem;
@@ -39,12 +39,6 @@
   }
 }
 
-.privacy__outer {
-  margin-top: 3rem;
-  @include mq("md") {
-    margin-top: 9rem;
-  }
-}
 .privacy__primary-wrap {
   margin-top: 2.49rem;
 }

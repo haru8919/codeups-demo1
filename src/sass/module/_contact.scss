@@ -3,8 +3,30 @@
 .contact {
   position: relative;
 }
-.contact__inner.inner {
+.contact__inner {
+  position: relative;
+}
+.contact__inner::before {
+  background: url(../images/common/contact-fish.svg) no-repeat center / contain;
+  position: absolute;
+  content: "";
+  right: calc(50% - min(60vw, 17.2rem));
+  top: -4%;
+  display: inline-block;
+  text-align: right;
+  transform: translate(-50%);
+  width: 6.8125rem;
+  height: 3.125rem;
   @include mq("md") {
+    position: absolute;
+    content: "";
+    right: calc(50% - min(57vw, 53.2rem));
+    top: -9%;
+    display: inline-block;
+    text-align: right;
+    transform: translate(-50%);
+    width: 18.8125rem;
+    height: 8.625rem;
   }
 }
 .contact__wrap {

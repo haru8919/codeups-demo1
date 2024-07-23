@@ -7,3 +7,9 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+.blog-cards.blog-cards--2col {
+  @include mq("md") {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4.9rem 2rem;
+  }
+}

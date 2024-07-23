@@ -1,15 +1,16 @@
 @use "global" as *;
 
 .form__box {
-  margin-top: 1.5rem;
   border-bottom: 1px dashed $green;
   padding-bottom: 1.5rem;
   @include mq("md") {
     display: flex;
     align-items: flex-start;
     padding-bottom: 2.5rem;
-    margin-top: 2.5rem;
   }
+}
+.form__box:not(:first-child) {
+  margin-top: 2.5rem;
 }
 .form__box:last-of-type {
   padding-bottom: 1rem;
@@ -298,21 +299,21 @@ input[type="checkbox"]:checked + .form__skill::after {
   position: absolute;
   content: "";
   display: block;
-  height: 0.5625rem;
-  left: -29%;
+  height: 0.8rem;
+  left: -31%;
   opacity: 0;
-  top: 10%;
+  top: 5%;
   transform: rotate(45deg);
-  width: 0.312rem;
+  width: 0.5rem;
   @include mq("md") {
-    top: 26%;
-    left: -7%;
+    top: 19%;
+    left: -8%;
   }
 }
 
-// input[type="checkbox"]:checked + .form__check::after {
-//   opacity: 1;
-// }
+.form__checkbox input:checked + .form__check .form__checkbox-txt::after {
+  opacity: 1;
+}
 
 .form__btn-wrap {
   margin-top: 1rem;

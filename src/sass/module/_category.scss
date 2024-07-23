@@ -11,7 +11,7 @@
 .category__items {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem 0.125rem;
+  gap: 1rem 1.3125rem;
   width: 100%;
   @include mq("md") {
     gap: 1rem 2rem;

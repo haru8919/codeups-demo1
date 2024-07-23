@@ -6,11 +6,22 @@
   padding: 0.8rem 1rem;
   max-width: 18.375rem;
   width: 100%;
+  transition: 0.3s all;
+}
+.article-card:hover {
+  transform: scale(1.05);
 }
 .article-card__img {
   aspect-ratio: 121 / 90;
   max-width: 7.5625rem;
   width: 100%;
+  transition: 0.3s all;
+}
+.article-card__imgs {
+  overflow: hidden;
+}
+.article-card:hover .article-card__img {
+  transform: scale(1.05);
 }
 .article-card__body {
   display: flex;

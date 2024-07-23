@@ -27,7 +27,7 @@
   padding-right: 1.29rem;
   padding-top: 0.99rem;
   @include mq("md") {
-    padding-bottom: 2.2rem;
+    padding-bottom: 2.5rem;
     padding-top: 1.5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -45,7 +45,7 @@
   display: inline-block;
   padding: 0.179rem 0.75rem;
   @include mq("md") {
-    padding: 0.29rem 1.1rem;
+    padding: 0.2rem 1rem;
   }
 }
 .campaign-card__category {
@@ -61,7 +61,6 @@
   font-weight: $normal;
   line-height: 1.5;
   margin-top: 0.5rem;
-  padding-bottom: 0.3rem;
   @include mq("md") {
     margin-top: 0.2rem;
   }

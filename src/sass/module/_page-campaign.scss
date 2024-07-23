@@ -1,38 +1,28 @@
 @use "global" as *;
 
-.page-campaign {
+.page-campaign__inner {
   position: relative;
 }
-
-.page-campaign__img-wrap {
+.page-campaign__inner::before {
+  background: url(../images/common/page-campaign.pc.svg) no-repeat center / contain;
   position: absolute;
+  display: inline-block;
   content: "";
-  top: 4%;
-  left: calc(50% - min(48%, 29.1rem));
+  top: 0%;
+  left: calc(50% - min(48vw, 29.1rem));
   text-align: left;
   transform: translateY(-50%);
   z-index: -1;
+  height: 3.4375rem;
+  width: 7.5rem;
+  @include mq("md") {
+    top: 0%;
+    left: calc(50% - min(48vw, 38.75rem));
+    height: 8.625rem;
+    width: 18.125rem;
+  }
+}
 
-  @include mq("md") {
-    top: 7.6%;
-    left: calc(50% - min(48%, 39.1rem));
-  }
-}
-.page-campaign__img {
-  max-width: 18.75rem;
-  width: 100%;
-  @include mq("md") {
-    width: 100%;
-  }
-}
-.page-campaign__category-wrap {
-  @include mq("md") {
-    margin-top: 9.1rem;
-  }
-}
-.page-campaign__wrapper {
-  margin-top: 2.9rem;
-}
 .page-campaign__wrap {
   margin-top: 2.4rem;
 }
@@ -40,11 +30,7 @@
 .page-campaign__cards {
   padding-left: 2rem;
   padding-right: 2rem;
-  gap: 2.3rem;
-  justify-items: center;
   @include mq("md") {
-    gap: 5rem 2.3rem;
-    justify-items: center;
     padding-left: 0;
     padding-right: 0;
   }
@@ -53,7 +39,7 @@
   max-width: 32.5rem;
 }
 .page-campaign__nav {
-  margin-top: 4.8rem;
+  margin-top: 5rem;
   @include mq("md") {
     margin-top: 4.7rem;
   }
@@ -75,7 +61,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1.6rem;
+  margin-top: 2rem;
 }
 
 .page-campaign__pc-date {

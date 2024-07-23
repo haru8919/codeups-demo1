@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //画像のモーダル
 document.addEventListener("DOMContentLoaded", function () {
   // すべてのギャラリー画像を取得
-  const galleryImages = document.querySelectorAll(".gallery__img-link");
+  const galleryImages = document.querySelectorAll(".gallery-items__img-link");
   // モーダル要素を取得
   const modal = document.querySelector(".gallery__modal");
   const modalImage = document.querySelector(".gallery__modal-img");
@@ -221,6 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // informationクリック記事呼び出し
 $(document).ready(function () {
   const $footerLinks = $(".footer-menu__link");
+  const $categoryLinks = $(".page-information__category-link");
 
   // クリックイベントを処理する関数
   function handleClick(event, targetId) {
@@ -232,6 +233,16 @@ $(document).ready(function () {
 
   // Footerメニューリンクのクリックイベントを設定
   $footerLinks.each(function () {
+    const targetId = $(this).data("target");
+    if (targetId) {
+      $(this).on("click", function (event) {
+        handleClick(event, targetId);
+      });
+    }
+  });
+
+  // カテゴリーリンクのクリックイベントを設定
+  $categoryLinks.each(function () {
     const targetId = $(this).data("target");
     if (targetId) {
       $(this).on("click", function (event) {
@@ -287,28 +298,42 @@ $(document).ready(function () {
 
 // faqアコーディオン
 $(function () {
-  // $(".js-faq-accordion__item:first-child .js-faq-accordion__content").css("display", "block");
-  $(".js-faq-accordion__item:first-child .js-faq-accordion__title").addClass("is-open");
+  // ページが読み込まれた時にこの関数が実行される
   $(".js-faq-accordion__title").on("click", function () {
-    $(this).toggleClass("is-open");
-    $(this).next().slideToggle(400);
+    // アコーディオンのタイトルがクリックされた時にこの関数が実行される
+    $(this).toggleClass("is-active");
+    // クリックされたタイトルに'is-close'クラスを追加または削除する
+    $(this).next().slideToggle(300);
+    // クリックされたタイトルの次の要素（通常はアコーディオンの内容）を300ミリ秒かけて表示/非表示にする
   });
 });
 
-// // contactのSend
-// 「同意する」のチェックボックスを取得
-const agreeCheckbox = document.getElementById("agree");
-// 送信ボタンを取得
-const submitBtn = document.getElementById("submit-btn");
+contactのSenddocument.addEventListener("DOMContentLoaded", function () {
+  var checkbox = document.getElementById("agree");
+  var checkboxTxt = document.querySelector(".form__checkbox-txt");
 
-// チェックボックスをクリックした時
-agreeCheckbox.addEventListener("click", () => {
-  // チェックされている場合
-  if (agreeCheckbox.checked === true) {
-    submitBtn.disabled = false; // disabledを外す
-  }
-  // チェックされていない場合
-  else {
-    submitBtn.disabled = true; // disabledを付与
-  }
+  checkbox.addEventListener("change", function () {
+    if (checkbox.checked) {
+      checkboxTxt.classList.add("checked");
+    } else {
+      checkboxTxt.classList.remove("checked");
+    }
+  });
 });
+
+// // 「同意する」のチェックボックスを取得
+// const agreeCheckbox = document.getElementById("agree");
+// // 送信ボタンを取得
+// const submitBtn = document.getElementById("submit-btn");
+
+// // チェックボックスをクリックした時
+// agreeCheckbox.addEventListener("click", () => {
+//   // チェックされている場合
+//   if (agreeCheckbox.checked === true) {
+//     submitBtn.disabled = false; // disabledを外す
+//   }
+//   // チェックされていない場合
+//   else {
+//     submitBtn.disabled = true; // disabledを付与
+//   }
+// });

@@ -3,6 +3,22 @@
 .about {
   position: relative;
 }
+.about__inner {
+  position: relative;
+}
+.about__inner::before {
+  @include mq("md") {
+    background: url(../images/common/sango-pc.svg) no-repeat center / contain;
+    content: "";
+    display: inline-block;
+    bottom: 0rem;
+    position: absolute;
+    transform: translateY(50%);
+    right: calc(50% - min(49vw, 40.2rem));
+    width: 12.12rem;
+    height: 30.1666rem;
+  }
+}
 .about__title-wrap {
   text-align: center;
 }
@@ -106,28 +122,9 @@
 }
 
 .about__content-box {
-  margin-top: 2.9rem;
+  margin-top: 3.3rem;
   text-align: center;
   @include mq("md") {
     margin-top: 2rem;
-  }
-}
-
-.about__part {
-  @include mq("md") {
-    content: "";
-    display: block;
-    bottom: 0rem;
-    position: absolute;
-    transform: translateY(50%);
-    right: calc(50% - min(49%, 40.2rem));
-    width: 12.12rem;
-  }
-}
-
-.about__sango {
-  @include mq("md") {
-    width: 100%;
-    height: auto;
   }
 }
