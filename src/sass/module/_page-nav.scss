@@ -1,19 +1,145 @@
 @use "global" as *;
 
+<<<<<<< HEAD
+=======
+// .page-nav {
+//   display: flex;
+//   justify-content: space-around;
+// }
+// .page-nav__items {
+//   display: flex;
+// }
+
+// .page-nav__item {
+//   border: 1px solid $green;
+//   width: 2.375rem;
+//   height: 2.375rem;
+//   color: $green;
+//   transition: 0.3s ease;
+// }
+// .page-nav__item:nth-of-type(2) {
+//   margin-left: 2.5rem;
+// }
+// .page-nav__item:not(:nth-of-type(2)) {
+//   margin-left: 0.75rem;
+// }
+// .page-nav__item.active {
+//   background-color: $green;
+//   color: $white;
+// }
+// .page-nav__item:hover {
+//   background-color: $green;
+//   color: $white;
+// }
+
+// .page-nav__prev,
+// .page-nav__next {
+//   display: block;
+//   width: 100%;
+//   height: 100%;
+//   padding: 1rem; /* クリック範囲を広げるためにパディングを追加 */
+//   text-align: center; /* コンテンツを中央に配置 */
+// }
+// .page-nav__prev:hover,
+// .page-nav__next:hover {
+//   background-color: $green;
+// }
+// .page-nav__item-prev {
+//   border: 1px solid $green;
+//   width: 2.375rem;
+//   height: 2.375rem;
+//   color: $green;
+//   position: relative;
+// }
+
+// .page-nav__item-next {
+//   border: 1px solid $green;
+//   width: 2.375rem;
+//   height: 2.375rem;
+//   color: $green;
+//   margin-left: 2.5rem;
+//   position: relative;
+// }
+
+// .page-nav__item-next.active {
+//   background-color: $green;
+// }
+// // .page-nav__link {
+// //   font-size: 1rem;
+// //   font-weight: $bold;
+// //   font-family: $four-font-family;
+// //   padding: 0.38rem 0.8rem;
+// //   display: block;
+// // }
+// .page-nav__next::after {
+//   border-right: 1px solid $green;
+//   border-top: 1px solid $green;
+//   content: "";
+//   height: 0.6875rem;
+//   position: absolute;
+//   right: 55%;
+//   top: 50%;
+//   transform: rotate(45deg) translateY(-56%);
+//   transition: border-color 0.3s ease;
+//   width: 0.6875rem;
+// }
+// .page-nav__next:hover:after {
+//   border-right: 1px solid $white;
+//   border-top: 1px solid $white;
+// }
+// .page-nav__next.click::after {
+//   border-right: 1px solid $white;
+//   border-top: 1px solid $white;
+// }
+
+// .page-nav__prev::after {
+//   border-right: 1px solid $green;
+//   border-top: 1px solid $green;
+//   content: "";
+//   height: 0.6875rem;
+//   position: absolute;
+//   right: 45%;
+//   top: 50%;
+//   transform: rotate(-136deg) translateY(60%);
+//   transition: border-color 0.3s ease;
+//   width: 0.6875rem;
+// }
+// .page-nav__prev:hover:after {
+//   border-right: 1px solid $white;
+//   border-top: 1px solid $white;
+// }
+// .page-nav__prev.click::after {
+//   border-right: 1px solid $white;
+//   border-top: 1px solid $white;
+// }
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 .page-nav {
   display: flex;
   justify-content: space-around;
 }
+<<<<<<< HEAD
 .page-nav__items {
   display: flex;
 }
 
 .page-nav__item {
+=======
+.wp-pagenavi {
+  display: flex;
+}
+
+.page-nav__item,
+.wp-pagenavi .pages,
+.wp-pagenavi .current,
+.wp-pagenavi a,
+.wp-pagenavi span {
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   border: 1px solid $green;
   width: 2.375rem;
   height: 2.375rem;
   color: $green;
   transition: 0.3s ease;
+<<<<<<< HEAD
 }
 .page-nav__item:nth-of-type(2) {
   margin-left: 2.5rem;
@@ -26,11 +152,39 @@
   color: $white;
 }
 .page-nav__item:hover {
+=======
+  text-align: center;
+  line-height: 2.375rem;
+  margin-left: 0.75rem;
+  display: inline-block;
+}
+/* single.php専用のスタイル */
+.single-page .page-nav__item,
+.single-page .wp-pagenavi .pages,
+.single-page .wp-pagenavi .current,
+.single-page .wp-pagenavi a,
+.single-page .wp-pagenavi span {
+  margin-left: 5.125rem;
+}
+.page-nav__item:first-of-type {
+  margin-left: 0;
+}
+
+.page-nav__item.active,
+.wp-pagenavi .current {
+  background-color: $green;
+  color: $white;
+}
+
+.page-nav__item:hover,
+.wp-pagenavi a:hover {
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   background-color: $green;
   color: $white;
 }
 
 .page-nav__prev,
+<<<<<<< HEAD
 .page-nav__next {
   display: block;
   width: 100%;
@@ -70,11 +224,35 @@
   display: block;
 }
 .page-nav__next::after {
+=======
+.page-nav__next,
+.wp-pagenavi .previouspostslink,
+.wp-pagenavi .nextpostslink {
+  display: inline-block;
+  width: 2.375rem;
+  height: 2.375rem;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+  font-size: 0; /* テキストを非表示にするためにフォントサイズを0に設定 */
+}
+
+.page-nav__prev:hover,
+.page-nav__next:hover,
+.wp-pagenavi .previouspostslink:hover,
+.wp-pagenavi .nextpostslink:hover {
+  background-color: $green;
+}
+
+.page-nav__next::after,
+.wp-pagenavi .nextpostslink::after {
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   border-right: 1px solid $green;
   border-top: 1px solid $green;
   content: "";
   height: 0.6875rem;
   position: absolute;
+<<<<<<< HEAD
   right: 55%;
   top: 50%;
   transform: rotate(45deg) translateY(-56%);
@@ -91,10 +269,21 @@
 }
 
 .page-nav__prev::after {
+=======
+  top: 45%;
+  left: 15%;
+  transform: rotate(45deg) translateY(-50%);
+  transition: border-color 0.3s ease;
+  width: 0.6875rem;
+}
+.page-nav__prev::after,
+.wp-pagenavi .previouspostslink::after {
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   border-right: 1px solid $green;
   border-top: 1px solid $green;
   content: "";
   height: 0.6875rem;
+<<<<<<< HEAD
   position: absolute;
   right: 45%;
   top: 50%;
@@ -109,4 +298,30 @@
 .page-nav__prev.click::after {
   border-right: 1px solid $white;
   border-top: 1px solid $white;
+=======
+  left: 45%;
+  position: absolute;
+  top: 25%;
+  transform: rotate(221deg) translateY(-50%);
+  transition: border-color 0.3s ease;
+  width: 0.6875rem;
+}
+
+.page-nav__next:hover::after,
+.page-nav__prev:hover::after,
+.wp-pagenavi .nextpostslink:hover::after,
+.wp-pagenavi .previouspostslink:hover::after {
+  border-right: 1px solid $white;
+  border-top: 1px solid $white;
+}
+
+.wp-pagenavi .nextpostslink::after {
+  right: 10px; /* 調整が必要な場合 */
+}
+
+.wp-pagenavi .previouspostslink::after {
+  left: 1.1rem; /* 調整が必要な場合 */
+  top: 0.58rem;
+  transform: rotate(-135deg) translateY(-50%);
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 }

@@ -1,7 +1,12 @@
 @use "global" as *;
 // パンくず
+<<<<<<< HEAD
 .breadcrumb {
   margin-top: 0.5rem;
+=======
+.breadcrumb__items {
+  display: flex;
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 }
 .breadcrumb__item {
   font-size: 0.875rem;

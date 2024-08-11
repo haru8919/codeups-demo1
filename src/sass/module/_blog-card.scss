@@ -21,6 +21,11 @@
 }
 .blog-card__img {
   aspect-ratio: 301/201;
+<<<<<<< HEAD
+=======
+  width: 100%;
+  height: inherit;
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   object-fit: cover;
   transition: 0.3s all;
 }

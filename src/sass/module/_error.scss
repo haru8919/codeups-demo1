@@ -5,21 +5,34 @@
   background-repeat: no-repeat;
   background-position: 50% 76%;
   width: 100%;
+<<<<<<< HEAD
   padding-top: 5.5rem;
+=======
+  padding-top: 5rem;
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   padding-bottom: 2.4rem;
   @include mq("md") {
     background-size: 50%;
     background-position: 24% 117%;
+<<<<<<< HEAD
     padding-top: 6rem;
+=======
+    padding-top: 8rem;
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
     padding-bottom: 9rem;
   }
 }
 
 .error__outer {
+<<<<<<< HEAD
   margin-top: 3.5rem;
   text-align: center;
   @include mq("md") {
     margin-top: 8.5rem;
+=======
+  text-align: center;
+  @include mq("md") {
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   }
 }
 

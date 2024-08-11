@@ -39,6 +39,12 @@
   font-weight: $bold;
   font-family: $third-font-family;
   color: $black;
+<<<<<<< HEAD
+=======
+  @include mq("md") {
+    width: 30%;
+  }
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 }
 .form__item-label {
   border: 1px solid $red;
@@ -56,8 +62,13 @@
   margin-top: 1rem;
   @include mq("md") {
     margin-top: 0;
+<<<<<<< HEAD
     max-width: 30rem;
     width: 100%;
+=======
+
+    width: 70%;
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   }
 }
 .form__text {
@@ -90,7 +101,11 @@
 input[type="checkbox"] {
   display: none;
 }
+<<<<<<< HEAD
 .form__skill {
+=======
+.wpcf7-list-item-label {
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
@@ -98,7 +113,11 @@ input[type="checkbox"] {
   position: relative;
   width: auto;
 }
+<<<<<<< HEAD
 .form__skill::before {
+=======
+.wpcf7-list-item-label::before {
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   background: $white;
   border: 1px solid $green;
   content: "";
@@ -110,7 +129,11 @@ input[type="checkbox"] {
   top: 48%;
   width: 0.875rem;
 }
+<<<<<<< HEAD
 .form__skill::after {
+=======
+.wpcf7-list-item-label::after {
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   border-right: 2px solid $red;
   border-bottom: 2px solid $red;
   content: "";
@@ -123,9 +146,18 @@ input[type="checkbox"] {
   transform: rotate(45deg);
   width: 0.312rem;
 }
+<<<<<<< HEAD
 input[type="checkbox"]:checked + .form__skill::after {
   opacity: 1;
 }
+=======
+input[type="checkbox"]:checked + .wpcf7-list-item-label::after {
+  opacity: 1;
+}
+.wpcf7-list-item {
+  margin-left: 0;
+}
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 // 丸
 .form__skill.form__skill--circle {
   box-sizing: border-box;
@@ -187,9 +219,12 @@ input[type="checkbox"]:checked + .form__skill::after {
     background-color: $green;
   }
 }
+<<<<<<< HEAD
 // input[type="checkbox"]:checked + .form__skill--circle::after {
 //   opacity: 1;
 // }
+=======
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 
 .form__skill-txt {
   display: inline-block;
@@ -316,9 +351,47 @@ input[type="checkbox"]:checked + .form__skill::after {
 }
 
 .form__btn-wrap {
+<<<<<<< HEAD
+=======
+  position: relative;
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   margin-top: 1rem;
   text-align: center;
   @include mq("md") {
     margin-top: 2.2rem;
   }
 }
+<<<<<<< HEAD
+=======
+
+.form__text.form__text--red {
+  width: 100%;
+  padding: 0.4rem 1rem 0.4rem;
+  border: 1px solid $red;
+  background-color: $pink;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  @include mq("md") {
+    margin-top: 0;
+  }
+}
+.form__text.form__text--red::placeholder {
+  color: $white;
+  opacity: 0.6;
+}
+
+.wpcf7-not-valid {
+  width: 100%;
+  padding: 0.4rem 1rem 0.4rem;
+  border: 1px solid $red;
+  background-color: $pink;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.wpcf7-not-valid::placeholder {
+  color: $white;
+  opacity: 0.6;
+}
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)

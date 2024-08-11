@@ -2,6 +2,10 @@
 .top-terms {
   margin-top: 3rem;
   @include mq("md") {
+<<<<<<< HEAD
     margin-top: 9rem;
+=======
+    margin-top: 8rem;
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   }
 }

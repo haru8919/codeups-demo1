@@ -78,7 +78,14 @@
     margin-top: 2.5rem;
   }
 }
+<<<<<<< HEAD
 
+=======
+.blog-single__img {
+  aspect-ratio: 700 / 468;
+  max-width: 43.75rem;
+}
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 .blog-single__content {
   p {
     font-size: 1rem;
@@ -91,6 +98,10 @@
   img {
     margin-top: 2.5rem;
     aspect-ratio: 700 / 468;
+<<<<<<< HEAD
+=======
+    max-width: 43.75rem;
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   }
   ul {
     margin-top: 2.5rem;
@@ -165,3 +176,62 @@
     margin-left: 4.6rem;
   }
 }
+<<<<<<< HEAD
+=======
+
+// ページネーション
+/* single.phpのwp-pagenaviのみをターゲットにする */
+.blog-single .wp-pagenavi .current,
+.blog-single .wp-pagenavi .pages,
+.blog-single .wp-pagenavi .first,
+.blog-single .wp-pagenavi .last,
+.blog-single .wp-pagenavi .extend {
+  // display: none;
+}
+
+.blog-single .wp-pagenavi .previouspostslink,
+.blog-single .wp-pagenavi .nextpostslink {
+  display: inline-block;
+  width: 2.375rem;
+  height: 2.375rem;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+  font-size: 0;
+}
+
+.blog-single .wp-pagenavi .previouspostslink:hover,
+.blog-single .wp-pagenavi .nextpostslink:hover {
+  background-color: $green;
+}
+
+.blog-single .wp-pagenavi .nextpostslink::after,
+.blog-single .wp-pagenavi .previouspostslink::after {
+  border-right: 1px solid $green;
+  border-top: 1px solid $green;
+  content: "";
+  height: 0.6875rem;
+  position: absolute;
+  top: 49%;
+  left: 15%;
+  transform: rotate(45deg) translateY(-50%);
+  transition: border-color 0.3s ease;
+  width: 0.6875rem;
+}
+
+.blog-single .wp-pagenavi .nextpostslink:hover::after,
+.blog-single .wp-pagenavi .previouspostslink:hover::after {
+  border-right: 1px solid $white;
+  border-top: 1px solid $white;
+}
+
+.blog-single .wp-pagenavi .nextpostslink::after {
+  right: 10px; /* 調整が必要な場合 */
+}
+
+.blog-single .wp-pagenavi .previouspostslink::after {
+  left: 1.1rem; /* 調整が必要な場合 */
+  top: 0.58rem;
+  transform: rotate(-135deg) translateY(-50%);
+}
+>>>>>>> b0fa8c02 (Migrate from static site to WordPress)
