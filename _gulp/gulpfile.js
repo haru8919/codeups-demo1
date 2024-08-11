@@ -17,14 +17,9 @@ const imageminMozjpeg = require("imagemin-mozjpeg"); // JPEGを最適化する�
 const imageminPngquant = require("imagemin-pngquant"); // PNGを最適化するためのモジュール
 const changed = require("gulp-changed"); // 変更されたファイルのみを対象にするためのモジュール
 const del = require("del"); // ファイルやディレクトリを削除するためのモジュール
-<<<<<<< HEAD
-const webp = require('gulp-webp');//webp変換
-const rename = require('gulp-rename');//ファイル名変更
-=======
 const webp = require("gulp-webp"); //webp変換
 const rename = require("gulp-rename"); //ファイル名変更
 const themeName = "WordPressTheme"; // WordPress theme name
->>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 
 // 読み込み先
 const srcPath = {
@@ -32,10 +27,7 @@ const srcPath = {
   js: "../src/js/**/*",
   img: "../src/images/**/*",
   html: ["../src/**/*.html", "!./node_modules/**"],
-<<<<<<< HEAD
-=======
   php: `../${themeName}/**/*.php`,
->>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 };
 
 // html反映用
@@ -47,8 +39,6 @@ const destPath = {
   html: "../dist/",
 };
 
-<<<<<<< HEAD
-=======
 // WordPress反映用
 const destWpPath = {
   all: `../${themeName}/assets/**/*`,
@@ -57,7 +47,6 @@ const destWpPath = {
   img: `../${themeName}/assets/images/`,
 };
 
->>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 const browsers = ["last 2 versions", "> 5%", "ie = 11", "not ie <= 10", "ios >= 8", "and_chr >= 5", "Android >= 5"];
 
 // HTMLファイルのコピー
@@ -97,20 +86,12 @@ const cssSass = () => {
       )
       // CSSプロパティをアルファベット順にソートし、未来のCSS構文を使用可能に
       .pipe(
-<<<<<<< HEAD
-        postcss([cssdeclsort({
-          order: "alphabetical"
-        })]
-        ),
-        postcssPresetEnv({ browsers: 'last 2 versions' })
-=======
         postcss([
           cssdeclsort({
             order: "alphabetical",
           }),
         ]),
         postcssPresetEnv({ browsers: "last 2 versions" })
->>>>>>> b0fa8c02 (Migrate from static site to WordPress)
       )
       // メディアクエリを統合
       .pipe(mmq())
@@ -118,10 +99,7 @@ const cssSass = () => {
       .pipe(sourcemaps.write("./"))
       // コンパイル済みのCSSファイルを出力先に保存
       .pipe(dest(destPath.css))
-<<<<<<< HEAD
-=======
       .pipe(dest(destWpPath.css))
->>>>>>> b0fa8c02 (Migrate from static site to WordPress)
       // Sassコンパイルが完了したことを通知
       .pipe(
         notify({
@@ -134,42 +112,6 @@ const cssSass = () => {
 
 // 画像圧縮
 const imgImagemin = () => {
-<<<<<<< HEAD
-  // 画像ファイルを指定
-  return (
-    src(srcPath.img)
-      // 変更があった画像のみ処理対象に
-      .pipe(changed(destPath.img))
-      // 画像を圧縮
-      .pipe(
-        imagemin(
-          [
-            // JPEG画像の圧縮設定
-            imageminMozjpeg({
-              quality: 80, // 圧縮品質（0〜100）
-            }),
-            // PNG画像の圧縮設定
-            imageminPngquant(),
-            // SVG画像の圧縮設定
-            imageminSvgo({
-              plugins: [
-                {
-                  removeViewbox: false, // viewBox属性を削除しない
-                },
-              ],
-            }),
-          ],
-          {
-            verbose: true, // 圧縮情報を表示
-          }
-        )
-      )
-      .pipe(dest(destPath.img))
-      .pipe(webp())//webpに変換
-      // 圧縮済みの画像ファイルを出力先に保存
-      .pipe(dest(destPath.img))
-  );
-=======
   // 変更があった画像のみ処理対象にし、複数の保存先に対応する
   return src(srcPath.img)
     .pipe(changed(destPath.img)) // 最初の保存先で変更を検出
@@ -191,7 +133,6 @@ const imgImagemin = () => {
     .pipe(dest(destWpPath.img)) // WordPress用の保存先に保存
     .pipe(webp()) // webpに変換
     .pipe(dest(destWpPath.img)); // webpをWordPress用の保存先に保存
->>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 };
 
 // js圧縮
@@ -213,15 +154,6 @@ const jsBabel = () => {
       )
       // 圧縮済みのファイルを出力先に保存
       .pipe(dest(destPath.js))
-<<<<<<< HEAD
-  );
-};
-
-// ブラウザーシンク
-const browserSyncOption = {
-  notify: false,
-  server: "../dist/",
-=======
       .pipe(dest(destWpPath.js))
   );
 };
@@ -231,7 +163,6 @@ const browserSyncOption = {
   // server: "../dist/", // ローカルサーバーのルートディレクトリ
   //WordPressの場合は↓を有効にする。その場合、↑(server)はコメントアウトする。
   proxy: "codeupswordpress.local", // ローカルサーバーのURL（WordPress）
->>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 };
 const browserSyncFunc = () => {
   browserSync.init(browserSyncOption);
@@ -243,11 +174,7 @@ const browserSyncReload = (done) => {
 
 // ファイルの削除
 const clean = () => {
-<<<<<<< HEAD
-  return del(destPath.all, { force: true });
-=======
   return del([destPath.all, destWpPath.all], { force: true });
->>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 };
 // ファイルの監視
 const watchFiles = () => {
@@ -255,10 +182,7 @@ const watchFiles = () => {
   watch(srcPath.js, series(jsBabel, browserSyncReload));
   watch(srcPath.img, series(imgImagemin, browserSyncReload));
   watch(srcPath.html, series(htmlCopy, browserSyncReload));
-<<<<<<< HEAD
-=======
   watch(srcPath.php, browserSyncReload);
->>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 };
 
 // ブラウザシンク付きの開発用タスク
