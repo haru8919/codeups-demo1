@@ -1,13 +1,8 @@
 @use "global" as *;
 .top-page-about-contact {
   margin-top: 6.6rem;
-<<<<<<< HEAD
   @include mq("md") {
     margin-top: 8rem;
-=======
-  padding-bottom: 10rem;
-  @include mq("md") {
-    margin-top: 5rem;
->>>>>>> b0fa8c02 (Migrate from static site to WordPress)
+    padding-bottom: 10rem;
   }
 }

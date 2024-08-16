@@ -26,4 +26,8 @@ get_header();
 <?php the_content();?>
 <?php endwhile;?>
 <?php endif;?>
+<button id="topButton" class="top-button">
+    <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-back.svg" alt="Page Top"
+        class="top-button__icon" />
+</button>
 <?php get_footer(); ?>

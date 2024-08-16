@@ -1,23 +1,28 @@
 <?php
 function add_custom_scripts() {
     // Google Fontsの追加
-    wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Gotu&family=Noto+Sans+JP&family=Noto+Serif+JP&display=swap', false );
-    wp_enqueue_style( 'google-fonts-lato', 'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap', false );
+    wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css2?family=Gotu&family=Noto+Sans+JP&family=Noto+Serif+JP&display=swap', false );
+    wp_enqueue_style( 'google-fonts-lato', '//fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap', false );
 
     // SwiperのCSSの追加
-    wp_enqueue_style( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', false );
+    wp_enqueue_style( 'swiper', '//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', false );
 
     // テーマのCSSの追加
     wp_enqueue_style( 'theme-styles', get_theme_file_uri('assets/css/style.css'), array(), '1.0.0', 'all' );
 
     // jQueryの追加
-    wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js', array(), '3.7.0', true );
+    wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js', array(), '3.7.0', true );
 
     // SwiperのJSの追加
-    wp_enqueue_script( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array('jquery'), '11.0.0', true );
+    wp_enqueue_script( 'swiper', '//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array('jquery'), '11.0.0', true );
 
     // テーマのJSの追加
     wp_enqueue_script( 'theme-scripts', get_theme_file_uri('assets/js/script.js'), array('jquery', 'swiper'), '1.0.0', true );
+
+// gallery-modal.jsの追加
+wp_enqueue_script( 'gallery-modal', get_theme_file_uri('assets/js/gallery-modal.js'), array('jquery'), '1.0.0', true );
+
+
 }
 
 add_action( 'wp_enqueue_scripts', 'add_custom_scripts' );
@@ -26,8 +31,8 @@ add_action( 'wp_enqueue_scripts', 'add_custom_scripts' );
 function add_rel_preconnect( $html, $handle, $href, $media ) {
     if ( 'google-fonts' === $handle || 'google-fonts-lato' === $handle || 'swiper' === $handle ) {
         $html = <<<EOT
-<link rel='preconnect' href='https://fonts.googleapis.com'>
-<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link rel='preconnect' href='//fonts.googleapis.com'>
+<link rel='preconnect' href='//fonts.gstatic.com' crossorigin>
 $html
 EOT;
     }
@@ -119,7 +124,7 @@ function change_posts_per_page($query)
         return;
 
     if ($query->is_post_type_archive('voice')) {
-        $query->set('posts_per_page', '6');
+        $query->set('posts_per_page', '8');
     }
 
     if ($query->is_post_type_archive('campaign')) {
@@ -136,8 +141,81 @@ add_action('wp_print_styles', 'remove_pagenavi_css', 100);
 add_theme_support('post-thumbnails');
 
 
+// information
+function get_page_information_url() {
+    return get_permalink(get_page_by_path('page-information')); // 'page-information' はスラッグ名
+}
+// functions.php
+function my_enqueue_scripts() {
+    wp_enqueue_script('my-script', get_template_directory_uri() . '/js/my-script.js', array('jquery'), null, true);
+    wp_localize_script('my-script', 'myScriptData', array(
+        'pageInformationUrl' => get_page_information_url(),
+    ));
+}
+add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
 
 
+
+
+// サイドバーblog
+function set_post_views($postID) {
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if ($count == '') {
+        $count = 0;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+    } else {
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
+}
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+
+function track_post_views ($post_id) {
+    if (!is_single()) return;
+    if (empty($post_id)) {
+        global $post;
+        $post_id = $post->ID;
+    }
+    set_post_views($post_id);
+}
+add_action('wp_head', 'track_post_views');
+
+function get_post_views($postID){
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if ($count==''){
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+        return "0 View";
+    }
+    return $count.' Views';
+}
+// mv
+// SCFで登録されたスワイパー画像を取得するカスタム関数
+function get_swiper_images() {
+    $images = [
+        'pc' => [],
+        'sp' => []
+    ];
+    if (function_exists('scf_get')) {
+        $pc_images = scf_get('swiper-parts.pc-img');
+        $sp_images = scf_get('swiper-parts.sp-img');
+
+        if ($pc_images && is_array($pc_images)) {
+            foreach ($pc_images as $image) {
+                $images['pc'][] = $image['url']; // pc-imgのURLを格納
+            }
+        }
+        if ($sp_images && is_array($sp_images)) {
+            foreach ($sp_images as $image) {
+                $images['sp'][] = $image['url']; // sp-imgのURLを格納
+            }
+        }
+    }
+    return $images;
+}
 
 // アイコン
 function change_post_menu_label() {
@@ -149,16 +227,13 @@ function change_post_menu_label() {
     
     // 投稿リストの「投稿」を「ブログ」に変更
     $submenu['edit.php'][5][0] = 'ブログ';
-    $submenu['edit.php'][10][0] = '新規追加';
-    $submenu['edit.php'][16][0] = 'カテゴリ';
-    $submenu['edit.php'][20][0] = 'タグ';
 }
 add_action('admin_menu', 'change_post_menu_label');
 function custom_admin_styles() {
     echo '<style>
         #adminmenu .menu-icon-post div.wp-menu-image:before {
             content: "\f120"; /* アイコンコード */
-            color: #8b0000; /* アイコンの色 */
+            color: #000000; /* アイコンの色 */
         }
         #adminmenu li.menu-top.menu-icon-post:hover a.wp-menu-link {
             background: #cd5c5c; /* ホバー時の背景色 */
@@ -169,13 +244,13 @@ add_action('admin_head', 'custom_admin_styles');
 function custom_admin_sidebar_style() {
     echo '<style>
         #adminmenu {
-            background-color:#5f9ea0; /* サイドバーの背景色 */
+            background-color:#c71585; /* サイドバーの背景色 */
         }
         #adminmenu .wp-menu-name {
-            color:#f0e68c; /* メニュー項目の文字色 */
+            color:#e6e6fa; /* メニュー項目の文字色 */
         }
         #adminmenu a.wp-menu-link:hover {
-            background-color: #9acd32; /* ホバー時の背景色 */
+            background-color:#808080; /* ホバー時の背景色 */
         }
     </style>';
 }

@@ -216,6 +216,10 @@ a {
 	margin-top: 10.6rem;
 }
 
+.top-footer {
+	margin-top: 6rem;
+}
+
 .top-gallery {
 	margin-top: 2.6rem;
 }
@@ -234,7 +238,6 @@ a {
 
 .top-page-about-contact {
 	margin-top: 6.6rem;
-	padding-bottom: 10rem;
 }
 
 .top-page-about {
@@ -477,13 +480,14 @@ a {
 }
 
 .article-card__img {
-	aspect-ratio: 121/90;
 	max-width: 7.5625rem;
 	transition: 0.3s all;
 	width: 100%;
 }
 
 .article-card__imgs {
+	aspect-ratio: 121/90;
+	height: 100%;
 	overflow: hidden;
 }
 
@@ -710,54 +714,6 @@ a {
 	margin-top: 5rem;
 }
 
-/* single.phpのwp-pagenaviのみをターゲットにする */
-
-.blog-single .wp-pagenavi .previouspostslink,
-.blog-single .wp-pagenavi .nextpostslink {
-	display: inline-block;
-	font-size: 0;
-	height: 2.375rem;
-	padding: 1rem;
-	position: relative;
-	text-align: center;
-	width: 2.375rem;
-}
-
-.blog-single .wp-pagenavi .previouspostslink:hover,
-.blog-single .wp-pagenavi .nextpostslink:hover {
-	background-color: #408f95;
-}
-
-.blog-single .wp-pagenavi .nextpostslink::after,
-.blog-single .wp-pagenavi .previouspostslink::after {
-	border-right: 1px solid #408f95;
-	border-top: 1px solid #408f95;
-	content: "";
-	height: 0.6875rem;
-	left: 15%;
-	position: absolute;
-	top: 49%;
-	transform: rotate(45deg) translateY(-50%);
-	transition: border-color 0.3s ease;
-	width: 0.6875rem;
-}
-
-.blog-single .wp-pagenavi .nextpostslink:hover::after,
-.blog-single .wp-pagenavi .previouspostslink:hover::after {
-	border-right: 1px solid #fff;
-	border-top: 1px solid #fff;
-}
-
-.blog-single .wp-pagenavi .nextpostslink::after {
-	right: 10px; /* 調整が必要な場合 */
-}
-
-.blog-single .wp-pagenavi .previouspostslink::after {
-	left: 1.1rem; /* 調整が必要な場合 */
-	top: 0.58rem;
-	transform: rotate(-135deg) translateY(-50%);
-}
-
 .blog {
 	padding-top: 5rem;
 }
@@ -777,6 +733,10 @@ a {
 .blog__btn-wrap {
 	margin-top: 2.5rem;
 	text-align: center;
+}
+
+.breadcrumb {
+	margin-top: 0.5rem;
 }
 
 .breadcrumb__items {
@@ -1083,6 +1043,15 @@ input[type=submit] {
 	font-size: 0.75rem;
 	font-weight: 300;
 	line-height: 1.88;
+}
+
+.campaign-card__imgs {
+	aspect-ratio: 520/347;
+}
+
+.campaign-card__img {
+	height: inherit;
+	width: 100%;
 }
 
 .campaign-card__description {
@@ -1564,6 +1533,26 @@ input[type=submit] {
 	margin-top: 2.2rem;
 }
 
+.form__text.form__text--red {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: #f4dacc;
+	border: 1px solid #c94800;
+	padding: 0.4rem 1rem 0.4rem;
+	width: 100%;
+}
+
+.form__text.form__text--red::-moz-placeholder {
+	color: #fff;
+	opacity: 0.6;
+}
+
+.form__text.form__text--red::placeholder {
+	color: #fff;
+	opacity: 0.6;
+}
+
 .error {
 	background-color: #408f95;
 	background-image: url(../images/common/404.mv.svg);
@@ -1575,6 +1564,7 @@ input[type=submit] {
 }
 
 .error__outer {
+	margin-top: 3.5rem;
 	text-align: center;
 }
 
@@ -2587,6 +2577,10 @@ body.modal-open {
 	margin-top: 5rem;
 }
 
+.page-blog__nav {
+	margin-top: 5rem;
+}
+
 .page-campaign__inner {
 	position: relative;
 }
@@ -2797,116 +2791,136 @@ body.modal-open {
 	justify-content: space-around;
 }
 
-.wp-pagenavi {
+.page-nav__items {
 	display: flex;
 }
 
-.page-nav__item,
-.wp-pagenavi .pages,
-.wp-pagenavi .current,
-.wp-pagenavi a,
-.wp-pagenavi span {
+.page-nav__item {
 	border: 1px solid #408f95;
 	color: #408f95;
-	display: inline-block;
 	height: 2.375rem;
-	line-height: 2.375rem;
-	margin-left: 0.75rem;
-	text-align: center;
 	transition: 0.3s ease;
 	width: 2.375rem;
 }
 
-/* single.php専用のスタイル */
-
-.single-page .page-nav__item,
-.single-page .wp-pagenavi .pages,
-.single-page .wp-pagenavi .current,
-.single-page .wp-pagenavi a,
-.single-page .wp-pagenavi span {
-	margin-left: 5.125rem;
+.page-nav__item:nth-of-type(2) {
+	margin-left: 2.5rem;
 }
 
-.page-nav__item:first-of-type {
-	margin-left: 0;
+.page-nav__item:not(:nth-of-type(2)) {
+	margin-left: 0.75rem;
 }
 
-.page-nav__item.active,
-.wp-pagenavi .current {
+.page-nav__item.active {
 	background-color: #408f95;
 	color: #fff;
 }
 
-.page-nav__item:hover,
-.wp-pagenavi a:hover {
+.page-nav__item:hover {
 	background-color: #408f95;
 	color: #fff;
 }
 
 .page-nav__prev,
-.page-nav__next,
-.wp-pagenavi .previouspostslink,
-.wp-pagenavi .nextpostslink {
-	display: inline-block;
-	font-size: 0; /* テキストを非表示にするためにフォントサイズを0に設定 */
-	height: 2.375rem;
-	padding: 1rem;
-	position: relative;
-	text-align: center;
-	width: 2.375rem;
+.page-nav__next {
+	display: block;
+	height: 100%;
+	padding: 1rem; /* クリック範囲を広げるためにパディングを追加 */
+	text-align: center; /* コンテンツを中央に配置 */
+	width: 100%;
 }
 
 .page-nav__prev:hover,
-.page-nav__next:hover,
-.wp-pagenavi .previouspostslink:hover,
-.wp-pagenavi .nextpostslink:hover {
+.page-nav__next:hover {
 	background-color: #408f95;
 }
 
-.page-nav__next::after,
-.wp-pagenavi .nextpostslink::after {
+.page-nav__item-prev {
+	border: 1px solid #408f95;
+	color: #408f95;
+	height: 2.375rem;
+	position: relative;
+	width: 2.375rem;
+}
+
+.page-nav__item-next {
+	border: 1px solid #408f95;
+	color: #408f95;
+	height: 2.375rem;
+	margin-left: 2.5rem;
+	position: relative;
+	width: 2.375rem;
+}
+
+.page-nav__item-next.active {
+	background-color: #408f95;
+}
+
+.page-nav__next {
+	position: relative;
+}
+
+.page-nav__next::after {
 	border-right: 1px solid #408f95;
 	border-top: 1px solid #408f95;
 	content: "";
 	height: 0.6875rem;
-	left: 15%;
 	position: absolute;
-	top: 45%;
-	transform: rotate(45deg) translateY(-50%);
+	right: 55%;
+	top: 50%;
+	transform: rotate(45deg) translateY(-56%);
 	transition: border-color 0.3s ease;
 	width: 0.6875rem;
 }
 
-.page-nav__prev::after,
-.wp-pagenavi .previouspostslink::after {
-	border-right: 1px solid #408f95;
-	border-top: 1px solid #408f95;
-	content: "";
-	height: 0.6875rem;
-	left: 45%;
-	position: absolute;
-	top: 25%;
-	transform: rotate(221deg) translateY(-50%);
-	transition: border-color 0.3s ease;
-	width: 0.6875rem;
-}
-
-.page-nav__next:hover::after,
-.page-nav__prev:hover::after,
-.wp-pagenavi .nextpostslink:hover::after,
-.wp-pagenavi .previouspostslink:hover::after {
+.page-nav__next:hover:after {
 	border-right: 1px solid #fff;
 	border-top: 1px solid #fff;
 }
 
-.wp-pagenavi .nextpostslink::after {
-	right: 10px; /* 調整が必要な場合 */
+.page-nav__next.click::after {
+	border-right: 1px solid #fff;
+	border-top: 1px solid #fff;
 }
 
-.wp-pagenavi .previouspostslink::after {
-	left: 1.1rem; /* 調整が必要な場合 */
-	top: 0.58rem;
-	transform: rotate(-135deg) translateY(-50%);
+.page-nav__prev {
+	position: relative;
+}
+
+.page-nav__prev::after {
+	border-right: 1px solid #408f95;
+	border-top: 1px solid #408f95;
+	content: "";
+	height: 0.6875rem;
+	position: absolute;
+	right: 45%;
+	top: 50%;
+	transform: rotate(-136deg) translateY(60%);
+	transition: border-color 0.3s ease;
+	width: 0.6875rem;
+}
+
+.page-nav__prev:hover:after {
+	border-right: 1px solid #fff;
+	border-top: 1px solid #fff;
+}
+
+.page-nav__prev.click::after {
+	border-right: 1px solid #fff;
+	border-top: 1px solid #fff;
+}
+
+.page-nav__prev span,
+.page-nav__next span {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+.page-nav__prev,
+.page-nav__next {
+	position: relative;
+	z-index: 10;
 }
 
 .page-price {
@@ -3320,6 +3334,18 @@ body.modal-open {
 	text-align: center;
 }
 
+.review-area__imgs {
+	aspect-ratio: 294/218;
+	height: 100%;
+}
+
+.review-area__img {
+	-o-object-fit: cover;
+	height: inherit;
+	object-fit: cover;
+	width: 100%;
+}
+
 .section-title {
 	display: inline-block;
 	text-align: center;
@@ -3390,6 +3416,14 @@ body.modal-open {
 }
 
 .sidebar__campaign-cards.campaign-cards {
+	grid-gap: 2.5rem;
+	display: grid;
+	gap: 2.5rem;
+	justify-items: center;
+	margin-top: 1.5rem;
+}
+
+.sidebar__campaign-cards {
 	grid-gap: 2.5rem;
 	display: grid;
 	gap: 2.5rem;
@@ -3637,15 +3671,17 @@ body.modal-open {
 }
 
 .voice-card__imgs {
+	aspect-ratio: 155/117;
 	flex: 1;
-	margin-top: 0.5rem;
+	margin-top: 1rem;
 }
 
 .voice-card__img {
 	-o-object-fit: cover;
-	aspect-ratio: 155/117;
 	display: block;
+	height: 100%;
 	object-fit: cover;
+	width: 100%;
 }
 
 .voice-card__content {
@@ -3724,6 +3760,81 @@ body.modal-open {
 	text-align: center;
 }
 
+.wp-pagenavi {
+	display: flex;
+	gap: 0.75rem;
+	justify-content: center;
+}
+
+.wp-pagenavi a,
+.wp-pagenavi span {
+	align-items: center;
+	background-color: #fff;
+	border: 1px solid #408f95;
+	color: #408f95;
+	display: inline-flex;
+	font-family: "Lato", sans-serif;
+	font-size: 1rem;
+	font-weight: 700;
+	height: 2.375rem;
+	justify-content: center;
+	transition: 0.3s ease;
+	width: 2.375rem;
+}
+
+.wp-pagenavi a:hover,
+.wp-pagenavi span:hover {
+	background-color: #408f95;
+	color: #fff;
+}
+
+.wp-pagenavi span.current {
+	background-color: #408f95;
+	color: #fff;
+}
+
+.previouspostslink {
+	margin-right: 2.5rem;
+	position: relative;
+}
+
+.previouspostslink::before {
+	border-right: 1px solid #408f95;
+	border-top: 1px solid #408f95;
+	content: "";
+	height: 0.7rem;
+	position: absolute;
+	right: 1.1rem;
+	top: 0.8rem;
+	transform: rotate(-136deg) translate(-50%, 50%);
+	transition: border-color 0.3s ease;
+	width: 0.7rem;
+}
+
+.nextpostslink {
+	margin-left: 2.5rem;
+	position: relative;
+}
+
+.nextpostslink::before {
+	border-right: 1.5px solid #408f95;
+	border-top: 1.5px solid #408f95;
+	content: "";
+	height: 0.7rem;
+	left: 0.3rem;
+	position: absolute;
+	top: 1.09rem;
+	transform: rotate(45deg) translateY(-50%);
+	transition: border-color 0.3s ease;
+	width: 0.7rem;
+}
+
+.nextpostslink:hover::before,
+.previouspostslink:hover::before {
+	border-right: 1px solid #fff;
+	border-top: 1px solid #fff;
+}
+
 @media screen and (min-width: 768px) {
 
 .u-desktop {
@@ -3775,6 +3886,10 @@ html {
 	margin-top: 7.6rem;
 }
 
+.top-footer {
+	margin-top: 10.1rem;
+}
+
 .top-gallery {
 	margin-top: 7.5rem;
 }
@@ -3792,7 +3907,8 @@ html {
 }
 
 .top-page-about-contact {
-	margin-top: 5rem;
+	margin-top: 8rem;
+	padding-bottom: 10rem;
 }
 
 .top-page-about {
@@ -3941,6 +4057,13 @@ html {
 
 .accordion__content {
 	margin-top: 0.4rem;
+}
+
+.article-card__img {
+	-o-object-fit: cover;
+	height: inherit;
+	object-fit: cover;
+	width: 100%;
 }
 
 .article-cards {
@@ -4298,11 +4421,19 @@ html {
 	width: 100%;
 }
 
+.form__text.form__text--red {
+	margin-top: 0;
+}
+
 .error {
 	background-position: 24% 117%;
 	background-size: 50%;
 	padding-bottom: 9rem;
 	padding-top: 8rem;
+}
+
+.error__outer {
+	margin-top: 8.5rem;
 }
 
 .error__title {
@@ -4446,7 +4577,8 @@ html {
 
 .form__body {
 	margin-top: 0;
-	width: 70%;
+	max-width: 30rem;
+	width: 100%;
 }
 
 .form__text {
@@ -5086,6 +5218,12 @@ html {
 	margin-top: 1.2rem;
 }
 
+.sidebar__campaign-cards {
+	display: flex;
+	flex-direction: column;
+	margin-top: 1.2rem;
+}
+
 .sidebar__campaign-contact {
 	margin-top: 2.5rem;
 }
@@ -5140,7 +5278,7 @@ html {
 	padding-top: 1rem;
 }
 
-.voice-card__img {
+.voice-card__imgs {
 	aspect-ratio: 180/140;
 }
 
@@ -5151,7 +5289,6 @@ html {
 
 .voice-card__detail {
 	display: flex;
-	justify-content: space-between;
 	margin-top: 2rem;
 }
 
@@ -5160,6 +5297,7 @@ html {
 }
 
 .voice-card__category {
+	margin-left: auto;
 	padding: 0.3rem 1rem;
 }
 

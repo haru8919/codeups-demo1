@@ -144,8 +144,8 @@
         <div class="common-mv__inner">
           <div class="common-mv__img">
             <picture>
-              <source srcset="./assets/images/common/price-mv_pc.jpg" media="(min-width:1025px)" />
-              <img src="./assets/images/common/price-mv_sp.jpg" alt="ダイバーが海中で詰まっている様子" />
+              <source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/common/price-mv_pc.jpg" media="(min-width:1025px)" />
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/price-mv_sp.jpg" alt="ダイバーが海中で詰まっている様子" />
             </picture>
             <div class="common-mv__box">
               <h1 class="common-mv__title">Price</h1>
@@ -171,7 +171,7 @@
                 <thead>
                   <div class="page-price__box">
                     <div class="page-price__icons">
-                      <img src="./assets/images/common/price-kujira.svg" alt="クジラアイコン" class="page-price__icon" />
+                      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/price-kujira.svg" alt="クジラアイコン" class="page-price__icon" />
                     </div>
                     <h3 class="page-price__table-title"><span>ライセンス講習</span></h3>
                   </div>
@@ -203,7 +203,7 @@
                 <thead>
                   <div class="page-price__box">
                     <div class="page-price__icons">
-                      <img src="./assets/images/common/price-kujira.svg" alt="クジラアイコン" class="page-price__icon" />
+                      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/price-kujira.svg" alt="クジラアイコン" class="page-price__icon" />
                     </div>
                     <h3 class="page-price__table-title"><span>体験ダイビング</span></h3>
                   </div>
@@ -245,7 +245,7 @@
                 <thead>
                   <div class="page-price__box">
                     <div class="page-price__icons">
-                      <img src="./assets/images/common/price-kujira.svg" alt="クジラアイコン" class="page-price__icon" />
+                      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/price-kujira.svg" alt="クジラアイコン" class="page-price__icon" />
                     </div>
                     <h3 class="page-price__table-title"><span>ファンダイビング</span></h3>
                   </div>
@@ -287,7 +287,7 @@
                 <thead>
                   <div class="page-price__box">
                     <div class="page-price__icons">
-                      <img src="./assets/images/common/price-kujira.svg" alt="クジラアイコン" class="page-price__icon" />
+                      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/price-kujira.svg" alt="クジラアイコン" class="page-price__icon" />
                     </div>
                     <h3 class="page-price__table-title"><span>スペシャルダイビング</span></h3>
                   </div>
@@ -326,7 +326,12 @@
           <div class="contact__wrap">
             <div class="contact__top">
               <div class="contact__logo-wrap">
-                <img src="./assets/images/common/contact-logo.svg" alt="コンタクトロゴ" class="contact__logo" />
+                <img
+                  src="<?php echo get_template_directory_uri(); ?>
+/assets/images/common/contact-logo.svg"
+                  alt="コンタクトロゴ"
+                  class="contact__logo"
+                />
               </div>
               <div class="contact__body">
                 <address class="contact__box">
@@ -358,7 +363,12 @@
         </div>
       </section>
       <button id="topButton" class="top-button">
-        <img src="./assets/images/common/top-back.svg" alt="Page Top" class="top-button__icon" />
+        <img
+          src="<?php echo get_template_directory_uri(); ?>
+/assets/images/common/top-back.svg"
+          alt="Page Top"
+          class="top-button__icon"
+        />
       </button>
     </main>
     <!-- <footer> -->

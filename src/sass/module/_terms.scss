@@ -19,11 +19,7 @@
   width: 7.5rem;
   @include mq("md") {
     left: calc(50% - min(48vw, 38.1rem));
-<<<<<<< HEAD
-    top: 13.4%;
-=======
     top: 0%;
->>>>>>> b0fa8c02 (Migrate from static site to WordPress)
     height: 8.625rem;
     width: 18.125rem;
   }

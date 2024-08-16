@@ -23,3 +23,12 @@
   text-align: center;
   margin-top: 2.5rem;
 }
+.review-area__imgs {
+  aspect-ratio: 294 / 218;
+  height: 100%;
+}
+.review-area__img {
+  width: 100%;
+  height: inherit;
+  object-fit: cover;
+}

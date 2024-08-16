@@ -55,7 +55,13 @@
   line-height: 1.88;
   font-family: $third-font-family;
 }
-
+.campaign-card__imgs {
+  aspect-ratio: 520 / 347;
+}
+.campaign-card__img {
+  width: 100%;
+  height: inherit;
+}
 .campaign-card__description {
   font-size: 1rem;
   font-weight: $normal;

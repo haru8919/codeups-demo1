@@ -21,20 +21,21 @@
             <div class="page-information__category">
                 <ul class="page-information__category-items">
                     <li class="page-information__category-item">
-                        <a href="#" class="page-information__category-link" data-target="license">ライセンス<br
-                                class="u-mobile" />講習</a>
+                        <a href="javascript:void(0);" class="page-information__category-link"
+                            data-target="license">ライセンス<br class="u-mobile" />講習</a>
                     </li>
                     <li class="page-information__category-item">
-                        <a href="#" class="page-information__category-link" data-target="fun-diving">ファン<br
-                                class="u-mobile" />ダイビング</a>
+                        <a href="javascript:void(0);" class="page-information__category-link"
+                            data-target="fun-diving">ファン<br class="u-mobile" />ダイビング</a>
                     </li>
                     <li class="page-information__category-item">
-                        <a href="#" class="page-information__category-link" data-target="experience-diving">体験<br
-                                class="u-mobile" />ダイビング</a>
+                        <a href="javascript:void(0);" class="page-information__category-link"
+                            data-target="experience-diving">体験<br class="u-mobile" />ダイビング</a>
                     </li>
                 </ul>
             </div>
         </div>
+
         <div id="license" class="page-information__wrpper">
             <div class="page-information__box">
                 <h2 class="page-information__title">ライセンス講習</h2>
@@ -43,10 +44,11 @@
                 </p>
             </div>
             <div class="page-information__imgs">
-                <img src="./assets/images/common/page-info_license.jpg" alt="5人のダイバーが泳いでいる様子"
-                    class="page-information__img" />
+                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/page-info_license.jpg"
+                    alt="5人のダイバーが泳いでいる様子" class="page-information__img" />
             </div>
         </div>
+
         <div id="fun-diving" class="page-information__wrpper">
             <div class="page-information__box">
                 <h2 class="page-information__title">ファンダイビング</h2>
@@ -55,10 +57,11 @@
                 </p>
             </div>
             <div class="page-information__imgs">
-                <img src="./assets/images/common/page-info_fundiving.jpg" alt="5人のダイバーが泳いでいる様子"
-                    class="page-information__img" />
+                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/page-info_fundiving.jpg"
+                    alt="5人のダイバーが泳いでいる様子" class="page-information__img" />
             </div>
         </div>
+
         <div id="experience-diving" class="page-information__wrpper">
             <div class="page-information__box">
                 <h2 class="page-information__title">体験ダイビング</h2>
@@ -67,10 +70,14 @@
                 </p>
             </div>
             <div class="page-information__imgs">
-                <img src="./assets/images/common/page-info_fundiving.jpg" alt="5人のダイバーが泳いでいる様子"
-                    class="page-information__img" />
+                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/page-info_fundiving.jpg"
+                    alt="5人のダイバーが泳いでいる様子" class="page-information__img" />
             </div>
         </div>
     </div>
 </section>
+<button id="topButton" class="top-button">
+    <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-back.svg" alt="Page Top"
+        class="top-button__icon" />
+</button>
 <?php get_footer(); ?>

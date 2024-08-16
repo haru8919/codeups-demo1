@@ -1,4 +1,19 @@
-<?php if (!is_404()) : ?>
+<?php
+// URL変数の設定
+$campaign = esc_url(home_url('/campaign/'));
+$aboutus = esc_url(home_url('/aboutus/'));
+$information = esc_url(home_url('/information/'));
+$blog = esc_url(home_url('/blog/'));
+$voice = esc_url(home_url('/voice/'));
+$price = esc_url(home_url('/price/'));
+$faq = esc_url(home_url('/faq/'));
+$contact = esc_url(home_url('/contact/'));
+$privacypolicy = esc_url( home_url('/privacypolicy/'));
+$terms = esc_url( home_url('/terms/'));
+$sitemap = esc_url( home_url('/sitemap/'));
+?>
+
+<?php if (!is_404() && !is_page('contact')) : ?>
 <section id="contact" class="contact top-page-about-contact">
     <div class="contact__inner inner">
         <div class="contact__wrap">
@@ -32,7 +47,7 @@
                     <h2 class="contact__title-sub">ご予約・お問い合わせはコチラ</h2>
                 </div>
                 <div class="contact__btn-wrap">
-                    <a href="http://codeupswordpress.local/contact/" class="btn">
+                    <a href="<?php echo $contact;?>" class="btn">
                         <span>Contact us</span>
                     </a>
                 </div>
@@ -61,21 +76,29 @@
                 <div class="footer-menu__body footer-menu__body--left">
                     <div class="footer-menu__box-pc">
                         <ul class="footer-menu__items">
-                            <li class="footer-menu__item"><a href="page-campaign.html"
+                            <li class="footer-menu__item"><a href="<?php echo $campaign; ?>"
                                     class="footer-menu__link-top">キャンペーン</a></li>
-                            <li class="footer-menu__item"><a href="error.html" class="footer-menu__link">ライセンス取得</a>
+                            <li class="footer-menu__item"><a
+                                    href="<?php echo add_query_arg('term', 'ライセンス講習', get_post_type_archive_link('campaign')); ?>"
+                                    class="footer-menu__link">ライセンス取得</a>
                             </li>
-                            <li class="footer-menu__item"><a href="#" class="footer-menu__link">貸切体験ダイビング</a></li>
-                            <li class="footer-menu__item"><a href="#" class="footer-menu__link">ナイトダイビング</a></li>
+                            <li class="footer-menu__item"><a
+                                    href="<?php echo add_query_arg('term', '貸切ダイビング', get_post_type_archive_link('campaign')); ?>"
+                                    class="footer-menu__link">貸切体験ダイビング</a>
+                            </li>
+                            <li class="footer-menu__item"><a
+                                    href="<?php echo add_query_arg('term', 'ナイトダイビング', get_post_type_archive_link('campaign')); ?>"
+                                    class="footer-menu__link">ナイトダイビング</a>
+                            </li>
                         </ul>
                         <ul class="footer-menu__items">
-                            <li class="footer-menu__item"><a href="page-about.html"
+                            <li class="footer-menu__item"><a href="<?php echo $about; ?>"
                                     class="footer-menu__link-top">私たちについて</a></li>
                         </ul>
                     </div>
                     <div class="footer-menu__box-pc">
                         <ul class="footer-menu__items">
-                            <li class="footer-menu__item"><a href="page-information.html"
+                            <li class="footer-menu__item"><a href="<?php echo $information; ?>"
                                     class="footer-menu__link-top">ダイビング情報</a></li>
                             <div class="footer-menu__item"><a href="" class="footer-menu__link"
                                     data-target="license">ライセンス講習</a></div>
@@ -93,32 +116,36 @@
                 <div class="footer-menu__body">
                     <div class="footer-menu__box-pc">
                         <ul class="footer-menu__items">
-                            <li class="footer-menu__item"><a href="page-voice.html"
+                            <li class="footer-menu__item"><a href="<?php echo $voice; ?>"
                                     class="footer-menu__link-top">お客様の声</a></li>
                         </ul>
                         <ul class="footer-menu__items">
-                            <li class="footer-menu__item"><a href="page-price.html"
+                            <li class="footer-menu__item"><a href="<?php echo $price; ?>"
                                     class="footer-menu__link-top">料金一覧</a></li>
-                            <li class="footer-menu__item"><a href="#" class="footer-menu__link">ライセンス講習</a></li>
-                            <li class="footer-menu__item"><a href="#" class="footer-menu__link">体験ダイビング</a></li>
-                            <li class="footer-menu__item"><a href="#" class="footer-menu__link">ファンダイビング</a></li>
+                            <li class="footer-menu__item"><a href="<?php echo $price; ?>"
+                                    class="footer-menu__link">ライセンス講習</a></li>
+                            <li class="footer-menu__item"><a href="<?php echo $price; ?>"
+                                    class="footer-menu__link">体験ダイビング</a></li>
+                            <li class="footer-menu__item"><a href="<?php echo $price; ?>"
+                                    class="footer-menu__link">ファンダイビング</a></li>
                         </ul>
                     </div>
                     <div class="footer-menu__box-pc footer__box-pc--special">
                         <ul class="footer-menu__items">
-                            <li class="footer-menu__item"><a href="page-faq.html"
+                            <li class="footer-menu__item"><a href="<?php echo $faq; ?>"
                                     class="footer-menu__link-top">よくある質問</a></li>
                         </ul>
                         <ul class="drawer-menu__items">
-                            <li class="footer-menu__item"><a href="privacy.html"
+                            <li class="footer-menu__item"><a href="<?php echo $privacypolicy; ?>"
                                     class="footer-menu__link-top">プライバシーポリシー</a></li>
                         </ul>
                         <ul class="footer-menu__items">
-                            <li class="footer-menu__item"><a href="terms.html" class="footer-menu__link-top">利用規約</a>
+                            <li class="footer-menu__item"><a href="<?php echo $terms; ?>"
+                                    class="footer-menu__link-top">利用規約</a>
                             </li>
                         </ul>
                         <ul class="footer-menu__items">
-                            <li class="footer-menu__item"><a href="page-contact.html"
+                            <li class="footer-menu__item"><a href="<?php echo $contact; ?>"
                                     class="footer-menu__link-top">お問い合わせ</a></li>
                         </ul>
                     </div>

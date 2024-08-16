@@ -21,52 +21,41 @@
         <div class="page-blog__wrapper">
             <div class="page-blog__main">
                 <div class="page-blog__cards blog-cards blog-cards--2col">
-                    <?php
-                    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-                    $args = array(
-                        'post_type' => 'post',
-                        'posts_per_page' => 10,
-                        'paged' => $paged
-                    );
-                    $query = new WP_Query($args);
-
-                    if ($query->have_posts()) :
-                        while ($query->have_posts()) : $query->the_post();
-                    ?>
+                    <?php if (have_posts()): ?>
+                    <?php while (have_posts()) : the_post(); ?>
                     <a href="<?php the_permalink(); ?>" class="blog-cards__item blog-card">
                         <div class="blog-card__img-wrap">
-                            <?php if (has_post_thumbnail()) : ?>
-                            <?php the_post_thumbnail('full', array('class' => 'blog-card__img')); ?>
+                            <?php if ( has_post_thumbnail() ) : ?>
+                            <?php the_post_thumbnail( 'full', ['class' => 'blog-card__img', 'alt' => get_the_title() ] ); ?>
+                            <?php else : ?>
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/noimage.jpg"
+                                alt="NOimage" class="blog-card__img" />
                             <?php endif; ?>
                         </div>
                         <div class="blog-card__body">
                             <time class="blog-card__date"
                                 datetime="<?php the_time('Y.m/d'); ?>"><?php the_time('Y.m/d'); ?></time>
                             <p class="blog-card__title"><?php the_title(); ?></p>
-                            <p class="blog-card__text"><?php the_excerpt(); ?></p>
+                            <p class="blog-card__text">
+                                <?php the_excerpt(); ?>
+                            </p>
                         </div>
                     </a>
-                    <?php
-                        endwhile;
-                    endif;
-                    wp_reset_postdata();
-                    ?>
+                    <?php endwhile; ?>
+                    <?php else: ?>
+                    <p>まだ記事がありません</p>
+                    <?php endif; ?>
                 </div>
                 <div class="page-campaign__nav page-nav">
-                    <nav aria-label="page-nav">
-                        <ul class="page-nav__items">
-                            <?php
-                            if (function_exists('wp_pagenavi')) {
-                                wp_pagenavi(array('query' => $query));
-                            }
-                            ?>
-                        </ul>
-                    </nav>
+                    <?php wp_pagenavi(); ?>
                 </div>
             </div>
             <?php get_sidebar(); ?>
         </div>
     </div>
 </section>
-
+<button id="topButton" class="top-button">
+    <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-back.svg" alt="Page Top"
+        class="top-button__icon" />
+</button>
 <?php get_footer(); ?>

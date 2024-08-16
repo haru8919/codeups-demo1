@@ -134,61 +134,32 @@
     });
   });
 
-  // 画像のモーダル
-  document.addEventListener("DOMContentLoaded", function () {
-    // すべてのギャラリー画像を取得
-    var galleryImages = document.querySelectorAll(".gallery-items__img-link");
-    // モーダル要素を取得
-    var modal = document.querySelector(".gallery__modal");
-    var modalImage = document.querySelector(".gallery__modal-img");
-
-    // 画像をクリックしたときのイベントリスナーを追加
-    galleryImages.forEach(function (image) {
-      image.addEventListener("click", function () {
-        // クリックされた画像のソースを取得
-        var src = this.src;
-        // モーダル画像のソースを設定
-        modalImage.src = src;
-        // モーダルを表示
-        modal.style.display = "block";
-        // 0.1秒後にフェードイン効果を適用するクラスを追加
-        setTimeout(function () {
-          modal.classList.add("show");
-        }, 10);
-        // bodyにクラスを追加してスクロールを無効にする
-        document.body.classList.add("modal-open");
-      });
-    });
-
-    // モーダルを閉じるためのイベントリスナーを追加
-    modal.addEventListener("click", function () {
-      // フェードアウト効果を適用するためにクラスを削除
-      modal.classList.remove("show");
-      // トランジション終了後にモーダルを非表示にする
-      modal.addEventListener("transitionend", function handleTransitionEnd() {
-        modal.style.display = "none";
-        // イベントリスナーの削除
-        modal.removeEventListener("transitionend", handleTransitionEnd);
-      });
-      // bodyからクラスを削除してスクロールを有効にする
-      document.body.classList.remove("modal-open");
-    });
-  });
-
   // informationクリック記事呼び出し
   $(document).ready(function () {
     var $footerLinks = $(".footer-menu__link");
     var $categoryLinks = $(".page-information__category-link");
 
-    // クリックイベントを処理する関数
     function handleClick(event, targetId) {
       event.preventDefault();
 
-      // URLにクエリパラメータを追加してpage-information.htmlに遷移
-      window.location.href = "page-information.html?tab=".concat(targetId);
+      // すべてのリンクから.clickedクラスを削除
+      $footerLinks.removeClass("clicked");
+      $categoryLinks.removeClass("clicked");
+
+      // すべてのwrpperから.activeクラスを削除
+      $(".page-information__wrpper").removeClass("active");
+
+      // クリックされたリンクに.clickedクラスを追加
+      $(".footer-menu__link[data-target='" + targetId + "']").addClass("clicked");
+      $(".page-information__category-link[data-target='" + targetId + "']").addClass("clicked");
+
+      // 対応するwrpperに.activeクラスを追加
+      $("#" + targetId).addClass("active");
+
+      // URLにクエリパラメータを追加してpage-information.phpに遷移
+      window.location.href = myScriptData.pageInformationUrl + "?tab=" + targetId;
     }
 
-    // Footerメニューリンクのクリックイベントを設定
     $footerLinks.each(function () {
       var targetId = $(this).data("target");
       if (targetId) {
@@ -198,7 +169,6 @@
       }
     });
 
-    // カテゴリーリンクのクリックイベントを設定
     $categoryLinks.each(function () {
       var targetId = $(this).data("target");
       if (targetId) {
@@ -208,18 +178,16 @@
       }
     });
 
-    // 最後に表示された記事をURLのクエリパラメータから取得して表示する
     var urlParams = new URLSearchParams(window.location.search);
     var lastActiveId = urlParams.get("tab");
     if (lastActiveId) {
-      $("#".concat(lastActiveId)).addClass("active");
-      $(".footer-menu__link[data-target='".concat(lastActiveId, "']")).addClass("clicked");
-      $(".page-information__category-link[data-target='".concat(lastActiveId, "']")).addClass("clicked");
+      $("#" + lastActiveId).addClass("active");
+      $(".footer-menu__link[data-target='" + lastActiveId + "']").addClass("clicked");
+      $(".page-information__category-link[data-target='" + lastActiveId + "']").addClass("clicked");
     } else {
-      // デフォルトで表示する記事がある場合はここで設定
-      $(".page-information__wrpper").first().addClass("active"); // 例えば最初の記事を表示
-      $(".footer-menu__link").first().addClass("clicked"); // 最初のフッターリンクに.clickedクラスを追加
-      $(".page-information__category-link").first().addClass("clicked"); // 最初のカテゴリーリンクに.clickedクラスを追加
+      $(".page-information__wrpper").first().addClass("active");
+      $(".footer-menu__link").first().addClass("clicked");
+      $(".page-information__category-link").first().addClass("clicked");
     }
   });
 
@@ -247,7 +215,6 @@
       $(this).toggleClass("is-open");
     });
   });
-
   $(document).ready(function () {
     // 最初の .accordion__title-text 要素をクリックする
     $(".accordion__title-text").first().click();
@@ -266,15 +233,15 @@
   });
 
   // contactのSendボタン
-  document.addEventListener("DOMContentLoaded", function () {
-    var checkbox = document.getElementById("agree");
-    var checkboxTxt = document.querySelector(".form__checkbox-txt");
-    checkbox.addEventListener("change", function () {
-      if (checkbox.checked) {
-        checkboxTxt.classList.add("checked");
-      } else {
-        checkboxTxt.classList.remove("checked");
-      }
-    });
-  });
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   var checkbox = document.getElementById("agree");
+  //   var checkboxTxt = document.querySelector(".form__checkbox-txt");
+  //   checkbox.addEventListener("change", function () {
+  //     if (checkbox.checked) {
+  //       checkboxTxt.classList.add("checked");
+  //     } else {
+  //       checkboxTxt.classList.remove("checked");
+  //     }
+  //   });
+  // });
 })(jQuery);

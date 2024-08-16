@@ -5,15 +5,10 @@
   border: 1px solid #408f95;
   color: #fff;
   display: inline-block;
-<<<<<<< HEAD
-  font-weight: bold;
-  padding: 0.9375rem 2.4375rem;
-=======
   font-size: 0.875rem;
   font-weight: bold;
   padding: 0.9375rem 2.4375rem;
   line-height: 1.571;
->>>>>>> b0fa8c02 (Migrate from static site to WordPress)
   position: relative;
   text-decoration: none;
   text-align: justify;
@@ -112,16 +107,6 @@
   transform-origin: left top;
   transform: scale(1, 1);
 }
-<<<<<<< HEAD
-.btn--send {
-  padding: 0.9375rem 3.2rem; // 修正したいpadding
-}
-
-.btn--send span::before {
-  top: 30%; // 修正したいtop
-  width: 120%; // 修正したいwidth
-  right: -168%; // 修正したいright
-=======
 // .btn--send {
 //   padding: 0.9375rem 3.2rem; // 修正したいpadding
 //   margin-bottom: 0;
@@ -217,5 +202,4 @@ input[type="submit"] {
 .btn--send:hover:after {
   transform-origin: left top;
   transform: scale(1, 1);
->>>>>>> b0fa8c02 (Migrate from static site to WordPress)
 }

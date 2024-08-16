@@ -1,3 +1,4 @@
+"use strict";
 //画像のモーダル
 document.addEventListener("DOMContentLoaded", function () {
   // すべてのギャラリー画像を取得

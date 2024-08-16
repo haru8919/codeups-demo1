@@ -1,36 +1,69 @@
+<?php
+// URL変数の設定
+$campaign = esc_url(home_url('/campaign/'));
+$aboutus = esc_url(home_url('/aboutus/'));
+$information = esc_url(home_url('/information/'));
+$blog = esc_url(home_url('/blog/'));
+$voice = esc_url(home_url('/voice/'));
+$price = esc_url(home_url('/price/'));
+$faq = esc_url(home_url('/faq/'));
+$contact = esc_url(home_url('/contact/'));
+?>
 <?php get_header(); ?>
+
 <!-- メインビュー -->
 <div class="mv">
     <div class="mv__inner">
         <div class="mv__white-background">
             <div class="mv__title-wrap mv__title-wrap--green">
-                <h2 class="mv__title"><?php bloginfo("name"); ?></h2>
-                <p class="mv__title-sub"><?php bloginfo('description'); ?></p>
+                <h2 class="mv__title">DIVING</h2>
+                <p class="mv__title-sub">into&nbsp;the&nbsp;ocean</p>
             </div>
             <div class="slide-in"></div>
         </div>
         <div class="mv__slider swiper js-mv-swiper">
             <div class="swiper-wrapper">
-                <?php for ($i = 1; $i <= 4; $i++) : ?>
-                <div class="swiper-slide">
-                    <div class="swiper-slide__img">
-                        <picture>
-                            <source srcset="<?php echo esc_url(get_option('slider_image_pc_' . $i)); ?>"
-                                media="(min-width:765px)" />
-                            <img src="<?php echo esc_url(get_option('slider_image_mobile_' . $i)); ?>"
-                                alt="<?php echo esc_attr(get_option('slider_image_alt_' . $i)); ?>" />
-                        </picture>
-                    </div>
-                </div>
-                <?php endfor; ?>
-                <div class="mv__title-wrap">
-                    <h2 class="mv__title"><?php bloginfo("name"); ?></h2>
-                    <p class="mv__title-sub"><?php bloginfo('description'); ?></p>
-                </div>
+                <?php
+                // SCFから画像を取得
+                $pc_images = SCF::get('pc-img'); // PC用画像
+                $sp_images = SCF::get('sp-img'); // スマホ用画像
+
+                // PC用画像スライドの出力
+                foreach ($pc_images as $pc_image) {
+                    $pc_img_url = wp_get_attachment_image_url($pc_image, 'full');
+                    echo '<div class="swiper-slide">';
+                    echo '<div class="swiper-slide__img">';
+                    echo '<picture>';
+                    echo '<source srcset="' . esc_url($pc_img_url) . '" media="(min-width:765px)" />';
+                    echo '<img src="' . esc_url($pc_img_url) . '" alt="スライダー画像" />';
+                    echo '</picture>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+
+                // スマホ用画像スライドの出力
+                foreach ($sp_images as $sp_image) {
+                    $sp_img_url = wp_get_attachment_image_url($sp_image, 'full');
+                    echo '<div class="swiper-slide">';
+                    echo '<div class="swiper-slide__img">';
+                    echo '<picture>';
+                    echo '<source srcset="' . esc_url($sp_img_url) . '" media="(max-width:764px)" />';
+                    echo '<img src="' . esc_url($sp_img_url) . '" alt="スライダー画像" />';
+                    echo '</picture>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+                ?>
+            </div>
+            <div class="mv__title-wrap">
+                <h2 class="mv__title">DIVING</h2>
+                <p class="mv__title-sub">into&nbsp;the&nbsp;ocean</p>
             </div>
         </div>
     </div>
 </div>
+
+
 
 <!-- campaign -->
 <section id="campaign" class="campaign top-campaign">
@@ -157,7 +190,7 @@
             </div>
         </div>
         <div class="campaign__contact">
-            <a href="page-campaign.html" class="btn">
+            <a href="<?php echo $campaign; ?>" class="btn">
                 <span>View more</span>
             </a>
         </div>
@@ -202,7 +235,7 @@
                         ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
                     </p>
                     <div class="about__content-box">
-                        <a href="page-about.html" class="btn"><span>View more</span></a>
+                        <a href="<?php echo $aboutus; ?>" class="btn"><span>View more</span></a>
                     </div>
                 </div>
             </div>
@@ -230,7 +263,7 @@
                     正規登録店として、安心安全に初めての方でも安心安全にライセンス取得をサポート致します。
                 </p>
                 <div class="information__btn-wrap">
-                    <a href="page-information.html" class="btn">
+                    <a href="<?php echo $information; ?>" class="btn">
                         <span>View more</span>
                     </a>
                 </div>
@@ -292,7 +325,7 @@
             </a>
         </div>
         <div class="blog__btn-wrap">
-            <a href="page-blog.html" class="btn">
+            <a href="<?php echo $blog; ?>" class="btn">
                 <span>View more</span>
             </a>
         </div>
@@ -362,7 +395,7 @@
             </div>
         </div>
         <div class="voice__btn-wrap">
-            <a href="page-voice.html" class="btn">
+            <a href="<?php echo $voice; ?>" class="btn">
                 <span>View more</span>
             </a>
         </div>
@@ -387,74 +420,59 @@
                 </picture>
             </div>
             <div class="price__content">
+                <?php
+                // SCFのグループフィールドデータを取得
+                $price_groups = SCF::get('price-genre');
+
+                if ($price_groups) :
+                    foreach ($price_groups as $price_group) :
+                        $category = esc_html($price_group['category']); // カテゴリー
+                        $product_1 = esc_html($price_group['product_1']); // 商品名1
+                        $price_1 = filter_var($price_group['price_1'], FILTER_SANITIZE_NUMBER_INT); // 値段1
+                        $product_2 = esc_html($price_group['product_2']); // 商品名2
+                        $price_2 = filter_var($price_group['price_2'], FILTER_SANITIZE_NUMBER_INT); // 値段2
+                        $product_3 = esc_html($price_group['product_3']); // 商品名3
+                        $price_3 = filter_var($price_group['price_3'], FILTER_SANITIZE_NUMBER_INT); // 値段3
+                        $product_4 = esc_html($price_group['product_4']); // 商品名4
+                        $price_4 = filter_var($price_group['price_4'], FILTER_SANITIZE_NUMBER_INT); // 値段4
+                ?>
+
                 <div class="price__box">
-                    <h3 class="price__lead">ライセンス講習</h3>
+                    <h3 class="price__lead"><?php echo $category; ?></h3>
                     <div class="price__menu">
-                        <p class="price__name">オープンウォーターダイバーコース</p>
-                        <p class="price__cost">&yen;50,000</p>
+                        <?php if (!empty($product_1) && !empty($price_1)) : ?>
+                        <p class="price__name"><?php echo $product_1; ?></p>
+                        <p class="price__cost">&yen;<?php echo number_format($price_1); ?></p>
+                        <?php endif; ?>
                     </div>
                     <div class="price__menu">
-                        <p class="price__name">アドバンスドオープンウォーターコース</p>
-                        <p class="price__cost">&yen;60,000</p>
+                        <?php if (!empty($product_2) && !empty($price_2)) : ?>
+                        <p class="price__name"><?php echo $product_2; ?></p>
+                        <p class="price__cost">&yen;<?php echo number_format($price_2); ?></p>
+                        <?php endif; ?>
                     </div>
                     <div class="price__menu">
-                        <p class="price__name">レスキュー&plus;EFRコース</p>
-                        <p class="price__cost">&yen;70,000</p>
+                        <?php if (!empty($product_3) && !empty($price_3)) : ?>
+                        <p class="price__name"><?php echo $product_3; ?></p>
+                        <p class="price__cost">&yen;<?php echo number_format($price_3); ?></p>
+                        <?php endif; ?>
+                    </div>
+                    <div class="price__menu">
+                        <?php if (!empty($product_4) && !empty($price_4)) : ?>
+                        <p class="price__name"><?php echo $product_4; ?></p>
+                        <p class="price__cost">&yen;<?php echo number_format($price_4); ?></p>
+                        <?php endif; ?>
                     </div>
                 </div>
-                <div class="price__box">
-                    <h3 class="price__lead">体験ダイビング</h3>
-                    <div class="price__menu">
-                        <p class="price__name">ビーチ体験ダイビング(半日)</p>
-                        <p class="price__cost">&yen;7,000</p>
-                    </div>
-                    <div class="price__menu">
-                        <p class="price__name">ビーチ体験ダイビング(1日)</p>
-                        <p class="price__cost">&yen;14,000</p>
-                    </div>
-                    <div class="price__menu">
-                        <p class="price__name">ボート体験ダイビング(半日)</p>
-                        <p class="price__cost">&yen;10,000</p>
-                    </div>
-                    <div class="price__menu">
-                        <p class="price__name">ボート体験ダイビング(1日)</p>
-                        <p class="price__cost">&yen;18,000</p>
-                    </div>
-                </div>
-                <div class="price__box">
-                    <h3 class="price__lead">ファンダイビング</h3>
-                    <div class="price__menu">
-                        <p class="price__name">ビーチダイビング(2ダイブ)</p>
-                        <p class="price__cost">&yen;14,000</p>
-                    </div>
-                    <div class="price__menu">
-                        <p class="price__name">ボートダイビング(2ダイブ)</p>
-                        <p class="price__cost">&yen;18,000</p>
-                    </div>
-                    <div class="price__menu">
-                        <p class="price__name">スペシャルダイビング(2ダイブ)</p>
-                        <p class="price__cost">&yen;24,000</p>
-                    </div>
-                    <div class="price__menu">
-                        <p class="price__name">ナイトダイビング(1ダイブ)</p>
-                        <p class="price__cost">&yen;10,000</p>
-                    </div>
-                </div>
-                <div class="price__box">
-                    <h3 class="price__lead">スペシャルダイビング</h3>
-                    <div class="price__menu">
-                        <p class="price__name">貸切ダイビング(2ダイブ)</p>
-                        <p class="price__cost">&yen;24,000</p>
-                    </div>
-                    <div class="price__menu">
-                        <p class="price__name">1日ダイビング(3ダイブ)</p>
-                        <p class="price__cost">&yen;32,000</p>
-                    </div>
-                </div>
+
+                <?php
+                    endforeach;
+                endif;
+                ?>
             </div>
         </div>
         <div class="price__btn-wrap">
-            <a href="page-price.html" class="btn">
+            <a href="<?php echo $price; ?>" class="btn">
                 <span>View more</span>
             </a>
         </div>
@@ -464,6 +482,7 @@
             class="price__visual-img" />
     </div>
 </section>
+
 
 <button id="topButton" class="top-button">
     <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-back.svg" alt="Page Top"
