@@ -20,7 +20,7 @@
   content: ">";
   color: $black;
 }
-.breadcrumb__item.breadcrumb__item--white:not(:last-child)::after {
+.breadcrumb__item--white {
   color: $white;
 }
 .breadcrumb__link {
@@ -45,4 +45,8 @@
     padding-right: $padding-pc;
     padding-left: $padding-pc;
   }
+}
+.breadcrumb-border {
+  display: inline-block;
+  margin: 0 auto;
 }

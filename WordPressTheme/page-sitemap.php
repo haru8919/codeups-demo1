@@ -1,4 +1,10 @@
 <?php
+/*
+Template Name: Sitemap Page
+*/
+?>
+
+<?php
 // URL変数の設定
 $campaign = esc_url(home_url('/campaign/'));
 $aboutus = esc_url(home_url('/aboutus/'));
@@ -54,19 +60,22 @@ $sitemap = esc_url( home_url('/sitemap/'));
                                         class="footer-menu__link footer-menu__link--black">ナイトダイビング</a></li>
                             </ul>
                             <ul class="footer-menu__items">
-                                <li class="footer-menu__item"><a href="<?php echo $about; ?>"
+                                <li class="footer-menu__item"><a href="<?php echo $aboutus; ?>"
                                         class="footer-menu__link-top footer-menu__link-top--black">私たちについて</a></li>
                             </ul>
                         </div>
                         <div class="footer-menu__box-pc footer-menu__box-pc--black">
                             <ul class="footer-menu__items">
                                 <li class="footer-menu__item"><a href="<?php echo $information; ?>"
-                                        class="footer-menu__link-top">ダイビング情報</a></li>
-                                <div class="footer-menu__item"><a href="" class="footer-menu__link"
+                                        class="footer-menu__link-top footer-menu__link-top--black">ダイビング情報</a></li>
+                                <div class="footer-menu__item"><a href=""
+                                        class="footer-menu__link footer-menu__link--black"
                                         data-target="license">ライセンス講習</a></div>
-                                <div class="footer-menu__item"><a href="" class="footer-menu__link"
+                                <div class="footer-menu__item"><a href=""
+                                        class="footer-menu__link footer-menu__link--black"
                                         data-target="experience-diving">体験ダイビング</a></div>
-                                <div class="footer-menu__item"><a href="" class="footer-menu__link"
+                                <div class="footer-menu__item"><a href=""
+                                        class="footer-menu__link footer-menu__link--black"
                                         data-target="fun-diving">ファンダイビング</a></div>
                             </ul>
                             <ul class="footer-menu__items">

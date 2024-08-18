@@ -42,18 +42,19 @@
                     <div class="blog-single__nav page-nav">
                         <nav aria-label="page-nav">
                             <ul class="page-nav__items">
+                                <?php if (get_next_post()) : // 次の投稿を前に ?>
                                 <li class="page-nav__item-prev">
-                                    <?php if (get_previous_post()) : ?>
                                     <a class="page-nav__prev"
-                                        href="<?php echo get_permalink(get_previous_post()); ?>"><span></span></a>
-                                    <?php endif; ?>
-                                </li>
-                                <li class="page-nav__item-next blog-single__nav--single">
-                                    <?php if (get_next_post()) : ?>
-                                    <a class="page-nav__next"
                                         href="<?php echo get_permalink(get_next_post()); ?>"><span></span></a>
                                     <?php endif; ?>
                                 </li>
+                                <?php if (get_previous_post()) : // 前の投稿を次に ?>
+                                <li class="page-nav__item-next blog-single__nav--single">
+                                    <a class="page-nav__next"
+                                        href="<?php echo get_permalink(get_previous_post()); ?>"><span></span></a>
+                                    <?php endif; ?>
+                                </li>
+
                             </ul>
                         </nav>
                     </div>

@@ -28,9 +28,13 @@ $sitemap = esc_url( home_url('/sitemap/'));
     <header class="header">
         <div class="header__inner">
             <h1 class="header__logo">
+                <?php if (!is_front_page()) : ?>
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="logo-link">
+                    <?php endif; ?>
                     <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/header-logo.svg" alt="ヘッダーロゴ" />
+                    <?php if (!is_front_page()) : ?>
                 </a>
+                <?php endif; ?>
             </h1>
             <div class="header__hamburger hamburger js-hamburger u-mobile">
                 <span></span>
@@ -123,6 +127,11 @@ $sitemap = esc_url( home_url('/sitemap/'));
                                 <ul class="drawer-menu__items">
                                     <li class="drawer-menu__item">
                                         <a href="<?php echo $contact; ?>" class="drawer-menu__link-top">お問い合わせ</a>
+                                    </li>
+                                </ul>
+                                <ul class="drawer-menu__items">
+                                    <li class="drawer-menu__item">
+                                        <a href="<?php echo $sitemap; ?>" class="drawer-menu__link-top">サイトマップ</a>
                                     </li>
                                 </ul>
                             </div>

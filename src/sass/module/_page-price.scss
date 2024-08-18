@@ -3,9 +3,11 @@
   position: relative;
 }
 .page-price__inner.inner {
-  max-width: 46.75rem;
-  width: 100%;
-  position: relative;
+  @include mq("md") {
+    max-width: 46.75rem;
+    width: 100%;
+    position: relative;
+  }
 }
 .page-price__inner::before {
   background: url(../images/common/page-campaign.pc.svg) no-repeat center / contain;
@@ -119,7 +121,6 @@
   color: $black;
   line-height: 1.5;
   padding: 0rem 1.5rem;
-  white-space: nowrap;
   width: 100%;
   @include mq("md") {
     text-align: left;

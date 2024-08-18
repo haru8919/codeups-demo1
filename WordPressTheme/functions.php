@@ -92,7 +92,7 @@ add_action('admin_menu', 'add_custom_fields');
 
 // gallaryモーダル
 function enqueue_gallery_modal_script() {
-    wp_enqueue_script('gallery-modal', get_template_directory_uri() . '/js/gallery-modal.js', array('jquery'), null, true);
+    wp_enqueue_script('gallery-modal', get_template_directory_uri() . '/assets/js/gallery-modal', array('jquery'), null, true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_gallery_modal_script');
 
@@ -145,15 +145,19 @@ add_theme_support('post-thumbnails');
 function get_page_information_url() {
     return get_permalink(get_page_by_path('page-information')); // 'page-information' はスラッグ名
 }
-// functions.php
+
+// スクリプトの読み込み
 function my_enqueue_scripts() {
-    wp_enqueue_script('my-script', get_template_directory_uri() . '/js/my-script.js', array('jquery'), null, true);
-    wp_localize_script('my-script', 'myScriptData', array(
+    // スクリプトの読み込み
+    wp_enqueue_script('script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), null, true);
+    
+    // スクリプトにデータをローカライズ
+    wp_localize_script('script', 'myScriptData', array(
         'pageInformationUrl' => get_page_information_url(),
     ));
 }
-add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
 
+add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
 
 
 

@@ -1,5 +1,18 @@
 // 全てのjQueryコードを即時関数 (IIFE) でラップ
 (function ($) {
+  jQuery(function ($) {
+    $(".js-hamburger, .js-drawer").on("click", function () {
+      $(".js-hamburger").toggleClass("is-active");
+      $(".js-drawer").toggleClass("is-open");
+
+      // ドロワーメニューが開いている間は本文のスクロールを無効にする
+      if ($(".js-drawer").hasClass("is-open")) {
+        $("body").css("overflow", "hidden");
+      } else {
+        $("body").css("overflow", "");
+      }
+    });
+  });
   // mvSwiper
   $(function () {
     // ページ読み込み時のアニメーション
@@ -132,7 +145,6 @@
     });
   });
 
-  // 画像のモーダル
   // 画像のモーダル
   document.addEventListener("DOMContentLoaded", function () {
     // モーダル要素が存在するかチェック

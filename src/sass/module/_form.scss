@@ -53,6 +53,7 @@
   letter-spacing: 0.05em;
   padding: 0.1rem 1rem;
   margin-left: 0.5rem;
+  white-space: nowrap;
 }
 .form__body {
   width: 100%;
@@ -60,7 +61,7 @@
   @include mq("md") {
     margin-top: 0;
     max-width: 30rem;
-    width: 100%;
+    width: 70%;
   }
 }
 .form__text {

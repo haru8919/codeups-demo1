@@ -57,7 +57,7 @@ $sitemap = esc_url( home_url('/sitemap/'));
 </section>
 <?php endif; ?>
 
-<footer class="footer top-footer">
+<footer class="footer top-footer <?php if (is_404()) echo 'top-footer--404'; ?>">
     <div class="footer__inner inner">
         <div class="footer__top">
             <div class="footer__top-wrap">
@@ -92,7 +92,7 @@ $sitemap = esc_url( home_url('/sitemap/'));
                             </li>
                         </ul>
                         <ul class="footer-menu__items">
-                            <li class="footer-menu__item"><a href="<?php echo $about; ?>"
+                            <li class="footer-menu__item"><a href="<?php echo $aboutus ; ?>"
                                     class="footer-menu__link-top">私たちについて</a></li>
                         </ul>
                     </div>
@@ -108,7 +108,8 @@ $sitemap = esc_url( home_url('/sitemap/'));
                                     data-target="fun-diving">ファンダイビング</a></div>
                         </ul>
                         <ul class="footer-menu__items">
-                            <li class="footer-menu__item"><a href="page-blog.html" class="footer-menu__link-top">ブログ</a>
+                            <li class="footer-menu__item"><a href="<?php echo $blog; ?>"
+                                    class="footer-menu__link-top">ブログ</a>
                             </li>
                         </ul>
                     </div>

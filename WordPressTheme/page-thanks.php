@@ -37,6 +37,7 @@
 </section>
 </main>
 <button id="topButton" class="top-button">
-    <img src="./assets/images/common/top-back.svg" alt="Page Top" class="top-button__icon" />
+    <img src="<?php echo get_template_directory_uri(); ?>
+/assets/images/common/top-back.svg" alt="Page Top" class="top-button__icon" />
 </button>
 <?php get_footer(); ?>

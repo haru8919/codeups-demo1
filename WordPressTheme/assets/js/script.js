@@ -2,6 +2,19 @@
 
 // 全てのjQueryコードを即時関数 (IIFE) でラップ
 (function ($) {
+  jQuery(function ($) {
+    $(".js-hamburger, .js-drawer").on("click", function () {
+      $(".js-hamburger").toggleClass("is-active");
+      $(".js-drawer").toggleClass("is-open");
+
+      // ドロワーメニューが開いている間は本文のスクロールを無効にする
+      if ($(".js-drawer").hasClass("is-open")) {
+        $("body").css("overflow", "hidden");
+      } else {
+        $("body").css("overflow", "");
+      }
+    });
+  });
   // mvSwiper
   $(function () {
     // ページ読み込み時のアニメーション
@@ -20,11 +33,11 @@
               speed: 10000,
               allowTouchMove: false,
               autoplay: {
-                delay: 0,
+                delay: 0
               },
               fadeEffect: {
-                crossFade: true,
-              },
+                crossFade: true
+              }
             });
           }, 300); // スライダー表示の遅延
         }, 2500); // スライドインの遅延
@@ -41,7 +54,7 @@
       speed: 300,
       navigation: {
         nextEl: ".campaign__next",
-        prevEl: ".campaign__prev",
+        prevEl: ".campaign__prev"
       },
       // autoplay: {
       //   // 自動再生
@@ -50,9 +63,9 @@
       // },
       breakpoints: {
         765: {
-          spaceBetween: 40,
-        },
-      },
+          spaceBetween: 40
+        }
+      }
     });
     campaignSwiper.on("autoplayStop", function () {
       campaignSwiper.navigation.update();
@@ -83,25 +96,18 @@
         if (scrollTop + windowHeight > boxOffset && scrollTop < boxOffset + boxHeight) {
           if (counter == 0) {
             // アニメーションの開始
-            color.delay(200).animate(
-              {
-                width: "100%",
-              },
-              speed,
-              function () {
-                image.css("opacity", "1"); // 画像を表示
-                color.css({
-                  left: "0",
-                  right: "auto",
-                }); // .color 要素の位置を調整
-                color.animate(
-                  {
-                    width: "0",
-                  },
-                  speed
-                ); // アニメーションを逆にして非表示にする
-              }
-            );
+            color.delay(200).animate({
+              width: "100%"
+            }, speed, function () {
+              image.css("opacity", "1"); // 画像を表示
+              color.css({
+                left: "0",
+                right: "auto"
+              }); // .color 要素の位置を調整
+              color.animate({
+                width: "0"
+              }, speed); // アニメーションを逆にして非表示にする
+            });
 
             counter = 1;
           }
@@ -129,8 +135,44 @@
     topButton.addEventListener("click", function () {
       window.scrollTo({
         top: 0,
-        behavior: "smooth",
+        behavior: "smooth"
       });
+    });
+  });
+
+  // 画像のモーダル
+  document.addEventListener("DOMContentLoaded", function () {
+    // モーダル要素が存在するかチェック
+    var modal = document.querySelector(".gallery__modal");
+    if (!modal) return; // モーダルが存在しない場合はスクリプトを終了
+
+    var galleryImages = document.querySelectorAll(".gallery-items__img-link");
+    var modalImage = document.querySelector(".gallery__modal-img");
+
+    // モーダル画像要素が存在するかチェック
+    if (!modalImage) return; // モーダル画像要素が存在しない場合はスクリプトを終了
+
+    galleryImages.forEach(function (image) {
+      // 各画像リンクが存在するかチェック
+      if (!image) return; // 画像リンクが存在しない場合は次のループへ
+
+      image.addEventListener("click", function () {
+        var src = this.src;
+        modalImage.src = src;
+        modal.style.display = "block";
+        setTimeout(function () {
+          modal.classList.add("show");
+        }, 10);
+        document.body.classList.add("modal-open");
+      });
+    });
+    modal.addEventListener("click", function () {
+      modal.classList.remove("show");
+      modal.addEventListener("transitionend", function handleTransitionEnd() {
+        modal.style.display = "none";
+        modal.removeEventListener("transitionend", handleTransitionEnd);
+      });
+      document.body.classList.remove("modal-open");
     });
   });
 
@@ -138,7 +180,6 @@
   $(document).ready(function () {
     var $footerLinks = $(".footer-menu__link");
     var $categoryLinks = $(".page-information__category-link");
-
     function handleClick(event, targetId) {
       event.preventDefault();
 
@@ -159,7 +200,6 @@
       // URLにクエリパラメータを追加してpage-information.phpに遷移
       window.location.href = myScriptData.pageInformationUrl + "?tab=" + targetId;
     }
-
     $footerLinks.each(function () {
       var targetId = $(this).data("target");
       if (targetId) {
@@ -168,7 +208,6 @@
         });
       }
     });
-
     $categoryLinks.each(function () {
       var targetId = $(this).data("target");
       if (targetId) {
@@ -177,7 +216,6 @@
         });
       }
     });
-
     var urlParams = new URLSearchParams(window.location.search);
     var lastActiveId = urlParams.get("tab");
     if (lastActiveId) {

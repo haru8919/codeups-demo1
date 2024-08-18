@@ -12,19 +12,15 @@
   transform: scale(1.05);
 }
 .article-card__img {
-  max-width: 7.5625rem;
   width: 100%;
+  height: inherit;
   transition: 0.3s all;
-  @include mq("md") {
-    width: 100%;
-    height: inherit;
-    object-fit: cover;
-  }
+  object-fit: cover;
 }
 .article-card__imgs {
   overflow: hidden;
+  max-width: 7.5625rem;
   aspect-ratio: 121 / 90;
-  height: 100%;
 }
 .article-card:hover .article-card__img {
   transform: scale(1.05);
