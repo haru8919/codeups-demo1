@@ -33,18 +33,18 @@
   height: 0.0625rem;
   background-color: $white;
   transform: rotate(0deg);
-  transition: 0.3s transform, 0.3s opacity;
+  // transition: 0.3s transform, 0.3s opacity;
   @include mq("md") {
     width: 2rem;
     right: 1.875rem;
   }
 }
 
-.faq-accordion__title.is-active::after {
+.js-faq-accordion__title.is-active::after {
   transform: rotate(90deg);
   opacity: 1;
 }
-.faq-accordion__title::after {
+.js-faq-accordion__title::after {
   opacity: 0;
 }
 .faq-accordion__title-text {

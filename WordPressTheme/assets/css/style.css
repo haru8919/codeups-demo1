@@ -191,7 +191,7 @@ a {
 	width: 50px;
 }
 
-.top-button.active {
+.top-button.clicked {
 	bottom: 6px; /* スクロールすると表示される位置 */
 	opacity: 1;
 }
@@ -1638,16 +1638,15 @@ input[type=submit] {
 	right: 1rem;
 	top: 50%;
 	transform: rotate(0deg);
-	transition: 0.3s transform, 0.3s opacity;
 	width: 1.75rem;
 }
 
-.faq-accordion__title.is-active::after {
+.js-faq-accordion__title.is-active::after {
 	opacity: 1;
 	transform: rotate(90deg);
 }
 
-.faq-accordion__title::after {
+.js-faq-accordion__title::after {
 	opacity: 0;
 }
 

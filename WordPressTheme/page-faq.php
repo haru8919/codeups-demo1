@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <!-- common-mv -->
-<section id="#" class="common-mv">
+<section id="id=" common-mv" class="common-mv">
     <div class="common-mv__inner">
         <div class="common-mv__img">
             <picture>
@@ -60,4 +60,5 @@
     <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-back.svg" alt="Page Top"
         class="top-button__icon" />
 </button>
+
 <?php get_footer(); ?>

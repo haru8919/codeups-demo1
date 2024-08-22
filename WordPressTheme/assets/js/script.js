@@ -33,11 +33,11 @@
               speed: 10000,
               allowTouchMove: false,
               autoplay: {
-                delay: 0
+                delay: 0,
               },
               fadeEffect: {
-                crossFade: true
-              }
+                crossFade: true,
+              },
             });
           }, 300); // スライダー表示の遅延
         }, 2500); // スライドインの遅延
@@ -54,7 +54,7 @@
       speed: 300,
       navigation: {
         nextEl: ".campaign__next",
-        prevEl: ".campaign__prev"
+        prevEl: ".campaign__prev",
       },
       // autoplay: {
       //   // 自動再生
@@ -63,9 +63,9 @@
       // },
       breakpoints: {
         765: {
-          spaceBetween: 40
-        }
-      }
+          spaceBetween: 40,
+        },
+      },
     });
     campaignSwiper.on("autoplayStop", function () {
       campaignSwiper.navigation.update();
@@ -96,18 +96,25 @@
         if (scrollTop + windowHeight > boxOffset && scrollTop < boxOffset + boxHeight) {
           if (counter == 0) {
             // アニメーションの開始
-            color.delay(200).animate({
-              width: "100%"
-            }, speed, function () {
-              image.css("opacity", "1"); // 画像を表示
-              color.css({
-                left: "0",
-                right: "auto"
-              }); // .color 要素の位置を調整
-              color.animate({
-                width: "0"
-              }, speed); // アニメーションを逆にして非表示にする
-            });
+            color.delay(200).animate(
+              {
+                width: "100%",
+              },
+              speed,
+              function () {
+                image.css("opacity", "1"); // 画像を表示
+                color.css({
+                  left: "0",
+                  right: "auto",
+                }); // .color 要素の位置を調整
+                color.animate(
+                  {
+                    width: "0",
+                  },
+                  speed
+                ); // アニメーションを逆にして非表示にする
+              }
+            );
 
             counter = 1;
           }
@@ -126,16 +133,16 @@
       var windowHeight = window.innerHeight;
       if (scrollY > 200 && scrollY + windowHeight < footerTop) {
         // ページが一定量以上スクロールされ、かつフッターが画面内に表示されていない場合
-        topButton.classList.add("active"); // ボタンにactiveクラスを追加して表示する
+        topButton.classList.add("clicked"); // ボタンにactiveクラスを追加して表示する
       } else {
-        topButton.classList.remove("active"); // そうでなければボタンを非表示にする
+        topButton.classList.remove("clicked"); // そうでなければボタンを非表示にする
       }
     });
 
     topButton.addEventListener("click", function () {
       window.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     });
   });
@@ -263,15 +270,14 @@
     // ページが読み込まれた時にこの関数が実行される
     $(".js-faq-accordion__title").on("click", function () {
       // アコーディオンのタイトルがクリックされた時にこの関数が実行される
-      $(this).toggleClass("is-active");
+      $(this).toggleClass("clicked");
       // クリックされたタイトルに'is-close'クラスを追加または削除する
       $(this).next().slideToggle(300);
       // クリックされたタイトルの次の要素（通常はアコーディオンの内容）を300ミリ秒かけて表示/非表示にする
     });
   });
 
-  // contactのSendボタン
-  // document.addEventListener("DOMContentLoaded", function () {
+  // contactのSenddocument.addEventListener("DOMContentLoaded", function () {
   //   var checkbox = document.getElementById("agree");
   //   var checkboxTxt = document.querySelector(".form__checkbox-txt");
   //   checkbox.addEventListener("change", function () {

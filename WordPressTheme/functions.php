@@ -1,5 +1,6 @@
 <?php
 function add_custom_scripts() {
+    
     // Google Fontsの追加
     wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css2?family=Gotu&family=Noto+Sans+JP&family=Noto+Serif+JP&display=swap', false );
     wp_enqueue_style( 'google-fonts-lato', '//fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap', false );

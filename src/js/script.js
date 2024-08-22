@@ -270,13 +270,10 @@
 
   // faqアコーディオン
   $(function () {
-    // ページが読み込まれた時にこの関数が実行される
     $(".js-faq-accordion__title").on("click", function () {
-      // アコーディオンのタイトルがクリックされた時にこの関数が実行される
-      $(this).toggleClass("is-active");
-      // クリックされたタイトルに'is-close'クラスを追加または削除する
+      console.log("Accordion title clicked"); // デバッグ用
       $(this).next().slideToggle(300);
-      // クリックされたタイトルの次の要素（通常はアコーディオンの内容）を300ミリ秒かけて表示/非表示にする
+      $(this).toggleClass("is-active");
     });
   });
 
