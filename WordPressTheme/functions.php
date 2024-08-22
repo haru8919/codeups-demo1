@@ -115,6 +115,27 @@ function custom_next_post_where($where) {
     return $where;
 }
 
+// contact キャンペーンタイトル取得
+function render_campaign_select_field() {
+    $args = array(
+        'post_type' => 'campaign',
+        'posts_per_page' => -1,
+    );
+    $campaigns = get_posts($args);
+
+    $output = '<select name="plan" class="form__select">';
+    $output .= '<option value="">キャンペーン内容を選択</option>';
+
+    foreach ($campaigns as $campaign) {
+        $output .= '<option value="' . esc_attr($campaign->post_title) . '">' . esc_html($campaign->post_title) . '</option>';
+    }
+
+    $output .= '</select>';
+
+    return $output;
+}
+add_shortcode('campaign_select_field', 'render_campaign_select_field');
+
 
 
 
