@@ -1,0 +1,59 @@
+@use "global" as *;
+// パンくず
+.breadcrumb {
+  margin-top: 0.5rem;
+}
+.breadcrumb__items {
+  display: flex;
+  gap: 0.2rem;
+}
+.home,
+.current-item {
+  font-size: 0.875rem;
+  font-weight: $normal;
+  font-family: $third-font-family;
+  line-height: 1.45;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.breadcrumb__item:not(:last-child)::after {
+  display: inline-block;
+  margin: 0 0.25rem;
+  content: ">";
+  color: $black;
+}
+.breadcrumb__item.breadcrumb__item--white:not(:last-child)::after {
+  color: $white;
+}
+.breadcrumb__link {
+  color: $black;
+  font: size 0.875rem;
+  font-weight: $normal;
+  font-family: $third-font-family;
+  line-height: 1.5;
+
+  cursor: pointer;
+}
+.breadcrumb__item:hover {
+  transform: translateY(0.25rem);
+}
+.breadcrumb__link.breadcrumb__link--white {
+  color: $white;
+}
+.breadcrumb__inner {
+  width: 100%;
+  padding-right: $padding-sp;
+  padding-left: $padding-sp;
+  margin-right: auto;
+  margin-left: auto;
+  @include mq("md") {
+    max-width: rem(1120);
+    width: 100%;
+    padding-right: $padding-pc;
+    padding-left: $padding-pc;
+  }
+}
+.breadcrumb__item--white {
+  color: $white;
+}

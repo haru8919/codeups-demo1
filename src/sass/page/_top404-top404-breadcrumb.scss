@@ -1,0 +1,9 @@
+@use "global" as *;
+.top404-breadcrumb {
+  color: $white;
+  padding-top: 2.5rem;
+  background-color: $green;
+  @include mq("md") {
+    padding-top: 4.125rem;
+  }
+}

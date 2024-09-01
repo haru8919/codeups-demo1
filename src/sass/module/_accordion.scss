@@ -1,0 +1,53 @@
+@use "global" as *;
+
+.accordion__item {
+  margin-top: 0.4rem;
+}
+.accordion__title-text {
+  font-size: 1.5rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $green;
+  cursor: pointer;
+}
+.accordion__title-text::before,
+.accordion__text::before {
+  content: "";
+  display: inline-block;
+  width: 1.3rem; /* 三角形の幅 */
+  height: 1.3rem; /* 三角形の高さ */
+  background-color: $green; /* 三角形の色 */
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 50%); /* ブラウザーの互換性のためのプレフィックス */
+  clip-path: polygon(0 0, 0 100%, 100% 50%);
+  vertical-align: middle;
+  transition: transform 0.3s ease; /* アニメーションを追加 */
+  margin-right: 0.3rem;
+}
+.accordion__title-text::before {
+  margin-right: 0.7rem;
+}
+.accordion__title-text.is-open::before {
+  transform: rotate(90deg);
+}
+
+.accordion__content {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+  @include mq("md") {
+    margin-top: 0.4rem;
+  }
+}
+
+.accordion__text {
+  font-size: 1.5rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $green;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.accordion__text:hover {
+  /* hover時に右に動くトランジション */
+  transform: translateX(0.5rem);
+}

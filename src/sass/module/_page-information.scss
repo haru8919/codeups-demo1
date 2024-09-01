@@ -1,0 +1,200 @@
+@use "global" as *;
+
+.page-information__inner {
+  position: relative;
+}
+.page-information__inner::before {
+  background: url(../images/common/page-campaign.pc.svg) no-repeat center / contain;
+  position: absolute;
+  content: "";
+  top: -11%;
+  left: calc(50% - min(46vw, 28.1rem));
+  text-align: left;
+  transform: translateY(-50%);
+  z-index: -1;
+  height: 3.4375rem;
+  width: 7.5rem;
+  @include mq("md") {
+    top: 0%;
+    left: calc(50% - min(48vw, 38.1rem));
+    height: 8.625rem;
+    width: 18.125rem;
+  }
+}
+
+.page-information__category-items {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.page-information__category-item {
+  text-align: center;
+  background-color: $green2;
+  box-shadow: 0 0.18rem 0.18rem 0 rgba(0, 0, 0, 0.25);
+  position: relative;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  @include mq("md") {
+    max-width: 300px;
+    width: 100%;
+  }
+}
+
+.page-information__category-item:hover {
+  background-color: $green; // クリック時に少し明るくする
+}
+
+.page-information__category-item.clicked {
+  background-color: $green; // クリック中に少し暗くする
+}
+.page-information__category-link {
+  font-size: 0.875rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $green;
+  display: block;
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+  @include mq("md") {
+    font-size: 1.5rem;
+    font-weight: $normal;
+    font-family: $third-font-family;
+    padding: 1.625rem 0;
+    text-indent: 2.7em;
+  }
+}
+
+.page-information__category-link::before {
+  @include mq("md") {
+    position: absolute;
+    content: "";
+    top: 17%;
+    right: 2%;
+    width: 90%;
+    height: 4rem;
+    z-index: 3;
+    background-color: $green;
+    transition: background-color 0.3s ease;
+  }
+}
+
+.page-information__category-link.clicked {
+  color: $white;
+  background-color: $green;
+}
+
+.page-information__category-link[data-target="license"]::before {
+  @include mq("md") {
+    mask-image: url(../images/common/kujira_icon1.svg); // ライセンス講習のアイコン
+    mask-repeat: no-repeat;
+    mask-position: left;
+    mask-size: contain;
+  }
+}
+.page-information__category-link[data-target="license"]:hover::before {
+  @include mq("md") {
+    background-color: $white;
+  }
+}
+.page-information__category-link[data-target="fun-diving"]::before {
+  @include mq("md") {
+    mask-image: url(../images/common/shark_icon1.svg); // ファンダイビングのアイコン
+    mask-repeat: no-repeat;
+    mask-position: left;
+    mask-size: contain;
+  }
+}
+.page-information__category-link[data-target="fun-diving"]:hover::before {
+  @include mq("md") {
+    background-color: $white;
+  }
+}
+.page-information__category-link[data-target="experience-diving"]::before {
+  @include mq("md") {
+    mask-image: url(../images/common/fish_icon1.svg); // 体験ダイビングのアイコン
+    mask-repeat: no-repeat;
+    mask-position: left;
+    mask-size: contain;
+  }
+}
+.page-information__category-link[data-target="experience-diving"]:hover:before {
+  @include mq("md") {
+    background-color: $white;
+  }
+}
+.page-information__category-link.clicked::before,
+.page-information__category-link.clicked:hover::before {
+  @include mq("md") {
+    background-color: $white;
+  }
+}
+
+.page-information__category-link:active {
+  color: $white;
+}
+.page-information__category-link:hover {
+  color: $white;
+}
+.page-information__wrpper {
+  display: none;
+  border: 1px solid $green;
+  margin-top: 1rem;
+  padding: 1.8rem 1.5rem;
+
+  @include mq("md") {
+    margin-top: 1.5rem;
+    padding: 1.5rem 1.5rem;
+  }
+}
+.page-information__wrpper.active {
+  display: block;
+  @include mq("md") {
+    display: flex;
+  }
+}
+.page-information__box {
+  @include mq("md") {
+    flex: 1;
+    margin-top: 4.1rem;
+  }
+}
+
+.page-information__title {
+  border-bottom: 2px solid $green;
+  padding-bottom: 0.5rem;
+  line-height: 1;
+
+  @include mq("md") {
+    padding-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: $normal;
+    font-family: $third-font-family;
+    color: $black;
+    line-height: 1;
+  }
+}
+
+.page-information__text {
+  margin-top: 0.4rem;
+  @include mq("md") {
+    font-size: 1rem;
+    font-weight: $normal;
+    font-family: $third-font-family;
+    color: $black;
+    line-height: 1.5;
+  }
+}
+
+.page-information__imgs {
+  @include mq("md") {
+    flex: 1;
+    margin-left: 3rem;
+  }
+}
+.page-information__img {
+  @include mq("md") {
+    max-width: 30.75rem;
+    width: 100%;
+  }
+}

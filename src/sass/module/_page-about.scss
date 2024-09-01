@@ -1,0 +1,108 @@
+@use "global" as *;
+
+.page-about__inner {
+  position: relative;
+}
+.page-about__inner::before {
+  background: url(../images/common/page-campaign.pc.svg) no-repeat center / contain;
+  position: absolute;
+  content: "";
+  top: 15%;
+  left: calc(50% - min(46vw, 29.1rem));
+  text-align: left;
+  transform: translateY(-50%);
+  z-index: -1;
+  height: 3.4375rem;
+  width: 7.5rem;
+  @include mq("md") {
+    top: -0.4%;
+    left: calc(50% - min(48vw, 38.1rem));
+    height: 8.625rem;
+    width: 18.125rem;
+  }
+}
+.page-about__img {
+  max-width: 18.75rem;
+  width: 100%;
+  @include mq("md") {
+    width: 100%;
+  }
+}
+
+.page-about__container {
+  position: relative;
+}
+
+.page-about__visual-wrap {
+  aspect-ratio: 1080/661;
+  display: grid;
+  grid-template-columns: repeat(2, 18.5%) repeat(3, 1fr); //37.10の２分割残りを均等に
+  grid-template-rows: 12% repeat(3, 1fr) 8.49%; //26px%212   18px%212
+  height: auto;
+  width: auto;
+  @include mq("md") {
+    grid-template-columns: repeat(2, 18.6%) repeat(3, 1fr);
+    grid-template-rows: 12% repeat(3, 1fr) 8.13%;
+  }
+}
+
+.page-about__imgs-left {
+  z-index: 1;
+  grid-area: 1/1/5/3;
+}
+.page-about__img-left {
+  aspect-ratio: 128/194;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.page-about__first {
+  position: absolute;
+  top: 15%;
+  left: 36%;
+  transform: translate(-50%, -50%);
+  @include mq("md") {
+    top: 46%;
+    left: 37%;
+    z-index: 3;
+  }
+}
+
+.page-about__content-title {
+  font-size: 2.5rem;
+  font-weight: $normal;
+  font-family: $base-font-family;
+  color: $white;
+  line-height: 1;
+  @include mq("md") {
+    font-size: 5rem;
+    line-height: 1.2;
+  }
+}
+
+.page-about__second {
+  margin-top: 3.8rem;
+  @include mq("md") {
+    position: absolute;
+    top: 45.5%;
+    left: 78.5%;
+    transform: translate(-50%, -50%);
+    width: 38%;
+    margin-top: 0;
+  }
+}
+.page-about__content-text {
+  color: $black;
+  @include mq("md") {
+    color: $white;
+  }
+}
+
+.page-about__imgs-right {
+  grid-area: 1 / 6 / 6 / 1;
+  position: relative;
+  @include mq("md") {
+    grid-area: 2/6/6/2;
+  }
+}
