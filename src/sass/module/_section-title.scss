@@ -1,0 +1,51 @@
+@use "global" as *;
+// セクションタイトル
+.section-title {
+  display: inline-block;
+  text-align: center;
+}
+.section-title__main {
+  color: $black;
+  font-family: $base-font-family;
+  font-size: 2rem;
+  line-height: 1;
+  @include mq("md") {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+}
+.section-title__main--white {
+  @include mq("md") {
+    color: $white;
+  }
+}
+.section-title__main--white::first-letter {
+  @include mq("md") {
+    color: $white;
+  }
+}
+.section-title__main::first-letter {
+  color: $green;
+}
+.section-title__main.section-title__main--contact {
+  line-height: 0.8em;
+}
+.section-title__sub {
+  color: $green;
+  font-family: $third-font-family;
+  font-size: 0.75rem;
+  font-weight: $regular;
+  line-height: 1;
+  margin-top: 0.6rem;
+}
+.section-title__sub.section-title__sub--contact {
+  margin-top: 0rem;
+}
+.section-title__sub--white {
+  @include mq("md") {
+    color: $white;
+  }
+}
+.section-title__main.section-title__main--large {
+  font-size: 5rem;
+}

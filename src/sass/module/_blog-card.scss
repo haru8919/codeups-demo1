@@ -1,0 +1,56 @@
+@use "global" as *;
+//  cardデザイン
+.blog-card {
+  transition: 0.3s;
+  max-width: 20.8125rem;
+  width: 100%;
+  margin: auto;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+  background-color: $white;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
+}
+.blog-card:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+.blog-card__img-wrap {
+  overflow: hidden;
+}
+.blog-card__img {
+  aspect-ratio: 301/201;
+  width: 100%;
+  height: inherit;
+  object-fit: cover;
+  transition: 0.3s all;
+}
+
+.blog-card:hover .blog-card__img {
+  transform: scale(1.05);
+}
+.blog-card__body {
+  margin-top: 0.8rem;
+}
+.blog-card__date {
+  color: $black;
+  font-family: $base-font-family;
+  font-size: 0.75rem;
+  font-weight: $normal;
+  line-height: 1.12rem;
+}
+.blog-card__title {
+  border-bottom: 1px solid $green;
+  color: $black;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.69rem;
+}
+.blog-card__text {
+  color: $black;
+  font-size: 1rem;
+  font-weight: $normal;
+  line-height: 1.5rem;
+  margin-top: 1rem;
+}

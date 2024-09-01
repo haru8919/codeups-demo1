@@ -1,0 +1,7 @@
+@use "global" as *;
+.top-contact-footer {
+  margin-top: 8.9rem;
+  @include mq("md") {
+    margin-top: 10.6rem;
+  }
+}

@@ -1,0 +1,54 @@
+@use "global" as *;
+.page-thanks {
+  position: relative;
+}
+.page-thanks__inner.inner {
+  position: relative;
+  @include mq("md") {
+    max-width: 42.5rem;
+  }
+}
+.page-thanks__inner::before {
+  background: url(../images/common/page-campaign.pc.svg) no-repeat center / contain;
+  position: absolute;
+  content: "";
+  top: 1.5%;
+  left: calc(50% - min(47vw, 27.1rem));
+  text-align: left;
+  transform: translateY(-50%);
+  z-index: -1;
+  height: 3.4375rem;
+  width: 7.5rem;
+
+  @include mq("md") {
+    left: calc(50% - min(43vw, 39.1rem));
+    top: -1.6%;
+    height: 8.625rem;
+    width: 18.125rem;
+  }
+}
+
+.page-thanks__title-box {
+  display: flex;
+  justify-content: center;
+}
+
+.page-thanks__title {
+  font-size: 1rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+  line-height: 1.125;
+}
+
+.page-thanks__text-box {
+  margin-top: 2.3rem;
+  text-align: center;
+}
+
+.page-thanks__text {
+  font-size: 1rem;
+  font-weight: $regular;
+  font-family: $third-font-family;
+  color: $black;
+}

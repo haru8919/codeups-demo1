@@ -1,0 +1,102 @@
+@use "global" as *;
+
+.campaign {
+  position: relative;
+  overflow: hidden;
+}
+.campaign__title-wrap {
+  text-align: center;
+}
+.campaign__cards-wrap {
+  margin-top: 1.9rem;
+  overflow: hidden;
+  position: relative;
+  margin-right: calc(50% - 50vw);
+  padding-bottom: 0.8rem;
+  @include mq("md") {
+    margin-right: calc(50% - 49vw);
+    margin-top: 2.6rem;
+    padding-bottom: 1rem;
+  }
+}
+
+.campaign__cards {
+  margin-right: calc(77% - 53vw);
+  @include mq("md") {
+    margin-right: calc(50% - 50vw);
+  }
+}
+.campaign__cards-wrapper {
+  transition-timing-function: linear;
+}
+.campaign__card:hover {
+  animation: bounce 0.8s ease-out;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate(0, 0);
+  }
+  16.6% {
+    transform: translate(0, -20px);
+    animation-timing-function: ease-in;
+  }
+  33.3% {
+    transform: translate(0, 0);
+  }
+  49.8% {
+    transform: translate(0, -14px);
+    animation-timing-function: ease-in;
+  }
+  66.4% {
+    transform: translate(0, 0);
+  }
+  83% {
+    transform: translate(0, -4px);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.campaign__contact {
+  margin-top: 1.8rem;
+  text-align: center;
+  @include mq("md") {
+    margin-top: 4.3rem;
+  }
+}
+
+.campaign__title {
+  position: relative;
+}
+.campaign__wrap {
+  @include mq("md") {
+    position: absolute;
+    right: 12%;
+    top: 4.5%;
+    display: flex;
+    justify-content: space-between;
+    width: 16rem;
+  }
+}
+
+.campaign__next.swiper-button-next,
+.campaign__prev.swiper-button-prev {
+  @include mq("md") {
+    height: 5rem;
+    width: 5rem;
+  }
+}
+/* 前へ次への矢印カスタマイズ */
+.campaign__next.swiper-button-next::after,
+.campaign__prev.swiper-button-prev::after {
+  @include mq("md") {
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: "";
+    height: 5rem;
+    margin: auto;
+    width: 5rem;
+  }
+}
