@@ -24,23 +24,31 @@ $contact = esc_url(home_url('/contact/'));
         <div class="mv__slider swiper js-mv-swiper">
             <div class="swiper-wrapper">
                 <?php
-                // SCFから画像を取得
-                $pc_images = SCF::get('pc-img'); // PC用画像
-                $sp_images = SCF::get('sp-img'); // スマホ用画像
-                // 取得した画像の配列の長さを比較し、最小の長さを基準にループを回す
-                $count = min(count($pc_images), count($sp_images));
+                // ACFのデータを取得
+                $pc_images = get_field('mv-pc');
+                $sp_images = get_field('mv-sp');
+                $alt_texts = get_field('mv-alt'); // mv-altグループフィールドの取得
+
+                // サブフィールド名のリスト
+                $pc_image_fields = array('mv-pc-img1', 'mv-pc-img2', 'mv-pc-img3', 'mv-pc-img4');
+                $sp_image_fields = array('mv-sp-img1', 'mv-sp-img2', 'mv-sp-img3', 'mv-sp-img4');
+                $alt_fields = array('mv-alt1', 'mv-alt2', 'mv-alt3', 'mv-alt4'); // altテキスト用フィールド名リスト
+
+                // PC用とSP用の画像フィールドの数に合わせてループを回す
+                $count = min(count($pc_image_fields), count($sp_image_fields), count($alt_fields));
                 for ($i = 0; $i < $count; $i++) {
-                    $pc_image = $pc_images[$i];
-                    $sp_image = $sp_images[$i];
-                    // どちらかの画像が設定されていない場合はスキップ
-                    if (empty($pc_image) || empty($sp_image)) {
-                        continue;
-                    }
-                    // 画像のURLを取得
-                    $pc_img_url = wp_get_attachment_image_url($pc_image, 'full');
-                    $sp_img_url = wp_get_attachment_image_url($sp_image, 'full');
-                    // 画像のURLが取得できない場合はスキップ
-                    if (!$pc_img_url || !$sp_img_url) {
+                    $pc_image = $pc_images[$pc_image_fields[$i]];
+                    $sp_image = $sp_images[$sp_image_fields[$i]];
+                    $alt_text = $alt_texts[$alt_fields[$i]]; // altテキストを取得
+
+                    // 画像のURLにスキームを補完する
+                    $pc_img_url = esc_url($pc_image);
+                    $sp_img_url = esc_url($sp_image);
+                    // altテキストのエスケープ
+                    $alt_attr = esc_attr($alt_text);
+
+                    // URLが空の場合はスキップ
+                    if (empty($pc_img_url) || empty($sp_img_url)) {
                         continue;
                     }
                 ?>
@@ -48,10 +56,11 @@ $contact = esc_url(home_url('/contact/'));
                     <div class="swiper-slide__img">
                         <picture>
                             <!-- PC用画像 -->
-                            <source srcset="<?php echo esc_url($pc_img_url); ?>" media="(min-width:765px)" />
+                            <source srcset="<?php echo $pc_img_url; ?>" media="(min-width:765px)" />
                             <!-- スマホ用画像 -->
-                            <source srcset="<?php echo esc_url($sp_img_url); ?>" media="(max-width:764px)" />
-                            <img src="<?php echo esc_url($pc_img_url); ?>" alt="スライダー画像" />
+                            <source srcset="<?php echo $sp_img_url; ?>" media="(max-width:764px)" />
+                            <!-- alt属性を反映 -->
+                            <img src="<?php echo $pc_img_url; ?>" alt="<?php echo $alt_attr; ?>" />
                         </picture>
                     </div>
                 </div>
@@ -64,8 +73,6 @@ $contact = esc_url(home_url('/contact/'));
         </div>
     </div>
 </section>
-
-
 
 <!-- campaign -->
 <section id="campaign" class="campaign top-campaign">
@@ -124,23 +131,43 @@ $contact = esc_url(home_url('/contact/'));
                                 <p class="campaign-card__description"><?php the_title(); ?></p>
                             </div>
                             <div class="campaign-card__container">
-                                <p class="campaign-card__text">全部コミコミ(お一人様)</p>
+                                <p class="campaign-card__text">
+                                    <?php
+                                    // ACFの 'plan' フィールドからテキストを取得
+                                    $plan_text = get_field('plan');
+                                    // フィールドが設定されている場合に表示
+                                    if ($plan_text) {
+                                        echo esc_html($plan_text);
+                                    } else {
+                                        // フィールドが設定されていない場合のデフォルトテキスト（必要であれば）
+                                        echo 'プランが指定されていません。';
+                                    }
+                                    ?>
+                                </p>
                                 <div class="campaign-card__price-wrap">
                                     <div class="campaign-card__price-out">
-                                        <?php if (get_field('discount')): ?>
-                                        <?php echo esc_html(get_field('discount')); ?>
-                                        <?php else: ?>
+                                        <?php 
+                                        // グループフィールド 'discount' から before_discount を取得
+                                        $discount_group = get_field('discount');
+                                        if ($discount_group && $discount_group['before_discount']): 
+                                            echo esc_html($discount_group['before_discount']); 
+                                        else: 
+                                        ?>
                                         割引情報が取得できません。
                                         <?php endif; ?>
                                     </div>
                                     <div class="campaign-card__price-in">
-                                        <?php if (get_field('discount')): ?>
-                                        <?php echo esc_html(get_field('after-discount')); ?>
-                                        <?php else: ?>
+                                        <?php 
+                                        // グループフィールド 'discount' から after_discount を取得
+                                        if ($discount_group && $discount_group['after_discount']): 
+                                            echo esc_html($discount_group['after_discount']); 
+                                        else: 
+                                        ?>
                                         割引後価格情報が取得できません。
                                         <?php endif; ?>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -335,12 +362,38 @@ $contact = esc_url(home_url('/contact/'));
                         <div class="voice-card__box">
                             <div class="voice-card__detail">
                                 <p class="voice-card__item">
-                                    <?php echo esc_html(get_field('guests-age')); ?>
-                                    (<?php echo esc_html(get_field('guests-sex')); ?>)
+                                    <?php
+                                                // グループフィールド 'demographic' から guests-age と guests-sex を取得
+                                                $demographic_group = get_field('demographic'); // 'demographic' グループフィールド全体を取得
+                                                $guests_age = $demographic_group['guests-age']; // 'guests-age' サブフィールドを取得
+                                                $guests_sex = $demographic_group['guests-sex']; // 'guests-sex' サブフィールドを取得
+                                                // 年齢情報が存在する場合は表示
+                                                if ($guests_age):
+                                                    echo esc_html($guests_age);
+                                                else:
+                                                    echo '年齢情報が取得できません。';
+                                                endif;
+                                                // 性別情報が存在する場合は表示
+                                                if ($guests_sex):
+                                                    echo ' ' . esc_html($guests_sex);
+                                                else:
+                                                    echo ' 性別情報が取得できません。';
+                                                endif;
+                                            ?>
                                 </p>
                                 <div class="voice-card__category">
                                     <div class="voice-card__category-text">
-                                        <?php echo esc_html(get_field('guests-category')); ?>
+                                        <?php
+                                            // 現在の記事に関連付けられたタクソノミータームを取得
+                                            $terms = get_the_terms(get_the_ID(), 'voice_category');
+                                            // タームが存在し、エラーでない場合に表示
+                                            if (!empty($terms) && !is_wp_error($terms)):
+                                                // ターム名を表示
+                                                echo esc_html($terms[0]->name);
+                                            else:
+                                                echo 'カテゴリー情報が取得できません。';
+                                            endif;
+                                            ?>
                                     </div>
                                 </div>
                             </div>

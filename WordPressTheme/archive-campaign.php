@@ -65,11 +65,17 @@
                                 <div class="campaign-card__box">
                                     <div class="campaign-card__tag">
                                         <p class="campaign-card__category">
-                                            <?php if (get_field('category')): ?>
-                                            <?php echo esc_html(get_field('category')); ?>
-                                            <?php else: ?>
-                                            カテゴリー情報が取得できません。
-                                            <?php endif; ?>
+                                            <?php
+                                            // 現在の記事に関連付けられたタクソノミータームを取得
+                                            $terms = get_the_terms(get_the_ID(), 'campaign_category');
+                                            // タームが存在し、エラーでない場合に表示
+                                            if (!empty($terms) && !is_wp_error($terms)):
+                                                // ターム名を表示
+                                                echo esc_html($terms[0]->name);
+                                            else:
+                                                echo 'カテゴリー情報が取得できません。';
+                                            endif;
+                                            ?>
                                         </p>
                                     </div>
                                     <p class="campaign-card__description campaign-card__description--big">
@@ -77,33 +83,48 @@
                                     </p>
                                 </div>
                                 <?php
-                                // 割引情報と割引後価格のカスタムフィールドを取得
-                                $discount = get_field('discount');
-                                $after_discount = get_field('after-discount');
-                                // 割引情報と割引後価格が両方設定されている場合のみ表示
-                                if ($discount && $after_discount):
+                                // グループフィールド 'discount' から before_discount と after_discount を取得
+                                $discount_group = get_field('discount');
+
+                                if ($discount_group) {
+                                    $before_discount = $discount_group['before_discount'];
+                                    $after_discount = $discount_group['after_discount'];
+
+                                    // 割引情報と割引後価格が両方設定されている場合のみ表示
+                                    if ($before_discount && $after_discount):
                                 ?>
                                 <div class="campaign-card__container">
-                                    <p class="campaign-card__text">全部コミコミ(お一人様)</p>
+                                    <p class="campaign-card__text">
+                                        <?php
+                                    // ACFの 'plan' フィールドからテキストを取得
+                                    $plan_text = get_field('plan');
+                                    // フィールドが設定されている場合に表示
+                                    if ($plan_text) {
+                                        echo esc_html($plan_text);
+                                    } else {
+                                        // フィールドが設定されていない場合のデフォルトテキスト（必要であれば）
+                                        echo 'プランが指定されていません。';
+                                    }
+                                    ?>
+                                    </p>
                                     <div class="campaign-card__price-wrap">
                                         <div class="campaign-card__price-out">
-                                            <?php if (get_field('category')): ?>
-                                            <?php echo esc_html($discount); ?>
-                                            <?php else: ?>
-                                            割引情報が取得できません。
-                                            <?php endif; ?>
+                                            <?php echo esc_html($before_discount); ?>
                                         </div>
                                         <div class="campaign-card__price-in">
-                                            <?php if (get_field('category')): ?>
                                             <?php echo esc_html($after_discount); ?>
-                                            <?php else: ?>
-                                            割引後価格情報が取得できません。
-                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
                                 <?php
-                                endif; // $discount と $after_discount のチェックを終了
+                                    else:
+                                        // 割引情報が取得できない場合のメッセージ
+                                        echo '割引情報が取得できません。';
+                                    endif;
+                                } else {
+                                    // 割引情報のグループフィールドが取得できない場合のメッセージ
+                                    echo '割引情報が取得できません。';
+                                }
                                 ?>
                                 <div class="page-campaign__pc-wrap u-desktop">
                                     <div class="page-campaign__pc-body">
@@ -116,8 +137,18 @@
                                         </p>
                                         <div class="page-campaign__pc-box">
                                             <p class="page-campaign__pc-date">
-                                                <?php if (get_field('category')): ?>
-                                                <?php echo esc_html(get_field('date')); ?>
+                                                <?php
+                                                    // グループフィールド 'date' から開始日時と終了日時を取得
+                                                    $date_group = get_field('date'); // 'date' グループフィールド全体を取得
+                                                    $start_date = $date_group['start_date']; // 'start_date' サブフィールドを取得
+                                                    $end_date = $date_group['end_date']; // 'end_date' サブフィールドを取得
+                                                    // 日付が存在する場合は表示
+                                                    if ($start_date && $end_date):
+                                                        // 日付の形式を変更して表示
+                                                        $start_date_formatted = date('Y/n/j', strtotime($start_date)); // 開始日を "Y/n/j" フォーマットに変換
+                                                        $end_date_formatted = date('n/j', strtotime($end_date)); // 終了日を "n/j" フォーマットに変換
+                                                    ?>
+                                                <?php echo esc_html($start_date_formatted); ?>-<?php echo esc_html($end_date_formatted); ?>
                                                 <?php else: ?>
                                                 日付情報が取得できません。
                                                 <?php endif; ?>

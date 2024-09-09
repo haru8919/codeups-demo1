@@ -13,8 +13,7 @@ function add_custom_scripts() {
     wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js', array(), '3.7.0', true );
 
     // SwiperのJSの追加
-    wp_enqueue_script( 'swiper', '//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array('jquery'), '11.0.0', true );
-
+    wp_enqueue_script( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11.0.0/swiper-bundle.min.js', array('jquery'), '11.0.0', true );
     // テーマのJSの追加
     wp_enqueue_script( 'theme-scripts', get_theme_file_uri('assets/js/script.js'), array('jquery', 'swiper'), '1.0.0', true );
 
@@ -52,53 +51,44 @@ EOT;
 add_filter( 'style_loader_tag', 'add_rel_preconnect', 10, 4 );
 
 // swiper
-function add_custom_fields() {
-    add_menu_page('Slider Images', 'Slider Images', 'manage_options', 'slider-images', 'slider_images_page');
-    add_action('admin_init', 'register_slider_images');
-}
+function display_slider_images() {
+    // ACFオプションページからPC画像とスマホ画像を取得
+    $pc_images_group = get_field('mv-pc', 'option');
+    $sp_images_group = get_field('mv-sp', 'option');
 
-function register_slider_images() {
-    for ($i = 1; $i <= 4; $i++) {
-        register_setting('slider-images-group', 'slider_image_pc_' . $i);
-        register_setting('slider-images-group', 'slider_image_mobile_' . $i);
-        register_setting('slider-images-group', 'slider_image_alt_' . $i);
+    if ($pc_images_group && $sp_images_group) {
+        // PC画像とスマホ画像のスライダーを作成
+        $output = '<div class="swiper-wrapper">';
+        $count = min(count($pc_images_group), count($sp_images_group));
+
+        for ($i = 0; $i < $count; $i++) {
+            $pc_img_id = $pc_images_group['mv-pc-img' . ($i + 1)]; // 画像ID取得
+            $sp_img_id = $sp_images_group['mv-sp-img' . ($i + 1)]; // 画像ID取得
+
+            $pc_img_url = wp_get_attachment_image_url($pc_img_id, 'full'); // 画像URL取得
+            $sp_img_url = wp_get_attachment_image_url($sp_img_id, 'full'); // 画像URL取得
+
+            if ($pc_img_url && $sp_img_url) {
+                $output .= '<div class="swiper-slide">';
+                $output .= '<div class="swiper-slide__img">';
+                $output .= '<picture>';
+                $output .= '<source srcset="' . esc_url($pc_img_url) . '" media="(min-width:765px)" />';
+                $output .= '<source srcset="' . esc_url($sp_img_url) . '" media="(max-width:764px)" />';
+                $output .= '<img src="' . esc_url($pc_img_url) . '" alt="スライダー画像" />';
+                $output .= '</picture>';
+                $output .= '</div>';
+                $output .= '</div>';
+            }
+        }
+
+        $output .= '</div>'; // .swiper-wrapper
+        return $output;
     }
-}
 
-function slider_images_page() {
-    ?>
-<div class="wrap">
-    <h1>Slider Images</h1>
-    <form method="post" action="options.php">
-        <?php settings_fields('slider-images-group'); ?>
-        <?php do_settings_sections('slider-images-group'); ?>
-        <?php for ($i = 1; $i <= 4; $i++) : ?>
-        <h2>Slide <?php echo $i; ?></h2>
-        <table class="form-table">
-            <tr valign="top">
-                <th scope="row">PC Image URL</th>
-                <td><input type="text" name="slider_image_pc_<?php echo $i; ?>"
-                        value="<?php echo esc_attr(get_option('slider_image_pc_' . $i)); ?>" /></td>
-            </tr>
-            <tr valign="top">
-                <th scope="row">Mobile Image URL</th>
-                <td><input type="text" name="slider_image_mobile_<?php echo $i; ?>"
-                        value="<?php echo esc_attr(get_option('slider_image_mobile_' . $i)); ?>" /></td>
-            </tr>
-            <tr valign="top">
-                <th scope="row">Alt Text</th>
-                <td><input type="text" name="slider_image_alt_<?php echo $i; ?>"
-                        value="<?php echo esc_attr(get_option('slider_image_alt_' . $i)); ?>" /></td>
-            </tr>
-        </table>
-        <?php endfor; ?>
-        <?php submit_button(); ?>
-    </form>
-</div>
-<?php
+    return ''; // 画像がない場合は空文字を返す
 }
+add_shortcode('slider_images', 'display_slider_images');
 
-add_action('admin_menu', 'add_custom_fields');
 
 // gallaryモーダル
 function enqueue_gallery_modal_script() {
@@ -293,3 +283,19 @@ function custom_admin_sidebar_style() {
     </style>';
 }
 add_action('admin_head', 'custom_admin_sidebar_style');
+
+function add_featured_image_column_to_posts($columns) {
+    $columns['featured_image'] = __('Featured Image');
+    return $columns;
+}
+add_filter('manage_posts_columns', 'add_featured_image_column_to_posts');
+ 
+function show_featured_image_column_in_posts($column_name, $post_id) {
+    if ('featured_image' === $column_name) {
+        $post_featured_image = get_the_post_thumbnail($post_id, 'thumbnail');
+        if ($post_featured_image) {
+            echo $post_featured_image;
+        }
+    }
+}
+add_action('manage_posts_custom_column', 'show_featured_image_column_in_posts', 10, 2);

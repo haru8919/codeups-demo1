@@ -27,14 +27,12 @@
                             <a href="<?php echo get_post_type_archive_link('campaign'); ?>"
                                 class="category__link">ALL</a>
                         </li>
-
                         <?php
                                     // タクソノミー 'campaign_category' のタームを取得
                                 $terms = get_terms(array(
                                     'taxonomy' => 'campaign_category',
                                     'hide_empty' => false,
                                 ));
-
                                 // タームが存在する場合はリストアイテムとして表示
                                 if (!empty($terms) && !is_wp_error($terms)) :
                                     foreach ($terms as $term) :
@@ -70,38 +68,81 @@
                             <div class="campaign-card__box">
                                 <div class="campaign-card__tag">
                                     <p class="campaign-card__category">
-                                        <?php echo esc_html(get_field('category')); ?>
+                                        <?php
+                                    $terms = get_the_terms(get_the_ID(), 'campaign_category');
+                                    if (!empty($terms) && !is_wp_error($terms)):
+                                        echo esc_html($terms[0]->name);
+                                    else:
+                                        echo 'カテゴリー情報が取得できません。';
+                                    endif;
+                                    ?>
                                     </p>
                                 </div>
                                 <p class="campaign-card__description campaign-card__description--big">
                                     <?php the_title();?></p>
                             </div>
+                            <?php
+                        $discount_group = get_field('discount');
+                        if ($discount_group):
+                            $before_discount = $discount_group['before_discount'];
+                            $after_discount = $discount_group['after_discount'];
+                            if ($before_discount && $after_discount):
+                        ?>
                             <div class="campaign-card__container">
-                                <p class="campaign-card__text">全部コミコミ(お一人様)</p>
+                                <p class="campaign-card__text">
+                                    <?php
+                                $plan_text = get_field('plan');
+                                if ($plan_text):
+                                    echo esc_html($plan_text);
+                                else:
+                                    echo 'プランが指定されていません。';
+                                endif;
+                                ?>
+                                </p>
                                 <div class="campaign-card__price-wrap">
-                                    <div class="campaign-card__price-out">
-                                        <?php echo esc_html(get_field('discount')); ?>
+                                    <div class="campaign-card__price-out"><?php echo esc_html($before_discount); ?>
                                     </div>
-                                    <div class="campaign-card__price-in">
-                                        <?php echo esc_html(get_field('after-discount')); ?></div>
+                                    <div class="campaign-card__price-in"><?php echo esc_html($after_discount); ?></div>
+                                </div>
+                                <div class="page-campaign__pc-wrap u-desktop">
+                                    <div class="page-campaign__pc-body">
+                                        <p class="page-campaign__pc-text">
+                                            <?php if (get_field('category')): ?>
+                                            <?php echo esc_html(get_field('detail')); ?>
+                                            <?php else: ?>
+                                            詳細情報が取得できません。
+                                            <?php endif; ?>
+                                        </p>
+                                        <div class="page-campaign__pc-box">
+                                            <p class="page-campaign__pc-date">
+                                                <?php
+                                            $date_group = get_field('date');
+                                            if ($date_group):
+                                                $start_date = $date_group['start_date'];
+                                                $end_date = $date_group['end_date'];
+                                                if ($start_date && $end_date):
+                                                    $start_date_formatted = date('Y/n/j', strtotime($start_date));
+                                                    $end_date_formatted = date('n/j', strtotime($end_date));
+                                                    echo esc_html($start_date_formatted); ?>-<?php echo esc_html($end_date_formatted);
+                                                else:
+                                                    echo '日付情報が取得できません。';
+                                                endif;
+                                            else:
+                                                echo '日付情報が取得できません。';
+                                            endif;
+                                            ?>
+                                            </p>
+                                            <p class="page-campaign__pc-contact">ご予約・お問い合わせはコチラ</p>
+                                        </div>
+                                    </div>
+                                    <div class="page-campaign__btn-wrap">
+                                        <a href="<?php echo esc_url(home_url('contact')); ?>" class="btn"><span>Contact
+                                                us</span></a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="page-campaign__pc-wrap u-desktop">
-                                <div class="page-campaign__pc-body">
-                                    <p class="page-campaign__pc-text">
-                                        <?php echo esc_html(get_field('detail')); ?></p>
-                                    <div class="page-campaign__pc-box">
-                                        <p class="page-campaign__pc-date">
-                                            <?php echo esc_html(get_field('date')); ?></p>
-                                        <p class="page-campaign__pc-contact">ご予約・お問い合わせはコチラ</p>
-                                    </div>
-                                </div>
-                                <div class="page-campaign__btn-wrap">
-                                    <a href="<?php echo esc_url(home_url('contact')); ?>" class="btn">
-                                        <span>Contact us</span>
-                                    </a>
-                                </div>
-                            </div>
+                            <?php endif; ?>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <?php endwhile; ?>
@@ -109,17 +150,13 @@
                     <p>まだ記事がありません</p>
                     <?php endif; ?>
                 </div>
+                <div class="page-campaign__nav page-nav">
+                    <?php wp_pagenavi(); ?>
+                </div>
             </div>
-            <div class="page-campaign__nav page-nav">
-                <?php wp_pagenavi(); ?>
-            </div>
-        </div>
-    </div>
-</div>
-<button id="topButton" class="top-button">
-    <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-back.svg" alt="Page Top"
-        class="top-button__icon" />
-</button>
+            <button id="topButton" class="top-button">
+                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-back.svg" alt="Page Top"
+                    class="top-button__icon" />
+            </button>
 
-
-<?php get_footer(); ?>
+            <?php get_footer(); ?>

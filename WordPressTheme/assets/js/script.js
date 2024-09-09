@@ -9,6 +9,7 @@
     });
   });
   // mvSwiper
+  // mvSwiper
   $(function () {
     // ページ読み込み時のアニメーション
     setTimeout(function () {
@@ -26,11 +27,11 @@
               speed: 10000,
               allowTouchMove: false,
               autoplay: {
-                delay: 0
+                delay: 0,
               },
               fadeEffect: {
-                crossFade: true
-              }
+                crossFade: true,
+              },
             });
           }, 300); // スライダー表示の遅延
         }, 2500); // スライドインの遅延
@@ -47,7 +48,7 @@
       speed: 300,
       navigation: {
         nextEl: ".campaign__next",
-        prevEl: ".campaign__prev"
+        prevEl: ".campaign__prev",
       },
       // autoplay: {
       //   // 自動再生
@@ -56,9 +57,9 @@
       // },
       breakpoints: {
         765: {
-          spaceBetween: 40
-        }
-      }
+          spaceBetween: 40,
+        },
+      },
     });
     campaignSwiper.on("autoplayStop", function () {
       campaignSwiper.navigation.update();
@@ -89,18 +90,25 @@
         if (scrollTop + windowHeight > boxOffset && scrollTop < boxOffset + boxHeight) {
           if (counter == 0) {
             // アニメーションの開始
-            color.delay(200).animate({
-              width: "100%"
-            }, speed, function () {
-              image.css("opacity", "1"); // 画像を表示
-              color.css({
-                left: "0",
-                right: "auto"
-              }); // .color 要素の位置を調整
-              color.animate({
-                width: "0"
-              }, speed); // アニメーションを逆にして非表示にする
-            });
+            color.delay(200).animate(
+              {
+                width: "100%",
+              },
+              speed,
+              function () {
+                image.css("opacity", "1"); // 画像を表示
+                color.css({
+                  left: "0",
+                  right: "auto",
+                }); // .color 要素の位置を調整
+                color.animate(
+                  {
+                    width: "0",
+                  },
+                  speed
+                ); // アニメーションを逆にして非表示にする
+              }
+            );
 
             counter = 1;
           }
@@ -128,7 +136,7 @@
     topButton.addEventListener("click", function () {
       window.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     });
   });

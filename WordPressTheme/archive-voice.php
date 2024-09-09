@@ -66,26 +66,40 @@ get_common_mv(
                                     <div class="voice-card__detail">
                                         <p class="voice-card__item">
                                         <p class="voice-card__item">
-                                            <?php if (get_field('guests-age')): ?>
-                                            <?php echo esc_html(get_field('guests-age')); ?>
-                                            <?php else: ?>
-                                            年齢情報が取得できません。
-                                            <?php endif; ?>
-
-                                            <?php if (get_field('guests-sex')): ?>
-                                            <?php echo esc_html(get_field('guests-sex')); ?>
-                                            <?php else: ?>
-                                            性別情報が取得できません。
-                                            <?php endif; ?>
+                                            <?php
+                                                // グループフィールド 'demographic' から guests-age と guests-sex を取得
+                                                $demographic_group = get_field('demographic'); // 'demographic' グループフィールド全体を取得
+                                                $guests_age = $demographic_group['guests-age']; // 'guests-age' サブフィールドを取得
+                                                $guests_sex = $demographic_group['guests-sex']; // 'guests-sex' サブフィールドを取得
+                                                // 年齢情報が存在する場合は表示
+                                                if ($guests_age):
+                                                    echo esc_html($guests_age);
+                                                else:
+                                                    echo '年齢情報が取得できません。';
+                                                endif;
+                                                // 性別情報が存在する場合は表示
+                                                if ($guests_sex):
+                                                    echo ' ' . esc_html($guests_sex);
+                                                else:
+                                                    echo ' 性別情報が取得できません。';
+                                                endif;
+                                            ?>
                                         </p>
                                         </p>
                                         <div class="voice-card__category">
                                             <div class="voice-card__category-text">
-                                                <?php if (get_field('guests-category')): ?>
-                                                <?php echo esc_html(get_field('guests-category')); ?>
-                                                <?php else: ?>
-                                                カテゴリー情報が取得できません。
-                                                <?php endif; ?></div>
+                                                <?php
+                                            // 現在の記事に関連付けられたタクソノミータームを取得
+                                            $terms = get_the_terms(get_the_ID(), 'voice_category');
+                                            // タームが存在し、エラーでない場合に表示
+                                            if (!empty($terms) && !is_wp_error($terms)):
+                                                // ターム名を表示
+                                                echo esc_html($terms[0]->name);
+                                            else:
+                                                echo 'カテゴリー情報が取得できません。';
+                                            endif;
+                                            ?>
+                                            </div>
                                         </div>
                                     </div>
                                     <p class="voice-card__lead"><?php the_title(); ?></p>
