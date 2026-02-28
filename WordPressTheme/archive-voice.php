@@ -23,14 +23,14 @@
                 <div class="category">
                     <ul class="category__items">
                         <!-- ALL リンク -->
-                        <li class="category__item <?php if (!is_tax('voice_category')) echo 'active'; ?>">
+                        <li class="category__item <?php if (!is_tax('voice_genre')) echo 'active'; ?>">
                             <a href="<?php echo get_post_type_archive_link('voice'); ?>" class="category__link">ALL</a>
                         </li>
 
                         <?php
                                     // タクソノミー 'campaign_genre' のタームを取得
                                 $terms = get_terms(array(
-                                    'taxonomy' => 'voice_category',
+                                    'taxonomy' => 'voice_genre',
                                     'hide_empty' => false,
                                 ));
 
@@ -38,7 +38,7 @@
                                 if (!empty($terms) && !is_wp_error($terms)) :
                                     foreach ($terms as $term) :
                                         // 現在のタームがアクティブな場合、active クラスを追加
-                                        $active_class = (is_tax('voice_category', $term->slug)) ? 'active' : '';
+                                        $active_class = (is_tax('voice_genre', $term->slug)) ? 'active' : '';
                                 ?>
                         <li class="category__item <?php echo $active_class; ?>">
                             <a href="<?php echo get_term_link($term); ?>" class="category__link">

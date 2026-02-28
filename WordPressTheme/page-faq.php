@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <!-- common-mv -->
-<section id="id=" common-mv" class="common-mv">
+<section id="#" class="common-mv">
     <div class="common-mv__inner">
         <div class="common-mv__img">
             <picture>
@@ -32,12 +32,12 @@
                 <div class="faq-accordion__item js-faq-accordion__item">
                     <!-- アコーディオンのタイトル（質問）を表示 -->
                     <button class="faq-accordion__title js-faq-accordion__title">
-                        <p class="faq-accordion__title-text">
+                        <span class="faq-accordion__title-text">
                             <?php
                                     // 質問を出力
                                     echo esc_html($faq['question']);
                                     ?>
-                        </p>
+                        </span>
                     </button>
                     <!-- アコーディオンのコンテンツ（回答）を表示 -->
                     <div class="faq-accordion__content js-faq-accordion__content">
@@ -60,5 +60,4 @@
     <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/top-back.svg" alt="Page Top"
         class="top-button__icon" />
 </button>
-
 <?php get_footer(); ?>

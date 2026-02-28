@@ -1,32 +1,21 @@
 <?php
-function add_custom_scripts() {
-    
-    // Google Fontsの追加
-    wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css2?family=Gotu&family=Noto+Sans+JP&family=Noto+Serif+JP&display=swap', false );
-    wp_enqueue_style( 'google-fonts-lato', '//fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap', false );
+function my_theme_enqueue_scripts() {
+    // ファビコンの読み込み
+    echo '<link rel="icon" href="' . get_template_directory_uri() . '/assets/images/common/favicon.ico" />';
 
-    // SwiperのCSSの追加
-    wp_enqueue_style( 'swiper', '//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', false );
+    // Google Fontsの読み込み
+    wp_enqueue_style('google-fonts-gotu-noto', 'https://fonts.googleapis.com/css2?family=Gotu&family=Noto+Sans+JP&family=Noto+Serif+JP&display=swap', array(), null);
+    wp_enqueue_style('google-fonts-lato', 'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap', array(), null);
 
-    // テーマのCSSの追加
-    wp_enqueue_style( 'theme-styles', get_theme_file_uri('assets/css/style.css'), array(), '1.0.0', 'all' );
+    // CSSの読み込み
+    wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), null);
+    wp_enqueue_style('my-theme-style', get_template_directory_uri() . '/assets/css/style.css', array(), null);
 
-    // jQueryの追加
-    wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js', array(), '3.7.0', true );
-
-    // SwiperのJSの追加
-    wp_enqueue_script( 'swiper', '//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array('jquery'), '11.0.0', true );
-
-    // テーマのJSの追加
-    wp_enqueue_script( 'theme-scripts', get_theme_file_uri('assets/js/script.js'), array('jquery', 'swiper'), '1.0.0', true );
-
-// gallery-modal.jsの追加
-wp_enqueue_script( 'gallery-modal', get_theme_file_uri('assets/js/gallery-modal.js'), array('jquery'), '1.0.0', true );
-
-
+    // JavaScriptの読み込み
+    wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js', array(), null, true);
+    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
 }
-
-add_action( 'wp_enqueue_scripts', 'add_custom_scripts' );
+add_action('wp_enqueue_scripts', 'my_theme_enqueue_scripts');
 
 // crossorigin属性を持つタグに対する対応
 function add_rel_preconnect( $html, $handle, $href, $media ) {
@@ -114,27 +103,6 @@ function custom_next_post_where($where) {
     }
     return $where;
 }
-
-// contact キャンペーンタイトル取得
-function render_campaign_select_field() {
-    $args = array(
-        'post_type' => 'campaign',
-        'posts_per_page' => -1,
-    );
-    $campaigns = get_posts($args);
-
-    $output = '<select name="plan" class="form__select">';
-    $output .= '<option value="">キャンペーン内容を選択</option>';
-
-    foreach ($campaigns as $campaign) {
-        $output .= '<option value="' . esc_attr($campaign->post_title) . '">' . esc_html($campaign->post_title) . '</option>';
-    }
-
-    $output .= '</select>';
-
-    return $output;
-}
-add_shortcode('campaign_select_field', 'render_campaign_select_field');
 
 
 
@@ -281,3 +249,36 @@ function custom_admin_sidebar_style() {
     </style>';
 }
 add_action('admin_head', 'custom_admin_sidebar_style');
+
+// Contact Form 7 のキャンペーン選択肢を動的に取得
+function filter_wpcf7_form_tag_plan($tag) {
+    if ($tag['name'] !== 'plan') {
+        return $tag;
+    }
+
+    $args = array(
+        'post_type' => 'campaign',
+        'posts_per_page' => -1,
+        'post_status' => 'publish',
+    );
+
+    $posts = get_posts($args);
+
+    if (!$posts) {
+        return $tag;
+    }
+
+    // 初期値を追加
+    $tag['raw_values'][] = 'ー以下から選択してくださいー';
+    $tag['values'][] = 'ー以下から選択してくださいー';
+    $tag['labels'][] = 'ー以下から選択してくださいー';
+
+    foreach ($posts as $post) {
+        $tag['raw_values'][] = $post->post_title;
+        $tag['values'][] = $post->post_title;
+        $tag['labels'][] = $post->post_title;
+    }
+
+    return $tag;
+}
+add_filter('wpcf7_form_tag', 'filter_wpcf7_form_tag_plan', 10, 1);

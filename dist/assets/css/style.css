@@ -750,6 +750,7 @@ a {
 
 .breadcrumb__items {
 	display: flex;
+	gap: 0.4rem;
 }
 
 .breadcrumb__item {
@@ -1565,11 +1566,21 @@ input[type=submit] {
 
 .error {
 	background-color: #408f95;
+	padding-bottom: 9rem;
+	padding-top: 6rem;
+	position: relative;
+}
+
+.error::before {
 	background-image: url(../images/common/404.mv.svg);
 	background-position: 50% 76%;
 	background-repeat: no-repeat;
-	padding-bottom: 2.4rem;
-	padding-top: 5rem;
+	background-size: contain;
+	content: "";
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
 	width: 100%;
 }
 
@@ -4443,11 +4454,10 @@ html {
 	margin-top: 0;
 }
 
-.error {
+.error::before {
 	background-position: 24% 50%;
 	background-size: 50%;
-	padding-bottom: 9rem;
-	padding-top: 6rem;
+	top: 3rem;
 }
 
 .error__outer {

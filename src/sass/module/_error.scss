@@ -1,20 +1,29 @@
 @use "global" as *;
 .error {
   background-color: $green;
+  position: relative;
+  padding-top: 6rem;
+  padding-bottom: 9rem;
+}
+
+.error::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url(../images/common/404.mv.svg);
   background-repeat: no-repeat;
   background-position: 50% 76%;
-  width: 100%;
-  padding-top: 5rem;
-  padding-bottom: 2.4rem;
+  background-size: contain;
+
   @include mq("md") {
     background-size: 50%;
     background-position: 24% 50%;
-    padding-top: 6rem;
-    padding-bottom: 9rem;
+    top: 3rem;
   }
 }
-
 .error__outer {
   margin-top: 3.5rem;
   text-align: center;
