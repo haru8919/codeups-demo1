@@ -16,7 +16,7 @@
   position: relative;
   padding: 1rem 6.875rem 1rem 1rem;
   cursor: pointer;
-  background-color: $green;
+  background-color: $main-color;
   width: 100%;
   display: flex;
   @include mq("md") {
@@ -58,7 +58,7 @@
 }
 
 .faq-accordion__content {
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   padding: 1.3rem 1rem 1rem;
   @include mq("md") {
     margin-top: 1rem;

@@ -34,14 +34,14 @@
   }
 }
 .campaign-card__box {
-  border-bottom: 1px solid $green;
+  border-bottom: 1px solid $main-color;
   flex-grow: 1;
 }
 .campaign-card__box.campaign-card__box--side {
   text-align: center;
 }
 .campaign-card__tag {
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   display: inline-block;
   padding: 0.179rem 0.75rem;
   @include mq("md") {
@@ -49,7 +49,7 @@
   }
 }
 .campaign-card__category {
-  color: $green;
+  color: $main-color;
   font-size: 0.75rem;
   font-weight: $regular;
   line-height: 1.88;
@@ -124,7 +124,7 @@
   font-size: 2rem;
   font-weight: $bold;
   font-family: $four-font-family;
-  color: $green;
+  color: $main-color;
   @include mq("md") {
     font-size: 2.43rem;
     margin-left: 2.6rem;

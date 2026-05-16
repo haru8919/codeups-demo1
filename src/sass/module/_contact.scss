@@ -17,6 +17,8 @@
   transform: translate(-50%);
   width: 6.8125rem;
   height: 3.125rem;
+  animation: float-wave 4s ease-in-out infinite;
+  animation-delay: 0.8s;
   @include mq("md") {
     position: absolute;
     content: "";
@@ -27,6 +29,8 @@
     transform: translate(-50%);
     width: 18.8125rem;
     height: 8.625rem;
+    animation: float-wave 4s ease-in-out infinite;
+    animation-delay: 0.8s;
   }
 }
 .contact__wrap {
@@ -53,7 +57,7 @@
 .contact__under {
   margin-top: 2.6rem;
   @include mq("md") {
-    border-left: 1px solid $green;
+    border-left: 1px solid $main-color;
     margin-left: 5.5rem;
     padding-left: 1rem;
     max-width: 31.65rem;
@@ -78,7 +82,7 @@
 }
 
 .contact__body {
-  border-top: 2px solid $green;
+  border-top: 2px solid $main-color;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -176,7 +180,7 @@
   }
 }
 .contact__title-sub {
-  color: $green;
+  color: $main-color;
   font-family: $third-font-family;
   font-size: 0.75rem;
   font-weight: $regular;

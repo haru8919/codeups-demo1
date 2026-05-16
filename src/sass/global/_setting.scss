@@ -33,11 +33,33 @@ $bold: 700;
 ////////////////////
 
 //色指定（共通性のあるものは出来る限り指定すると良い）
-$green: #408f95;
-$green2: #ddf0f1;
+$main-color: #0082b4;
+$green2: #fdf9f1;
 $white: #fff;
 $brown: #796a64;
 $black: #0d2936;
 $gray: #f2f2f2;
 $red: #c94800;
 $pink: #f4dacc;
+
+////////////////////
+// アニメーション
+////////////////////
+
+// 装飾SVGのゆらゆら浮遊アニメーション
+@keyframes float-wave {
+  0%   { transform: translate(-50%, 0)    rotate(0deg); }
+  25%  { transform: translate(-50%, -8px) rotate(1deg); }
+  50%  { transform: translate(-50%, -14px) rotate(0deg); }
+  75%  { transform: translate(-50%, -6px) rotate(-1deg); }
+  100% { transform: translate(-50%, 0)    rotate(0deg); }
+}
+// translateなしバージョン（元のtransformがないもの用）
+@keyframes float-wave-simple {
+  0%   { transform: translateY(0)     rotate(0deg); }
+  25%  { transform: translateY(-8px)  rotate(1deg); }
+  50%  { transform: translateY(-14px) rotate(0deg); }
+  75%  { transform: translateY(-6px)  rotate(-1deg); }
+  100% { transform: translateY(0)     rotate(0deg); }
+}
+

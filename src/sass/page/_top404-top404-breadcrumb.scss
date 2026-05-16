@@ -2,7 +2,7 @@
 .top404-breadcrumb {
   color: $white;
   padding-top: 2.5rem;
-  background-color: $green;
+  background-color: $main-color;
   @include mq("md") {
     padding-top: 4.125rem;
   }

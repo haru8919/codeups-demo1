@@ -1,8 +1,8 @@
 @use "global" as *;
 // ボタン
 .btn {
-  background: #408f95;
-  border: 1px solid #408f95;
+  background: $main-color;
+  border: 1px solid $main-color;
   color: #fff;
   display: inline-block;
   font-size: 0.875rem;
@@ -19,7 +19,7 @@
 }
 .btn.btn--white {
   background-color: $white;
-  color: $green;
+  color: $main-color;
   border: 1px solid $white;
 }
 .btn::after {
@@ -29,7 +29,7 @@
   left: 2%;
   width: 101%;
   height: 107%;
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   transition: 0.2s;
   z-index: -2;
 }
@@ -50,18 +50,21 @@
   display: inline-block;
 }
 .btn.btn--white span::before {
-  background-color: $green;
+  background-color: $main-color;
 }
 .btn:hover span::before {
-  background-color: $green; // ボタンのホバー時にmask-imageの背景色を変更
+  background-color: $main-color; // ボタンのホバー時にmask-imageの背景色を変更
 }
 .btn.btn--white:hover span::before {
   background-color: $white; // ボタンのホバー時にmask-imageの背景色を変更
 }
 
 .btn:hover {
-  stroke: $green;
+  background-color: $main-color; /* Change hover background to match $main-color */
+  stroke: $main-color;
   z-index: 4;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 .btn.btn--white:hover {
   stroke: $white;
@@ -76,10 +79,10 @@
   color: $white;
 }
 .btn.btn--white span {
-  color: $green;
+  color: $main-color;
 }
 .btn:hover span {
-  color: $green;
+  color: $main-color;
 }
 .btn.btn--white:hover span {
   color: $white;
@@ -101,7 +104,7 @@
   transform-origin: right top;
 }
 .btn.btn--white::before {
-  background-color: $green;
+  background-color: $main-color;
 }
 .btn:hover:before {
   transform-origin: left top;
@@ -134,8 +137,8 @@ input[type="submit"] {
 }
 
 .btn--send {
-  background: #408f95;
-  border: 1px solid #408f95;
+  background: $main-color; /* update .btn--send background */
+  border: 1px solid $main-color; /* update .btn--send border */
   color: #fff;
   display: inline-block;
   font-size: 0.875rem;
@@ -151,9 +154,11 @@ input[type="submit"] {
   z-index: 10;
 }
 .btn--send:hover {
-  background-color: $green;
-  color: $green;
+  background-color: $main-color; /* updated */
+  color: #fff; /* text to white instead of $main-color */
   z-index: 4;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 .btn--send::before {
   content: "";
@@ -162,7 +167,7 @@ input[type="submit"] {
   left: 2%;
   width: 101%;
   height: 109%;
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   transition: 0.2s;
   z-index: -2;
 }
@@ -180,8 +185,8 @@ input[type="submit"] {
   display: inline-block;
 }
 .btn--send:hover span {
-  background-color: $green;
-  color: $green;
+  background-color: $main-color;
+  color: $main-color;
 }
 .btn--send::after {
   content: "";

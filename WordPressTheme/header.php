@@ -7,7 +7,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="robots" content="noindex" />
     <!-- ファビコン -->
-    <link rel="icon" href="./assets/images/common/favicon.ico" />
+    <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/common/favicon.ico" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,6 +18,15 @@
         rel="stylesheet" />
     <!-- css -->
     <?php wp_head(); ?>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+      // ページ遷移フラグのチェック（チラつき防止のため最速で実行）
+      if (sessionStorage.getItem('is-transitioning')) {
+        document.write('<style id="transition-blocking-style">.page-transition { transform: translateY(0) !important; }</style>');
+      }
+    </script>
 </head>
 
 <?php
@@ -36,13 +45,37 @@ $sitemap = esc_url( home_url('/sitemap/'));
 ?>
 
 <body>
+    <!-- ページ遷移アニメーション用波 -->
+    <div class="page-transition">
+      <div class="page-transition__wave-wrap">
+        <!-- 第1波（前面：ティール） -->
+        <svg class="page-transition__wave page-transition__wave--1" viewBox="0 0 2880 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <g class="wave-group">
+            <path d="M0,60 C200,10 400,100 600,50 C800,0 1000,90 1200,40 C1300,15 1380,55 1440,50 L1440,100 L0,100 Z"/>
+            <path d="M1440,60 C1640,10 1840,100 2040,50 C2240,0 2440,90 2640,40 C2740,15 2820,55 2880,50 L2880,100 L1440,100 Z"/>
+          </g>
+        </svg>
+        <!-- 第2波（背面：明るい水色） -->
+        <svg class="page-transition__wave page-transition__wave--2" viewBox="0 0 2880 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <g class="wave-group">
+            <path d="M0,30 C180,90 420,0 660,60 C900,120 1100,20 1320,70 C1380,90 1420,60 1440,50 L1440,100 L0,100 Z"/>
+            <path d="M1440,30 C1620,90 1860,0 2100,60 C2340,120 2540,20 2760,70 C2820,90 2860,60 2880,50 L2880,100 L1440,100 Z"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- 本体（海の青グラデーション） -->
+      <div class="page-transition__body"></div>
+    </div>
+
+
     <header class="header">
         <div class="header__inner">
             <h1 class="header__logo">
                 <?php if (!is_front_page()) : ?>
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="logo-link">
                     <?php endif; ?>
-                    <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/header-logo.svg" alt="ヘッダーロゴ" />
+                    <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/header-logo.svg?v=1.1" alt="ヘッダーロゴ" />
                     <?php if (!is_front_page()) : ?>
                 </a>
                 <?php endif; ?>

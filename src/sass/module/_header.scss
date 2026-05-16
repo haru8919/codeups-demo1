@@ -2,7 +2,9 @@
 
 // header
 .header {
-  background: rgba(13, 41, 54, 0.68);
+  background: rgba(0, 130, 180, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   height: 5rem;
   position: fixed;
   width: 100%;
@@ -48,7 +50,7 @@
   align-items: center;
   justify-content: center;
   height: inherit;
-  gap: 2.55rem;
+  gap: clamp(1rem, 2.5vw, 2.55rem);
 }
 
 .header__item {
@@ -64,6 +66,7 @@
   font-size: 1.125rem;
   position: relative;
   color: $white;
+  white-space: nowrap;
 }
 .header__link span {
   display: block;
@@ -89,3 +92,88 @@
 .header__link:hover span::after {
   transform: scale(1, 1);
 }
+
+// ========================================
+// ページ遷移トランジション（常駐型ウェーブ）
+// ========================================
+.page-transition {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000000;
+  pointer-events: none;
+  transform: translateY(100vh); // 通常時: 波だけが画面下部に見える位置
+  will-change: transform;
+
+  // 遷移中フラグが立っている場合、最初から画面を覆った状態にする（チラつき防止）
+  .is-transitioning & {
+    transform: translateY(0);
+  }
+}
+
+// 波のシェイプを持つラッパー
+.page-transition__wave-wrap {
+  position: absolute;
+  bottom: 100%; 
+  left: 0;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  margin-bottom: -1px;
+}
+
+// SVG波形（2層に戻し、透明感のある配色に）
+.page-transition__wave {
+  position: absolute;
+  bottom: -5px; 
+  left: 0;
+  width: 200%;
+  height: 100%;
+  will-change: transform;
+
+  &--1 {
+    z-index: 2;
+    opacity: 1;
+    path { fill: #2a8fa0; } // 鮮やかなティール
+    .wave-group { animation: wave-loop 5s linear infinite, wave-shake 3s ease-in-out infinite; }
+  }
+  &--2 {
+    z-index: 1;
+    opacity: 0.5;
+    left: -10%;
+    path { fill: #4fa8b5; } // 明るい水色
+    .wave-group { animation: wave-loop 8s linear infinite reverse, wave-shake 4s ease-in-out infinite; }
+  }
+}
+
+@keyframes wave-loop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes wave-shake {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  50% { transform: translateY(10px) scaleY(0.9); }
+}
+
+// 本体（明るめのオーシャンブルー）
+.page-transition__body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    #2a8fa0 0%,
+    #4fa8b5 20%,
+    #0082b4 60%,
+    #005f8a 100%
+  );
+}
+
+
+}
+

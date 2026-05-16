@@ -48,13 +48,13 @@
 }
 
 .page-price__table {
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   border-collapse: collapse;
   width: 100%;
 }
 
 .page-price__box {
-  background-color: $green;
+  background-color: $main-color;
   padding: 0.51rem;
   display: flex;
   align-items: center;
@@ -114,7 +114,7 @@
   height: 3.6rem;
 }
 .page-price__name {
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   font-size: 1rem;
   font-weight: $regular;
   font-family: $third-font-family;
@@ -131,7 +131,7 @@
 }
 
 .page-price__figure {
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   padding: 0rem 1rem;
   text-indent: 0.8em;
   font-size: 1rem;

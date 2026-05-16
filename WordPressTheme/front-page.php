@@ -74,10 +74,7 @@ $contact = esc_url(home_url('/contact/'));
                 <h2 class="section-title__sub">キャンペーン</h2>
             </div>
         </div>
-        <div class="campaign__wrap u-desktop">
-            <div class="campaign__next swiper-button-next"></div>
-            <div class="campaign__prev swiper-button-prev"></div>
-        </div>
+        <!-- ボタン削除済み -->
         <div class="campaign__cards-wrap">
             <div class="campaign__cards js-campaign-swiper">
                 <div class="campaign__cards-wrapper swiper-wrapper">
@@ -213,7 +210,7 @@ $contact = esc_url(home_url('/contact/'));
                             srcset="<?php echo get_template_directory_uri(); ?>/assets/images/common/aboutUs-left.jpg"
                             media="(max-width:765px)" />
                         <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/aboutUs-left-pc.jpg"
-                            alt="沖縄建築の屋根にシーサーが載っている様子" class="about__img-left" />
+                            alt="沖縄建築の屋根にシーサーが載っている様子" class="about__img-left js-parallax" data-speed="0.3" />
                     </picture>
                 </div>
                 <div class="about__imgs-right">
@@ -222,7 +219,7 @@ $contact = esc_url(home_url('/contact/'));
                             srcset="<?php echo get_template_directory_uri(); ?>/assets/images/common/aboutUs-right.jpg"
                             media="(max-width:765px)" />
                         <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/aboutUs-right-pc.jpg"
-                            alt="黄色い熱帯魚が泳ぐ様子" class="about__img-right" />
+                            alt="黄色い熱帯魚が泳ぐ様子" class="about__img-right js-parallax" data-speed="-0.3" />
                     </picture>
                 </div>
             </div>
@@ -334,7 +331,7 @@ $contact = esc_url(home_url('/contact/'));
             </a>
         </div>
     </div>
-    <div class="blog__visual-wrap u-desktop">
+    <div class="blog__visual-wrap u-desktop js-parallax" data-speed="0.15">
         <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-visual.pc.jpg" alt="綺麗な水面の様子"
             class="blog__visual" />
     </div>
@@ -481,7 +478,7 @@ $contact = esc_url(home_url('/contact/'));
             </a>
         </div>
     </div>
-    <div class="price__visual-left u-desktop">
+    <div class="price__visual-left u-desktop js-parallax" data-speed="-0.15">
         <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/price-pc.left.svg" alt="6匹の魚が泳いでる絵"
             class="price__visual-img" />
     </div>

@@ -19,7 +19,7 @@ $sitemap = esc_url( home_url('/sitemap/'));
         <div class="contact__wrap">
             <div class="contact__top">
                 <div class="contact__logo-wrap">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/contact-logo.svg"
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/contact-logo.svg?v=1.1"
                         alt="コンタクトロゴ" class="contact__logo" />
                 </div>
                 <div class="contact__body">
@@ -61,7 +61,7 @@ $sitemap = esc_url( home_url('/sitemap/'));
     <div class="footer__inner inner">
         <div class="footer__top">
             <div class="footer__top-wrap">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/footer-logo.svg" alt="フッターロゴ"
+                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/footer-logo.svg?v=1.1" alt="フッターロゴ"
                     class="footer__logo" />
                 <div class="footer__top-box">
                     <a href="#"><img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/facebook-logo.svg"
@@ -155,7 +155,7 @@ $sitemap = esc_url( home_url('/sitemap/'));
         </div>
         <div class="footer__under-box">
             <small
-                class="footer__copyright">Copyright&nbsp;&copy;&nbsp;2021-2023&nbsp;CodeUps&nbsp;LLC.&nbsp;All&nbsp;Rights&nbsp;Reserved</small>
+                class="footer__copyright">Copyright&nbsp;&copy;&nbsp;2024&nbsp;BlueDive&nbsp;Okinawa.&nbsp;All&nbsp;Rights&nbsp;Reserved</small>
         </div>
     </div>
 </footer>

@@ -45,7 +45,7 @@
 }
 
 .voice-card__content {
-  border-bottom: 1px solid $green;
+  border-bottom: 1px solid $main-color;
   flex: 1;
   @include mq("md") {
     flex: 1.5;
@@ -74,7 +74,7 @@
 .voice-card__category {
   display: inline-block;
   padding: 0.14rem 0.7rem;
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   @include mq("md") {
     padding: 0.3rem 1rem;
     margin-left: auto;
@@ -85,7 +85,7 @@
   font-weight: $regular;
   font-family: $third-font-family;
   line-height: 1.833;
-  color: $green;
+  color: $main-color;
   white-space: nowrap;
 }
 .voice-card__lead {

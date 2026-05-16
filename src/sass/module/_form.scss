@@ -1,7 +1,7 @@
 @use "global" as *;
 
 .form__box {
-  border-bottom: 1px dashed $green;
+  border-bottom: 1px dashed $main-color;
   padding-bottom: 1.5rem;
   @include mq("md") {
     display: flex;
@@ -67,7 +67,7 @@
 .form__text {
   width: 100%;
   padding: 0.4rem 1rem 0.4rem;
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -82,7 +82,7 @@
 .form__select {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   font-size: 0.75rem;
   font-weight: $regular;
   font-family: $third-font-family;
@@ -104,7 +104,7 @@ input[type="checkbox"] {
 }
 .wpcf7-list-item-label::before {
   background: $white;
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   content: "";
   display: block;
   height: 0.875rem;
@@ -152,7 +152,7 @@ input[type="checkbox"]:checked + .wpcf7-list-item-label::after {
 }
 .form__skill.form__skill--circle::before {
   background: $white;
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   content: "";
   display: block;
   height: 0.875rem;
@@ -165,7 +165,7 @@ input[type="checkbox"]:checked + .wpcf7-list-item-label::after {
     content: ""; //before, afterはこのプロパティが必須。
     display: block; //横幅・縦幅を指定するため、blockに。
     border-radius: 50%; //これで形を円形に。
-    border: 1px solid $green;
+    border: 1px solid $main-color;
     width: 1rem;
     height: 1rem;
   }
@@ -191,7 +191,7 @@ input[type="checkbox"]:checked + .wpcf7-list-item-label::after {
     left: 0.2rem;
     width: 0.625rem;
     height: 0.625rem;
-    background-color: $green;
+    background-color: $main-color;
   }
 }
 
@@ -216,7 +216,7 @@ input[type="checkbox"]:checked + .wpcf7-list-item-label::after {
   width: 100%;
   padding: 10px;
   height: 200px;
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -241,10 +241,10 @@ input[type="checkbox"]:checked + .wpcf7-list-item-label::after {
   clip-path: polygon(0 0, 50% 100%, 100% 0);
 
   pointer-events: none;
-  background-color: $green;
+  background-color: $main-color;
 }
 .form__textarea-box {
-  border-bottom: 1px dashed $green;
+  border-bottom: 1px dashed $main-color;
   margin-top: 1.5rem;
   padding-bottom: 1.1rem;
   @include mq("md") {
@@ -283,7 +283,7 @@ input[type="checkbox"]:checked + .wpcf7-list-item-label::after {
 }
 .form__checkbox-txt::before {
   background: $white;
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   position: absolute;
   content: "";
   display: block;

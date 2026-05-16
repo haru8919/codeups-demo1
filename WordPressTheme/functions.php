@@ -1,7 +1,5 @@
 <?php
 function my_theme_enqueue_scripts() {
-    // ファビコンの読み込み
-    echo '<link rel="icon" href="' . get_template_directory_uri() . '/assets/images/common/favicon.ico" />';
 
     // Google Fontsの読み込み
     wp_enqueue_style('google-fonts-gotu-noto', 'https://fonts.googleapis.com/css2?family=Gotu&family=Noto+Sans+JP&family=Noto+Serif+JP&display=swap', array(), null);
@@ -80,11 +78,6 @@ function slider_images_page() {
 
 add_action('admin_menu', 'add_custom_fields');
 
-// gallaryモーダル
-function enqueue_gallery_modal_script() {
-    wp_enqueue_script('gallery-modal', get_template_directory_uri() . '/assets/js/gallery-modal', array('jquery'), null, true);
-}
-add_action('wp_enqueue_scripts', 'enqueue_gallery_modal_script');
 
 // カスタム投稿設定
 add_filter('get_previous_post_where', 'custom_previous_post_where');

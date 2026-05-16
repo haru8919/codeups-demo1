@@ -41,17 +41,17 @@
 }
 
 .page-information__category-item:hover {
-  background-color: $green; // クリック時に少し明るくする
+  background-color: $main-color; // クリック時に少し明るくする
 }
 
 .page-information__category-item.clicked {
-  background-color: $green; // クリック中に少し暗くする
+  background-color: $main-color; // クリック中に少し暗くする
 }
 .page-information__category-link {
   font-size: 0.875rem;
   font-weight: $regular;
   font-family: $third-font-family;
-  color: $green;
+  color: $main-color;
   display: block;
   padding: 0.5rem 1rem;
   position: relative;
@@ -74,14 +74,14 @@
     width: 90%;
     height: 4rem;
     z-index: 3;
-    background-color: $green;
+    background-color: $main-color;
     transition: background-color 0.3s ease;
   }
 }
 
 .page-information__category-link.clicked {
   color: $white;
-  background-color: $green;
+  background-color: $main-color;
 }
 
 .page-information__category-link[data-target="license"]::before {
@@ -138,7 +138,7 @@
 }
 .page-information__wrpper {
   display: none;
-  border: 1px solid $green;
+  border: 1px solid $main-color;
   margin-top: 1rem;
   padding: 1.5rem 1.5rem;
 
@@ -161,7 +161,7 @@
 }
 
 .page-information__title {
-  border-bottom: 2px solid $green;
+  border-bottom: 2px solid $main-color;
   padding-bottom: 0.5rem;
   line-height: 1;
 

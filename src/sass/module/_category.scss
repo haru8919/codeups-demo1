@@ -21,17 +21,17 @@
 
 .category__item {
   background-color: $white;
-  border: 1px solid $green;
-  color: $green;
+  border: 1px solid $main-color;
+  color: $main-color;
   min-width: 10.125rem;
   transition: opacity 0.3s, background-color 0.3s, color 0.3s;
 }
 .category__item.active {
-  background-color: $green;
+  background-color: $main-color;
   color: $white;
 }
 .category__item:hover {
-  background-color: $green;
+  background-color: $main-color;
   color: $white;
 }
 .category__link {

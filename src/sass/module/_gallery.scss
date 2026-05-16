@@ -17,6 +17,8 @@
     transform: translate(-50%);
     height: 8.625rem;
     width: 18.125rem;
+    animation: float-wave 5.5s ease-in-out infinite;
+    animation-delay: 2s;
   }
 }
 .gallery__title-wrap {

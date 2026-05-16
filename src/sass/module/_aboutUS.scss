@@ -37,6 +37,7 @@
   grid-template-rows: 12% repeat(3, 1fr) 8.49%; //26px%212   18px%212
   height: auto;
   width: auto;
+  overflow: visible; // パララックスが親にクリップされないように
   @include mq("md") {
     grid-template-columns: repeat(2, 18.6%) repeat(3, 1fr);
     grid-template-rows: 12% repeat(3, 1fr) 8.13%;
@@ -98,7 +99,7 @@
   font-size: 2.5rem;
   font-family: $base-font-family;
   line-height: 1;
-  color: $green;
+  color: $main-color;
   @include mq("md") {
     font-size: 5rem;
     font-family: $base-font-family;

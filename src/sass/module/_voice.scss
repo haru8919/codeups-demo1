@@ -15,6 +15,8 @@
     transform: translate(-50%);
     width: 18.8125rem;
     height: 8.625rem;
+    animation: float-wave 6s ease-in-out infinite;
+    animation-delay: 1.2s;
   }
 }
 .voice__inner::after {
@@ -29,6 +31,8 @@
     transform: translate(-50%);
     width: 4.4375rem;
     height: 10.125rem;
+    animation: float-wave 4.5s ease-in-out infinite;
+    animation-delay: 0s;
   }
 }
 .voice__title-wrap {

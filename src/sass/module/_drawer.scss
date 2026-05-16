@@ -8,7 +8,9 @@
   top: 0;
   right: -100%;
   opacity: 1;
-  background-color: $green;
+  background-color: rgba(64, 143, 149, 0.5); /* グラスモーフィズム用に半透明化 ($main-color を想定) */
+  backdrop-filter: blur(15px); /* すりガラス効果 */
+  -webkit-backdrop-filter: blur(15px);
   background-attachment: fixed;
   transition: right 0.3s ease;
 }

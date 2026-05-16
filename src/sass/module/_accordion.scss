@@ -7,7 +7,7 @@
   font-size: 1.5rem;
   font-weight: $regular;
   font-family: $third-font-family;
-  color: $green;
+  color: $main-color;
   cursor: pointer;
 }
 .accordion__title-text::before,
@@ -16,7 +16,7 @@
   display: inline-block;
   width: 1.3rem; /* 三角形の幅 */
   height: 1.3rem; /* 三角形の高さ */
-  background-color: $green; /* 三角形の色 */
+  background-color: $main-color; /* 三角形の色 */
   -webkit-clip-path: polygon(0 0, 0 100%, 100% 50%); /* ブラウザーの互換性のためのプレフィックス */
   clip-path: polygon(0 0, 0 100%, 100% 50%);
   vertical-align: middle;
@@ -42,7 +42,7 @@
   font-size: 1.5rem;
   font-weight: $regular;
   font-family: $third-font-family;
-  color: $green;
+  color: $main-color;
   display: inline-block;
   transition: transform 0.3s ease;
 }

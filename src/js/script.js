@@ -21,8 +21,8 @@
       setTimeout(function () {
         $(".slide-in").addClass("active"); // 画像を表示する
         setTimeout(function () {
-          $(".slide-in").addClass("fade-out"); // スライドインをフェードアウトする
-          $(".mv__white-background").addClass("fade-out"); // 白い背景もフェードアウトする
+          $(".slide-in").addClass("fade-out"); // スライドインをフェードアウトさせる
+          $(".mv__white-background").addClass("fade-out"); // 白い背景もフェードアウトさせる
           setTimeout(function () {
             $(".mv__slider").addClass("visible"); // スライダーをフェードインする
             var mvSwiper = new Swiper(".js-mv-swiper", {
@@ -48,34 +48,37 @@
       loop: true,
       slidesPerView: "auto",
       spaceBetween: 18,
-      centeredSlides: false,
-      speed: 300,
-      navigation: {
-        nextEl: ".campaign__next",
-        prevEl: ".campaign__prev",
+      speed: 5000,
+      allowTouchMove: false,
+      freeMode: {
+        enabled: true,
+        momentum: false,
       },
-      // autoplay: {
-      //   // 自動再生
-      //   delay: 1500,
-      //   disableOnInteraction: false,
-      // },
+      autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
       breakpoints: {
         765: {
           spaceBetween: 40,
         },
       },
     });
-    campaignSwiper.on("autoplayStop", function () {
-      campaignSwiper.navigation.update();
-    });
   });
+
+
+
+
+
+
 
   // imgアニメーション
   $(document).ready(function () {
     var boxes = $(".colorbox"); // colorbox クラスを持つ全ての要素を取得し、それらを boxes 変数に格納する。
     var speed = 700;
     boxes.each(function () {
-      //boxes 変数に格納された要素それぞれに対して、指定された関数を実行する。
+      // boxes 変数に格納された要素それぞれに対して、指定された関数を実行する。
       var box = $(this);
       var color = $("<div class='color'></div>").appendTo(box); // 各 .colorbox に <div class="color"></div> を追加
       var image = box.find("img");
@@ -84,7 +87,7 @@
       color.css("width", "0"); // .color 要素を初期状態で非表示にする
 
       $(window).on("scroll", function () {
-        //ウィンドウのスクロールイベントに対して指定された関数を実行する。
+        // ウィンドウのスクロールイベントに対して指定された関数を実行する。
         var windowHeight = $(window).height();
         var scrollTop = $(window).scrollTop();
         var boxOffset = box.offset().top;
@@ -239,7 +242,7 @@
     }
   });
 
-  // sidebarアコーディ
+  // sidebarアコーディオン
   $(function () {
     // 初期状態で全てのコンテンツを非表示にする
     $(".js-accordion__content").hide();
@@ -248,7 +251,7 @@
     $(".js-accordion__title").on("click", function () {
       var $accordionItem = $(this).closest(".js-accordion__item");
 
-      // クリックされたタイトルの次のすべてのコンテンツをトグル
+      // クリックされたタイトルの次の全てのコンテンツをトグル
       $accordionItem.find(".js-accordion__content").slideToggle(300);
 
       // アイテム全体のタイトルのis-openクラスをトグル
@@ -277,16 +280,129 @@
     });
   });
 
-  // contactのSendボタン
-  // document.addEventListener("DOMContentLoaded", function () {
-  //   var checkbox = document.getElementById("agree");
-  //   var checkboxTxt = document.querySelector(".form__checkbox-txt");
-  //   checkbox.addEventListener("change", function () {
-  //     if (checkbox.checked) {
-  //       checkboxTxt.classList.add("checked");
-  //     } else {
-  //       checkboxTxt.classList.remove("checked");
-  //     }
-  //   });
-  // });
+  // --- Wow Factor: GSAP Animations ---
+  $(window).on("load", function() {
+    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // セクションタイトル（左からスライドイン → 波のように揺れる）
+      const sectionTitles = document.querySelectorAll(".section-title__main, .section-title__sub");
+      if(sectionTitles.length > 0) {
+        sectionTitles.forEach(title => {
+          gsap.fromTo(title,
+            { x: -50, y: 10, opacity: 0 },
+            {
+              x: 0, y: 0, opacity: 1,
+              duration: 1.3,
+              ease: "sine.out",
+              scrollTrigger: {
+                trigger: title,
+                start: "top 85%",
+              },
+              onComplete: () => {
+                gsap.to(title, {
+                  y: 5, rotation: 0.5, duration: 2,
+                  ease: "sine.inOut", yoyo: true, repeat: -1,
+                });
+              }
+            }
+          );
+        });
+      }
+
+      // カードStaggerアニメーション（スライダー以外）
+      const staggerContainers = document.querySelectorAll(".blog-cards, .voice-cards");
+
+      staggerContainers.forEach(container => {
+        const cards = container.children;
+        if(cards.length > 0) {
+          gsap.fromTo(cards,
+            { y: 40, opacity: 0 },
+            {
+              y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "power2.out",
+              scrollTrigger: { trigger: container, start: "top 80%" }
+            }
+          );
+        }
+      });
+
+      // テキストアニメーション（About Us - 1文字ずつ出現）
+      const textAnimElements = document.querySelectorAll(".about__content-text");
+      if(textAnimElements.length > 0) {
+        textAnimElements.forEach(el => {
+          const text = el.textContent;
+          el.innerHTML = "";
+          text.split("").forEach(char => {
+            if(char === " " || char === "\u3000" || char === "\n") {
+              el.innerHTML += char;
+            } else {
+              el.innerHTML += '<span style="display:inline-block;opacity:0;transform:translateY(10px);">' + char + '</span>';
+            }
+          });
+          gsap.to(el.querySelectorAll("span"), {
+            opacity: 1, y: 0, duration: 0.1, stagger: 0.05, ease: "power2.out",
+            scrollTrigger: { trigger: el, start: "top 80%" }
+          });
+        });
+      }
+
+      // ページ遷移（波が下から押し寄せ、潮が引いて別ページが現れる）
+      const transitionEl = document.querySelector(".page-transition");
+      if (transitionEl) {
+        // ページ読み込み時
+        if (sessionStorage.getItem('is-transitioning')) {
+          // 強制スタイル(transform: translateY(0) !important)を削除してGSAPの制御下に入れる
+          const blockingStyle = document.getElementById('transition-blocking-style');
+          if (blockingStyle) {
+            blockingStyle.remove();
+          }
+
+          // 改めてGSAPで y: 0 から開始し、下へ引かせる
+          gsap.fromTo(transitionEl, 
+            { y: 0 },
+            {
+              y: "100vh", 
+              duration: 1.0, // 1.4s -> 1.0s (スピードアップ)
+              ease: "expo.out", // より素早い引き出し
+              delay: 0, // 待機時間をゼロに
+              force3D: true,
+              onComplete: () => {
+                sessionStorage.removeItem('is-transitioning');
+              }
+            }
+          );
+        } else {
+          // 通常の読み込み時：常駐位置にセット
+          gsap.set(transitionEl, { y: "100vh" });
+        }
+
+        // リンククリック時: 下端に漂っている波が「上へ」押し寄せて画面を覆う
+        $("a:not([target='_blank']):not([href^='#']):not([href^='mailto:']):not([href^='tel:']):not([href*='wp-admin']):not([href*='wp-login'])").on("click", function(e) {
+          const url = $(this).attr("href");
+          const host = window.location.host;
+          if(url && (url.indexOf(host) !== -1 || url.startsWith('/'))) {
+            e.preventDefault();
+            
+            // 遷移フラグをセット
+            sessionStorage.setItem('is-transitioning', 'true');
+
+            // 満ち潮：常駐位置(100vh)から上(0)へ
+            gsap.to(transitionEl, {
+              y: 0, 
+              duration: 0.6, // 0.8s -> 0.6s (サッと覆う)
+              ease: "power4.out",
+              force3D: true,
+              onComplete: () => { window.location.href = url; }
+            });
+          }
+        });
+      }
+
+
+
+
+
+
+    }
+  });
 })(jQuery);

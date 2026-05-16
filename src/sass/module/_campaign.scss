@@ -27,8 +27,9 @@
   }
 }
 .campaign__cards-wrapper {
-  transition-timing-function: linear;
+  transition-timing-function: linear !important;
 }
+
 .campaign__card:hover {
   animation: bounce 0.8s ease-out;
 }

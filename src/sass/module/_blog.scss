@@ -20,6 +20,8 @@
     transform: translate(-50%);
     width: 27.3125rem;
     height: 12.5625rem;
+    animation: float-wave 5s ease-in-out infinite;
+    animation-delay: 0.5s;
   }
 }
 .blog__title-wrap {

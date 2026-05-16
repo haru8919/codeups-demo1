@@ -29,20 +29,29 @@
                             </li>
 
                             <?php
-                                // タクソノミー 'campaign_genre' のタームを取得
-                            $terms = get_terms(array(
-                                'taxonomy' => 'campaign_genre',
-                                'hide_empty' => false,
-                            ));
+                                // 'campaign' 投稿タイプに紐づくタクソノミーを動的に取得
+                                $taxonomies = get_object_taxonomies('campaign');
+                                $tax_name = 'campaign_genre'; // デフォルト
+                                foreach ($taxonomies as $tax) {
+                                    if ($tax !== 'category' && $tax !== 'post_tag') {
+                                        $tax_name = $tax;
+                                        break;
+                                    }
+                                }
+
+                                $terms = get_terms(array(
+                                    'taxonomy' => $tax_name,
+                                    'hide_empty' => false,
+                                ));
 
                             // タームが存在する場合はリストアイテムとして表示
                             if (!empty($terms) && !is_wp_error($terms)) :
                                 foreach ($terms as $term) :
                                     // 現在のタームがアクティブな場合、active クラスを追加
-                                    $active_class = (is_tax('campaign_genre', $term->slug)) ? 'active' : '';
+                                    $active_class = (is_tax($tax_name, $term->slug) || is_category($term->slug)) ? 'active' : '';
                             ?>
                             <li class="category__item <?php echo $active_class; ?>">
-                                <a href="<?php echo get_term_link($term); ?>" class="category__link">
+                                <a href="<?php echo esc_url(get_term_link($term)); ?>" class="category__link">
                                     <?php echo esc_html($term->name); ?>
                                 </a>
                             </li>
